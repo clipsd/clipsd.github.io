@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self' 'sha256-6pBwDSXNLG9xd4o4+5oQoJArf8rqZhK2381k02BNguw='; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; style-src 'self'; font-src 'self'; script-src 'self' 'sha256-6pBwDSXNLG9xd4o4+5oQoJArf8rqZhK2381k02BNguw=' https://www.googletagmanager.com; connect-src https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
 <title>ClipSD: free screenshot tool with editor, Windows and Linux</title>
 <meta name="description" content="Download free screenshot tool for Windows and Linux: Alt+W, arrows, numbers, blur. Copy text from screenshots (OCR), translate text on screen. No ads.">
 <link rel="canonical" href="https://clipsd.github.io/">
@@ -42,8 +42,15 @@
   <p class="lead">Free screenshot tool with an editor for Windows and Linux: capture an area with Alt+W, add arrows, numbers, callouts, blur, crop, copy text from images and translate text on screen.</p>
   <p class="sr-only" id="suggest-note">Page language</p>
   <ul><li><a href="ru/" hreflang="ru" lang="ru">Русский<small>Программа для скриншотов с редактором</small></a></li><li><a href="en/" hreflang="en" lang="en">English<small>Screenshot tool with an editor</small></a></li><li><a href="bg/" hreflang="bg" lang="bg">Български<small>Програма за скрийншотове с редактор</small></a></li><li><a href="uk/" hreflang="uk" lang="uk">Українська<small>Програма для скріншотів з редактором</small></a></li><li><a href="de/" hreflang="de" lang="de">Deutsch<small>Screenshot-Programm mit Editor</small></a></li><li><a href="fr/" hreflang="fr" lang="fr">Français<small>Logiciel de capture d&#x27;écran avec éditeur</small></a></li><li><a href="es/" hreflang="es" lang="es">Español<small>Programa de capturas con editor</small></a></li><li><a href="it/" hreflang="it" lang="it">Italiano<small>Programma per screenshot con editor</small></a></li><li><a href="pt/" hreflang="pt" lang="pt-BR">Português<small>Programa de captura de tela com editor</small></a></li><li><a href="pl/" hreflang="pl" lang="pl">Polski<small>Program do zrzutów ekranu z edytorem</small></a></li><li><a href="tr/" hreflang="tr" lang="tr">Türkçe<small>Ekran görüntüsü alma programı, düzenleyicili</small></a></li><li><a href="zh/" hreflang="zh-Hans" lang="zh-Hans">中文<small>免费截图软件，自带标注编辑器</small></a></li></ul>
-  
+  <p><button type="button" class="linkbtn" data-consent-open>Cookie settings</button></p>
 </main>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie consent" hidden>
+  <button type="button" class="consent-x" data-consent="close" aria-label="Close">&times;</button>
+  <p>This website can count visits with Google Analytics. Google Analytics (Google LLC) data may be transferred to the USA. Until you agree, no counter is loaded and no cookies are set. Closing the banner without choosing counts as a refusal. The ClipSD program itself collects nothing: this applies to the website only. <a href="en/privacy.html">Privacy policy</a></p>
+  
+  <div class="consent-row"><button type="button" class="consent-btn" data-consent="deny">Decline</button><button type="button" class="consent-btn" data-consent="grant">Accept</button></div>
+</div>
+<script src="assets/consent.js?v=cfc2d50a16" defer data-ga="G-52RP4WR8CM" data-ym="" data-ver="2026-11-19-g"></script>
 <script src="assets/site.js?v=20a0504d79" defer></script>
 </body>
 </html>

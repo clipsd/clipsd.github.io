@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; style-src 'self'; font-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>ClipSD：免费开源截图软件，Windows 和 Linux，标注、OCR、截图翻译</title>
 <meta name="description" content="免费下载截图软件，支持 Windows 和 Linux：Alt+W 截图，用箭头、序号、模糊等标注，自带编辑器。可识别截图中的文字（OCR），也能翻译屏幕文字，开源无广告，无需账号。">
@@ -513,13 +513,20 @@ Updates: the program checks once a day and offers to update itself. Screenshots 
 
 <footer>
   <div class="wrap multi">
-    <div><a class="brand" href="../zh/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">带编辑器的截图软件，适用于 Windows 和 Linux。免费开源。</p><p class="small">本网站没有访客计数器、广告或 cookie。</p></div>
+    <div><a class="brand" href="../zh/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">带编辑器的截图软件，适用于 Windows 和 Linux。免费开源。</p><p class="small">无广告。Google Analytics 计数器仅在您同意后运行。ClipSD 程序本身不收集任何数据。</p></div>
     <div><h2>软件</h2><ul><li><a href="../zh/#download">下载</a></li><li><a href="../zh/#source">源代码</a></li><li><a href="../zh/#contact">联系</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
-    <div><h2>文档</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later 许可证</a></li><li><a href="../zh/changes.html">版本历史</a></li><li><a href="../zh/privacy.html">隐私</a></li><li><a href="../zh/code-signing.html">签名与文件校验</a></li><li><a href="../ru/third-party.html">第三方组件</a></li><li><a href="../install.txt">供 AI 使用的安装说明（install.txt）</a></li></ul></div>
+    <div><h2>文档</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later 许可证</a></li><li><a href="../zh/changes.html">版本历史</a></li><li><a href="../zh/privacy.html">隐私</a></li><li><a href="../zh/code-signing.html">签名与文件校验</a></li><li><a href="../ru/third-party.html">第三方组件</a></li><li><a href="../install.txt">供 AI 使用的安装说明（install.txt）</a></li><li><button type="button" class="linkbtn" data-consent-open>Cookie 设置</button></li></ul></div>
     <div><h2>语言</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
     <p class="legal">© 2026 Sergey Dayneko。ClipSD 按 GNU GPL v3 或更高版本发布，不提供任何担保。</p>
   </div>
 </footer>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie 同意" hidden>
+  <button type="button" class="consent-x" data-consent="close" aria-label="关闭">&times;</button>
+  <p>网站可以使用 Google Analytics 统计访问量。Google Analytics（Google LLC）的数据可能传输到美国。在您同意之前，不会加载任何计数器，也不会设置 cookie。不做选择就关闭横幅视为拒绝。ClipSD 程序本身不收集任何数据：这只涉及网站。 <a href="../zh/privacy.html">隐私政策</a></p>
+  
+  <div class="consent-row"><button type="button" class="consent-btn" data-consent="deny">拒绝</button><button type="button" class="consent-btn" data-consent="grant">接受</button></div>
+</div>
+<script src="../assets/consent.js?v=cfc2d50a16" defer data-ga="G-52RP4WR8CM" data-ym="" data-ver="2026-11-19-g"></script>
 <script src="../assets/site.js?v=20a0504d79" defer></script>
 </body>
 </html>
