@@ -19,6 +19,11 @@ ClipSD 1.31.1 is a free, open-source (GNU GPL v3 or later, SPDX GPL-3.0-or-later
 - [Türkçe](https://clipsd.github.io/tr/): Windows ve Linux için ücretsiz ekran görüntüsü alma programını indirin: Alt+W, oklar, numaralar, bulanıklık. Resimden metin (OCR) ve ekran çevirisi.
 - [中文](https://clipsd.github.io/zh/): 免费下载截图软件，支持 Windows 和 Linux：Alt+W 截图，用箭头、序号、模糊等标注，自带编辑器。可识别截图中的文字（OCR），也能翻译屏幕文字，开源无广告，无需账号。
 
+## Install
+
+- [Install instructions for AI assistants (plain text)](https://clipsd.github.io/install.txt): Linux one-liner `curl -fsSL https://clipsd.github.io/install.sh | bash`, manual steps with SHA-256 check, Windows silent install
+- [Linux install script](https://clipsd.github.io/install.sh): x86-64, glibc 2.35+, no sudo, verifies SHA-256
+
 ## Details
 
 - [Full description in plain text](https://clipsd.github.io/llms-full.txt): features, shortcuts, install steps, privacy, FAQ

@@ -411,3 +411,31 @@ h1 .h1-slogan{display:block}
 [data-dl-main][data-os="windows"] .mon{display:inline-block}
 [data-dl-main][data-os="windows"] > svg:first-child{display:none}
 .os h3 .mon{margin-right:8px;width:24px;height:29px;vertical-align:-3px}
+
+/* Linux card: which Linux fits; AI install block */
+.which{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.which h4{font-size:17px;margin:0 0 6px}
+.which p{margin:6px 0;font-size:15px;color:var(--muted)}
+.ai{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.ai h3{margin:0 0 6px}
+.ai-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.ai details{margin-top:6px}
+.ai summary{cursor:pointer;color:var(--muted);font-size:15px}
+.ai pre{margin-top:10px;white-space:pre-wrap;word-break:break-word;font:13px/1.55 var(--mono);background:var(--code);color:var(--code-ink);padding:14px 16px;border-radius:10px;max-height:340px;overflow:auto}
+
+/* System icons next to text: centred in the line, the same height for the Tux and the computer (the computer is wider) */
+.tux,.mon{display:inline-block;flex:none;background-position:center;background-repeat:no-repeat;background-size:contain;vertical-align:-.28em}
+.tux{width:1.2em;height:1.4em}
+.mon{width:1.62em;height:1.4em;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 40'><rect x='1.5' y='1' width='43' height='29' rx='4' fill='%232a241f' stroke='%23fff' stroke-width='1.3'/><rect x='4.5' y='4' width='37' height='23' rx='1.8' fill='%23dcebff'/><rect x='9' y='8.5' width='16' height='3' rx='1.5' fill='%236f9fe3'/><rect x='9' y='14' width='25' height='3' rx='1.5' fill='%236f9fe3'/><rect x='9' y='19.5' width='11' height='3' rx='1.5' fill='%236f9fe3'/><rect x='19' y='30' width='8' height='5.5' fill='%232a241f'/><rect x='12' y='35' width='22' height='4' rx='2' fill='%232a241f'/></svg>")}
+.dl-other a[data-os-link]{display:inline-flex;align-items:center;gap:6px;vertical-align:middle}
+.dl-other a[data-os-link][hidden]{display:none}
+.dl-other .tux,.dl-other .mon{margin:0;vertical-align:baseline;width:auto;aspect-ratio:auto}
+.dl-other .tux{width:1.2em;height:1.4em}
+.dl-other .mon{width:1.62em;height:1.4em}
+.btn .tux,.btn .mon{height:25px;vertical-align:middle;margin:0}
+.btn .tux{width:21px}
+.btn .mon{width:29px}
+.os h3{display:flex;align-items:center;gap:10px}
+.os h3 .tux,.os h3 .mon{margin:0;vertical-align:baseline;height:29px}
+.os h3 .tux{width:24px}
+.os h3 .mon{width:33px}
