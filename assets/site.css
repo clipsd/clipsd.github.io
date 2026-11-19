@@ -585,3 +585,17 @@ footer .ext{opacity:.6}
 .hero-snap[data-label="under"] .snap-size{bottom:auto;top:calc(100% + 5px)}
 @media (max-width:640px){.snap-grow[data-corner="bl"] .snap-cursor{left:-9px}}
 @media (max-width:380px){.top .wrap{gap:5px}.brand svg{width:30px;height:30px}.top-dl{padding:8px 8px}}
+
+/* the header squeezes in steps before the menu button takes over (site.js picks the first step that fits, so it works with any
+   menu font): t1 tighter items, no language name, short download button with an icon; t2 the download button is an icon with a hidden word */
+.top-dl .dl-ic,.top-dl svg{display:none;width:15px;height:15px}
+.top.t1 .top-dl svg,.top.t2 .top-dl svg{display:inline-block}
+.top.t1 .top-dl,.top.t2 .top-dl{gap:6px;padding:8px 12px}
+.top.t1 .nav{gap:0}
+.top.t1 .nav a,.top.t2 .nav a{padding:6px 7px;font-size:15px}
+.top.t1 .top-dl .dl-word{font-size:14px}
+.top.t1 .langsw-name,.top.t2 .langsw-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top.t1 .langsw-btn,.top.t2 .langsw-btn{padding:8px 10px;gap:6px}
+.top.t2 .dl-word{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top.t2 .top-dl{padding:9px 11px}
+.top.t1 .wrap,.top.t2 .wrap{gap:12px}

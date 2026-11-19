@@ -257,16 +257,24 @@
   (function () {
     var top = document.querySelector("header.top"), wrap = top && top.querySelector(".wrap");
     if (!top || !wrap) return;
-    var fit = function () {
-      var hadDl = top.classList.contains("dl-on");
-      top.classList.remove("nav-off");
-      top.classList.add("dl-on");
+    var fits = function () {
       var cs = window.getComputedStyle(wrap), limit = wrap.getBoundingClientRect().right - parseFloat(cs.paddingRight);
       var kids = Array.prototype.filter.call(wrap.children, function (e) { return e.offsetWidth > 0; });
       var last = kids.length ? kids[kids.length - 1].getBoundingClientRect().right : 0;
+      return last <= limit + 0.5 && document.documentElement.scrollWidth <= document.documentElement.clientWidth;
+    };
+    var fit = function () {
+      var hadDl = top.classList.contains("dl-on");
+      top.classList.add("dl-on");
       var nav = top.querySelector(".nav");
-      var wide = nav && nav.offsetWidth > 0 && (last > limit + 0.5 || document.documentElement.scrollWidth > document.documentElement.clientWidth);
-      if (wide) top.classList.add("nav-off");
+      top.classList.remove("nav-off", "t1", "t2");
+      if (nav && window.getComputedStyle(nav).display !== "none") {
+        // steps: full, tighter (no language name, short download button), icon-only download button, then the menu button
+        var ok = fits();
+        if (!ok) { top.classList.add("t1"); ok = fits(); }
+        if (!ok) { top.classList.remove("t1"); top.classList.add("t2"); ok = fits(); }
+        if (!ok) { top.classList.remove("t2"); top.classList.add("nav-off"); }
+      }
       if (!hadDl) top.classList.remove("dl-on");
     };
     fit();
