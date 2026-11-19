@@ -1,5 +1,5 @@
 /* ClipSD site: three frames on the first screen, system detection for the download button, the copy button
-   and the language hint on the root page. No trackers, no cookies, no storage, nothing loaded from other sites (the visitor counters live in consent.js and load only after consent).
+   and the language hint on the root page. No trackers, no cookies; the only thing stored is the chosen language (localStorage clipsd-lang); nothing loaded from other sites (the visitor counters live in consent.js and load only after consent).
    Everything important works without this file: the first frame is shown, the others open through anchors. */
 (function () {
   "use strict";
@@ -89,6 +89,30 @@
   // --- close the mobile menu after a jump ------------------------------------------------------------
   document.querySelectorAll("details.menu nav a").forEach(function (a) {
     a.addEventListener("click", function () { var d = a.closest("details"); if (d) d.open = false; });
+  });
+
+  // --- language switcher: opens by the button, Esc and a click outside close it, the choice is remembered ---------
+  var sw = document.querySelector("[data-langsw]");
+  function rememberLang(a) {
+    var l = a.getAttribute("data-lang") || (a.getAttribute("hreflang") || "").split("-")[0];
+    try { if (l) window.localStorage.setItem("clipsd-lang", l); } catch (e) { /* no storage: the choice is not kept */ }
+  }
+  if (sw) {
+    var btn = sw.querySelector(".langsw-btn");
+    var setOpen = function (on, focusBtn) {
+      sw.classList.toggle("open", on);
+      btn.setAttribute("aria-expanded", on ? "true" : "false");
+      if (!on && focusBtn) btn.focus();
+    };
+    btn.addEventListener("click", function () { setOpen(!sw.classList.contains("open"), false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && sw.classList.contains("open")) { e.stopPropagation(); setOpen(false, true); }
+    });
+    document.addEventListener("click", function (e) { if (!sw.contains(e.target)) setOpen(false, false); });
+    sw.addEventListener("focusout", function (e) { if (e.relatedTarget && !sw.contains(e.relatedTarget)) setOpen(false, false); });
+  }
+  document.querySelectorAll(".langsw-panel a, footer .langs a").forEach(function (a) {
+    a.addEventListener("click", function () { rememberLang(a); });
   });
 
   // --- root page: point at the visitor's language without redirecting ------------------------------
