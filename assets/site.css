@@ -472,6 +472,12 @@ h1 .h1-slogan{display:block}
 .snap-cursor{position:absolute;right:-13px;bottom:-13px;opacity:0;pointer-events:none}
 .snap-panel{position:absolute;right:0;top:calc(100% + 12px);background:linear-gradient(#34c06e,#1f9d55);color:#fff;font:700 14px/1 var(--sans);padding:10px 16px;border-radius:10px;box-shadow:0 6px 16px -8px rgba(20,100,60,.7);white-space:nowrap;pointer-events:none}
 .snap-b{margin-bottom:34px}
+/* screenshot inside the frame: hidden until site.js plays it (flash, then a thumbnail flies into the green button); with reduced motion it never plays */
+.snap-shot{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.snap-shot i{position:absolute;display:block;opacity:0}
+.sh-wash{inset:0;background:#fff}
+.snap-thumb{position:absolute;inset:0;pointer-events:none;overflow:hidden;background:var(--bg);border:3px solid #00aeff;border-radius:3px;box-shadow:0 14px 30px -10px rgba(40,30,20,.55);opacity:0;will-change:transform,opacity;z-index:3}
+.snap-thumb>div{position:absolute;margin:0;pointer-events:none}
 /* the scenario of variant b (about 2.9 s, once): the frame is drawn (0.8 s), the cursor takes the lower right corner,
    the frame grows a little and returns while the size label follows (site.js), then "Copy and close" appears */
 @media (prefers-reduced-motion:no-preference){

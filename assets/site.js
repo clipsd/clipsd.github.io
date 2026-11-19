@@ -193,11 +193,46 @@
         { opacity: 1, transform: "none", offset: 0.85 }, { opacity: 0, transform: "translate(" + sx * 8 + "px," + sy * 6 + "px)", offset: 1 }],
         { duration: 1700, fill: "none" });
       running = [a1, a2];
+      a1.finished.then(function () { running = running.concat(shoot()); setPause(); }, function () { /* cancelled */ });
       pulling = true;
       setPause();
       var loop = function () { put(1); if (pulling) window.requestAnimationFrame(loop); };
       window.requestAnimationFrame(loop);
       a2.finished.then(function () { pulling = false; running = []; put(1); }, function () { pulling = false; });
+    }
+    // --- screenshot inside the frame (data-shot on the box): a flash, then a thumbnail flies into the green button -------
+    // Only opacity and transform are animated, nothing leaves the frame upwards (the thumbnail goes down to the green button).
+    var kind = box.hasAttribute("data-shot"), shotEl = grow.querySelector(".snap-shot");
+    function shoot() {
+      if (!kind || !shotEl) return [];
+      var q = function (c) { return shotEl.querySelector(c); };
+      var out = [], at = function (el, kf, o) { var a = el.animate(kf, Object.assign({ fill: "none" }, o)); out.push(a); return a; };
+      var wash = q(".sh-wash");
+      if (kind) {
+        var h1 = box.querySelector("h1"), gr = grow.getBoundingClientRect(), hr = h1 && h1.getBoundingClientRect();
+        var pan = box.querySelector(".snap-panel"), pr = pan && pan.getBoundingClientRect();
+        at(wash, [{ opacity: 0 }, { opacity: 0.7, offset: 0.2 }, { opacity: 0 }], { duration: 420, easing: "ease-out" });
+        if (h1 && gr.width > 40 && gr.height > 40) {
+          // the thumbnail is a small copy of what is inside the frame: it appears at once, then flies into the green button
+          var th = document.createElement("span"), inner = document.createElement("div"), copy = h1.cloneNode(true);
+          th.className = "snap-thumb"; th.setAttribute("aria-hidden", "true");
+          copy.removeAttribute("id");
+          inner.style.cssText = "left:" + (hr.left - gr.left - 3) + "px;top:" + (hr.top - gr.top - 3) + "px;width:" + hr.width + "px";
+          inner.appendChild(copy); th.appendChild(inner); grow.appendChild(th);
+          var tx = 0, ty = gr.height / 2 + 40;
+          if (pr) { tx = pr.left + pr.width / 2 - (gr.left + gr.width / 2); ty = pr.top + pr.height / 2 - (gr.top + gr.height / 2); }
+          var sc = Math.max(0.08, Math.min(0.2, 90 / gr.width));
+          var fly = at(th, [
+            { opacity: 0, transform: "scale(1)", offset: 0 }, { opacity: 1, transform: "scale(.985)", offset: 0.12 },
+            { opacity: 1, transform: "scale(.985)", offset: 0.38 },
+            { opacity: 1, transform: "translate(" + tx + "px," + ty + "px) scale(" + sc + ")", offset: 0.92 },
+            { opacity: 0, transform: "translate(" + tx + "px," + ty + "px) scale(" + sc * 0.8 + ")", offset: 1 }],
+            { duration: 1300, easing: "cubic-bezier(.5,0,.3,1)", delay: 120 });
+          fly.finished.then(function () { th.remove(); }, function () { th.remove(); });
+          if (pan) at(pan, [{ transform: "none" }, { transform: "scale(1.08)", offset: 0.5 }, { transform: "none" }], { duration: 380, delay: 120 + 1300 * 0.9 });
+        }
+      }
+      return out;
     }
     window.addEventListener("clipsd-snap-pull", function (e) { if (!pulling) pull(e.detail); });   // used by the layout tests
     function cycle() {
@@ -206,7 +241,8 @@
       next = (next + 1) % corners.length;
       window.setTimeout(cycle, 8000);
     }
-    window.setTimeout(cycle, 10500);   // the first scenario lasts about 2.9 s
+    if (kind) window.setTimeout(function () { if (!paused()) running = running.concat(shoot()); }, 2500);   // the first scenario: right after the frame returns
+    window.setTimeout(cycle, kind ? 11500 : 10500);   // the first scenario lasts about 2.9 s, with the screenshot about 4.2 s
   }
 
   // --- copy button for the Linux command ------------------------------------------------------------
