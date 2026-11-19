@@ -118,7 +118,8 @@
     };
     put(1);
     window.addEventListener("resize", function () { put(1); });
-    if (box.classList.contains("snap-b") && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (box.classList.contains("snap-b") && !calm) {
       var t0 = null;
       var step = function (t) {
         if (t0 === null) t0 = t;
@@ -127,8 +128,62 @@
         if (el < 2700) window.requestAnimationFrame(step); else put(1);
       };
       window.requestAnimationFrame(step);
+      if (grow && box.animate && "IntersectionObserver" in window) startRepeats(box, grow, put);
     }
   });
+
+  // After the first scenario the cursor takes the next corner every ~8 s (lower right, lower left, upper left, upper right),
+  // the frame is pulled a little and returns, the size label follows. Only while the first screen is visible and the tab is
+  // active; a hover or focus on the headline pauses it; nothing is repeated with "reduce motion".
+  function startRepeats(box, grow, put) {
+    var cursor = grow.querySelector(".snap-cursor");
+    if (!cursor) return;
+    var corners = ["br", "bl", "tl", "tr"], next = 0;
+    var visible = true, hover = false, focus = false, running = [], pulling = false;
+    var phone = function () { return window.matchMedia("(max-width: 640px)").matches; };
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(box);
+    var paused = function () { return document.hidden || !visible || hover || focus; };
+    var setPause = function () { running.forEach(function (a) { try { if (paused()) a.pause(); else a.play(); } catch (e) { /* done */ } }); };
+    document.addEventListener("visibilitychange", setPause);
+    box.addEventListener("mouseenter", function () { hover = true; setPause(); });
+    box.addEventListener("mouseleave", function () { hover = false; setPause(); });
+    box.addEventListener("focusin", function () { focus = true; setPause(); });
+    box.addEventListener("focusout", function () { focus = false; setPause(); });
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; setPause(); }).observe(box);
+
+    function pull(corner) {
+      var left = corner === "bl" || corner === "tl", top = corner === "tl" || corner === "tr";
+      var sx = left ? -1 : 1, sy = top ? -1 : 1;
+      // how far the corner goes out (negative: inward); on a phone the left corners and the top go inward or down,
+      // so the frame never leaves the screen
+      var ox = phone() ? (left ? -3 : 4) : 22, oy = phone() ? (top ? -3 : 18) : 16;
+      var from = {}, to = {};
+      from[left ? "left" : "right"] = "0px"; to[left ? "left" : "right"] = -ox + "px";
+      from[top ? "top" : "bottom"] = "0px"; to[top ? "top" : "bottom"] = -oy + "px";
+      var kfs = [from, to, from];
+      grow.setAttribute("data-corner", corner);
+      var off = "translate(" + sx * 46 + "px," + sy * 34 + "px)";
+      var a1 = grow.animate(kfs.map(function (f, i) { return Object.assign({ offset: [0, 0.45, 1][i] }, f); }),
+        { duration: 1100, delay: 450, easing: "cubic-bezier(.45,0,.35,1)", fill: "none" });
+      var a2 = cursor.animate([
+        { opacity: 0, transform: off, offset: 0 }, { opacity: 1, transform: "none", offset: 0.25 },
+        { opacity: 1, transform: "none", offset: 0.85 }, { opacity: 0, transform: "translate(" + sx * 8 + "px," + sy * 6 + "px)", offset: 1 }],
+        { duration: 1700, fill: "none" });
+      running = [a1, a2];
+      pulling = true;
+      setPause();
+      var loop = function () { put(1); if (pulling) window.requestAnimationFrame(loop); };
+      window.requestAnimationFrame(loop);
+      a2.finished.then(function () { pulling = false; running = []; put(1); }, function () { pulling = false; });
+    }
+    function cycle() {
+      if (paused() || pulling) { window.setTimeout(cycle, 800); return; }
+      pull(corners[next]);
+      next = (next + 1) % corners.length;
+      window.setTimeout(cycle, 8000);
+    }
+    window.setTimeout(cycle, 10500);   // the first scenario lasts about 2.9 s
+  }
 
   // --- copy button for the Linux command ------------------------------------------------------------
   document.querySelectorAll("[data-copy]").forEach(function (b) {
