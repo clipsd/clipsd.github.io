@@ -77,9 +77,8 @@
       n.textContent = T.note[os === "windows" || os === "linux" ? os : (os === "mobile" && T.note.mobile ? "mobile" : "other")];
     });
   }
-  // sticky "Download" in the header: shown when the first-screen button has scrolled away; the same file as the main button
+  // sticky "Download" in the header: shown when the first-screen button has scrolled away; it leads to the download section (#download, smooth scroll under the sticky header)
   document.querySelectorAll("[data-dl-sticky]").forEach(function (a) {
-    if (T.dl && (os === "windows" || os === "linux") && T.dl[os]) a.setAttribute("href", T.dl[os]);
     var hero = document.querySelector(".hero [data-dl-main]");
     var top = a.closest("header");
     if (!hero || !top || !("IntersectionObserver" in window)) return;
