@@ -28,7 +28,7 @@ A scanned contract, an error window, a video frame, a photo of a sign. Select th
 
 ## On-screen translation
 
-Press Alt+W, select the foreign text and press "Translate selection" or Ctrl+L. A whole monitor at once: "Translate whole screen" or Ctrl+Shift+L; the monitor with the frame or the cursor is translated. The translation appears in a window right over the text, like a camera translator on a phone.
+Press Alt+W, select the foreign text and press "Translate selection" or Ctrl+L. A whole monitor at once: the "Whole screen" button in the translation mode bar or Ctrl+Shift+L; the monitor with the frame or the cursor is translated. The translation appears in a window right over the text, like a camera translator on a phone.
 - By default the translation is into the program language. You can choose another of the 20 languages with a button on the window itself.
 - "Copy" puts the translation on the clipboard, "Original" shows the source text. Drag the window aside and keep working.
 - In the editor there is a split button: "Translate all" translates the whole screenshot (Shift+Y), "Selection" only the part you select (Y). The translation lies over the screenshot and is not included in the saved image.
@@ -80,7 +80,7 @@ Q: How do I copy text from an image?
 A: Press Alt+W, select the place with text and press "Copy text" (Ctrl+T). The words get highlighted: sweep over the ones you need and they are on the clipboard. In the editor the button "Copy text" or the key I does the same.
 
 Q: How do I translate text on the screen?
-A: Press Alt+W, select the text and press "Translate selection" (Ctrl+L). "Translate whole screen" (Ctrl+Shift+L) translates the monitor with the frame or the cursor at once. In the editor there is a split button: "Translate all" (Shift+Y) translates the whole screenshot, "Selection" (Y) the part you select.
+A: Press Alt+W, select the text and press "Translate selection" (Ctrl+L). "Select and translate" (Ctrl+P) lets you outline another place. The "Whole screen" button in the translation mode bar (Ctrl+Shift+L) translates the monitor with the frame or the cursor at once. In the editor there is a split button: "Translate all" (Shift+Y) translates the whole screenshot, "Selection" (Y) the part you select.
 
 Q: How much can I translate for free?
 A: 5,000 characters a day right away, without registration. With an e-mail, 50,000 characters a day. With your own Google Cloud key, 500,000 characters a month; for the key Google asks for a bank card. If both services are connected and one runs out, ClipSD switches to the other by itself.
