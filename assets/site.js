@@ -45,12 +45,17 @@
 
   // --- system detection --------------------------------------------------------------------------
   var ua = navigator.userAgent || "";
-  var pl = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "") + " " + ua;
+  var uad = navigator.userAgentData;
+  var pl = ((uad && uad.platform) || navigator.platform || "") + " " + ua;
   var os = "other";
-  if (/Android|iPhone|iPad|iPod/i.test(ua)) os = "mobile";
+  // a phone or a tablet: by the user agent and by touch (iPadOS and Android "desktop site" pretend to be a Mac or Linux)
+  var touch = (navigator.maxTouchPoints || 0) > 1;
+  var coarse = !!(window.matchMedia && window.matchMedia("(pointer:coarse)").matches);
+  var narrow = !!(window.screen && Math.min(window.screen.width || 9999, window.screen.height || 9999) < 1024);
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua) || (uad && uad.mobile === true)) os = "mobile";
   else if (/Win/i.test(pl)) os = "windows";
-  else if (/Mac/i.test(pl)) os = "mac";
-  else if (/Linux|X11|CrOS/i.test(pl)) os = "linux";
+  else if (/Mac|Linux|X11|CrOS/i.test(pl)) os = /Mac/i.test(pl) ? "mac" : "linux";
+  if ((os === "mac" || os === "linux") && touch && (coarse || narrow)) os = "mobile";
   var q = new URLSearchParams(location.search).get("os");
   if (q && /^(windows|linux|mac|mobile|other)$/.test(q)) os = q;
   document.documentElement.setAttribute("data-os", os);
@@ -62,7 +67,7 @@
       }
     });
     document.querySelectorAll("[data-dl-note]").forEach(function (n) {
-      n.textContent = T.note[os === "windows" || os === "linux" ? os : "other"];
+      n.textContent = T.note[os === "windows" || os === "linux" ? os : (os === "mobile" && T.note.mobile ? "mobile" : "other")];
     });
   }
   // the other system next to the main button: one link when the system is known, both links otherwise
