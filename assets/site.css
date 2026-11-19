@@ -71,7 +71,7 @@ code.cmdline{white-space:nowrap;color:var(--ink)}
 .btn-main:hover{background:var(--blue-d)}
 .btn-soft{border-color:var(--ink);color:var(--ink);background:transparent}
 .btn.is-pending{background:#8a7f73;box-shadow:none;cursor:not-allowed}
-.dl-note{font-size:15px;color:var(--muted);margin-top:12px}
+.dl-note{font-size:15px;color:var(--muted);margin-top:16px}
 .dl-note.pending{color:var(--red);font-style:italic}
 .badges{list-style:none;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--muted)}
 .badges li{display:flex;align-items:center;gap:8px}
@@ -388,6 +388,26 @@ h1 .h1-slogan{display:block}
   .langsw-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .langsw-btn{padding:8px 10px;gap:6px}
 }
-.dl-other{margin-top:14px;font-size:15px;color:var(--muted)}
+.dl-other{margin-top:28px;font-size:15px;color:var(--muted)}
 .dl-other a{font-weight:600;white-space:nowrap}
 .dl-other [hidden]{display:none}
+
+/* Tux, the Linux mascot: Larry Ewing (made with The GIMP); vector version Garrett LeSage and IFo Hancroft. Free to use with
+   attribution (kernel Documentation/images/COPYING-logo); the credit is on the page "Third-party components".
+   A small raster copy, embedded as a data URI: no file is loaded. */
+.tux{display:inline-block;flex:none;width:20px;height:23px;background:url(data:image/webp;base64,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) center/contain no-repeat;vertical-align:-4px}
+.btn .tux{width:21px;height:25px;vertical-align:middle}
+.dl-other .tux{width:15px;height:17px;margin:0 4px -3px 2px}
+[data-dl-main] .tux{display:none}
+[data-dl-main][data-os="linux"] .tux{display:inline-block}
+[data-dl-main][data-os="linux"] > svg:first-child{display:none}
+.os h3 .tux{margin-right:8px;width:24px;height:29px;vertical-align:-3px}
+
+/* A plain computer icon of our own drawing for the Windows button and card (nothing like a Windows logo), same size as the Tux */
+.mon{display:inline-block;flex:none;width:20px;height:23px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'><rect x='2.5' y='10' width='35' height='24' rx='3.5' fill='%232a241f' stroke='%23fff' stroke-width='1.3'/><rect x='5' y='12.5' width='30' height='19' rx='1.5' fill='%23dcebff'/><rect x='8.5' y='16.5' width='13' height='2.6' rx='1.3' fill='%236f9fe3'/><rect x='8.5' y='21.5' width='20' height='2.6' rx='1.3' fill='%236f9fe3'/><rect x='8.5' y='26.5' width='9' height='2.6' rx='1.3' fill='%236f9fe3'/><rect x='17.5' y='34' width='5' height='4.5' fill='%232a241f'/><rect x='11' y='38' width='18' height='3.6' rx='1.8' fill='%232a241f'/></svg>") center/contain no-repeat;vertical-align:-4px}
+.btn .mon{width:21px;height:25px;vertical-align:middle}
+.dl-other .mon{width:15px;height:17px;margin:0 4px -3px 2px}
+[data-dl-main] .mon{display:none}
+[data-dl-main][data-os="windows"] .mon{display:inline-block}
+[data-dl-main][data-os="windows"] > svg:first-child{display:none}
+.os h3 .mon{margin-right:8px;width:24px;height:29px;vertical-align:-3px}

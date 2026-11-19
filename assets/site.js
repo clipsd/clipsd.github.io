@@ -47,15 +47,21 @@
   var ua = navigator.userAgent || "";
   var uad = navigator.userAgentData;
   var pl = ((uad && uad.platform) || navigator.platform || "") + " " + ua;
-  var os = "other";
-  // a phone or a tablet: by the user agent and by touch (iPadOS and Android "desktop site" pretend to be a Mac or Linux)
+  var mm = function (q) { return !!(window.matchMedia && window.matchMedia(q).matches); };
   var touch = (navigator.maxTouchPoints || 0) > 1;
-  var coarse = !!(window.matchMedia && window.matchMedia("(pointer:coarse)").matches);
+  var coarse = mm("(pointer:coarse)");
+  var noHover = mm("(hover:none) and (pointer:coarse)");
   var narrow = !!(window.screen && Math.min(window.screen.width || 9999, window.screen.height || 9999) < 1024);
-  if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua) || (uad && uad.mobile === true)) os = "mobile";
+  // phone or tablet first (also when it pretends to be a Mac or Linux PC: iPadOS, Android "desktop site", Samsung Internet),
+  // only then a computer
+  var phone = /Android|iPhone|iPad|iPod|Mobile/i.test(ua) || (uad && uad.mobile === true) ||
+    (/Mac|Linux|X11|CrOS/i.test(pl) && ((touch && (coarse || narrow)) || noHover)) ||
+    (/Linux/i.test(pl) && /arm|aarch64/i.test(navigator.platform || ""));   // no ARM build: never offer the x86-64 file
+  var os = "other";
+  if (phone) os = "mobile";
   else if (/Win/i.test(pl)) os = "windows";
-  else if (/Mac|Linux|X11|CrOS/i.test(pl)) os = /Mac/i.test(pl) ? "mac" : "linux";
-  if ((os === "mac" || os === "linux") && touch && (coarse || narrow)) os = "mobile";
+  else if (/Mac/i.test(pl)) os = "mac";
+  else if (/Linux|X11|CrOS/i.test(pl)) os = "linux";
   var q = new URLSearchParams(location.search).get("os");
   if (q && /^(windows|linux|mac|mobile|other)$/.test(q)) os = q;
   document.documentElement.setAttribute("data-os", os);
@@ -63,6 +69,7 @@
     document.querySelectorAll("[data-dl-main]").forEach(function (a) {
       if (os === "windows" || os === "linux") {
         a.querySelector("[data-dl-label]").textContent = T.cta[os];
+        a.setAttribute("data-os", os);   // the Tux next to the Linux button (CSS)
         a.setAttribute("href", (T.dl && T.dl[os]) || "#dl-" + os);
       }
     });
