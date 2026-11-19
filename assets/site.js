@@ -65,6 +65,16 @@
       n.textContent = T.note[os === "windows" || os === "linux" ? os : "other"];
     });
   }
+  // the other system next to the main button: one link when the system is known, both links otherwise
+  document.querySelectorAll("[data-dl-other]").forEach(function (box) {
+    var known = os === "windows" || os === "linux";
+    box.querySelectorAll("[data-os-link]").forEach(function (a) {
+      a.hidden = known && a.getAttribute("data-os-link") === os;
+    });
+    box.querySelectorAll("[data-os-sep]").forEach(function (s) { s.hidden = known; });
+    var lab = box.querySelector("[data-dl-other-label]");
+    if (lab && T.other) lab.textContent = known ? T.other.one : T.other.both;
+  });
   document.querySelectorAll("[data-os-card]").forEach(function (c) {
     if (c.getAttribute("data-os-card") === os) c.classList.add("is-mine");
   });

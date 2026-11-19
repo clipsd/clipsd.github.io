@@ -388,3 +388,6 @@ h1 .h1-slogan{display:block}
   .langsw-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .langsw-btn{padding:8px 10px;gap:6px}
 }
+.dl-other{margin-top:14px;font-size:15px;color:var(--muted)}
+.dl-other a{font-weight:600;white-space:nowrap}
+.dl-other [hidden]{display:none}
