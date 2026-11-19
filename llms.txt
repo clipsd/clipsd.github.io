@@ -1,0 +1,31 @@
+# ClipSD
+
+> Free screenshot tool with an editor for Windows and Linux: capture an area with Alt+W, add arrows, numbers, callouts, blur, crop, copy text from images and translate text on screen.
+
+ClipSD 1.31.0 is a free, open-source (GNU GPL v3 or later, SPDX GPL-3.0-or-later) screenshot program with a built-in annotation editor for Windows 10, Windows 11 and Linux. Author: Sergey Dayneko. No account, no ads. Press Alt+W, select an area, mark it up with arrows, numbered steps, callouts, text, highlighter or blur, then copy it or save it as PNG/JPEG. It also copies text from images (local recognition) and translates text on screen through MyMemory or Google Cloud Translation.
+
+## Pages
+
+- [Русский](https://clipsd.github.io/ru/): Скачать бесплатно программу для скриншотов с редактором для Windows и Linux: Alt+W, стрелки, номера, размытие. Текст с картинки и перевод с экрана.
+- [English](https://clipsd.github.io/en/): Download free screenshot tool for Windows and Linux: Alt+W, arrows, numbers, blur. Copy text from screenshots (OCR), translate text on screen. No ads.
+- [Български](https://clipsd.github.io/bg/): Изтеглете безплатно програма за скрийншот с редактор за Windows и Linux: Alt+W, стрелки, номера, замъгляване. Текст от снимка (OCR) и превод от екрана.
+- [Українська](https://clipsd.github.io/uk/): Завантажте безкоштовно програму для скріншотів із редактором для Windows і Linux: Alt+W, стрілки, номери, розмиття. Текст із картинки (OCR), переклад з екрана.
+- [Deutsch](https://clipsd.github.io/de/): Screenshot-Programm kostenlos herunterladen für Windows und Linux: Alt+W, Pfeile, Nummern, Weichzeichner. Text aus Bild kopieren (OCR), Bildschirm übersetzen.
+- [Français](https://clipsd.github.io/fr/): Télécharger gratuitement un logiciel de capture d'écran pour Windows et Linux : Alt+W, flèches, numéros, flou. Texte d'une image (OCR), traduction de l'écran.
+- [Español](https://clipsd.github.io/es/): Descargar gratis un programa de capturas de pantalla para Windows y Linux: Alt+W, flechas, números, desenfoque. Texto de imagen (OCR) y traducción de pantalla.
+- [Italiano](https://clipsd.github.io/it/): Scaricare gratis un programma per screenshot per Windows e Linux: Alt+W, frecce, numeri, sfocatura. Testo da immagine (OCR) e traduzione dello schermo.
+- [Português](https://clipsd.github.io/pt/): Baixar grátis programa de print de tela com editor para Windows e Linux: Alt+W, setas, números, desfoque. Texto de imagem (OCR) e tradução da tela.
+- [Polski](https://clipsd.github.io/pl/): Pobierz za darmo program do zrzutów ekranu (screenów) dla Windows i Linux: Alt+W, strzałki, numery, rozmycie. Tekst z obrazka (OCR), tłumaczenie ekranu.
+- [Türkçe](https://clipsd.github.io/tr/): Windows ve Linux için ücretsiz ekran görüntüsü alma programını indirin: Alt+W, oklar, numaralar, bulanıklık. Resimden metin (OCR) ve ekran çevirisi.
+- [中文](https://clipsd.github.io/zh/): 免费下载截图软件，支持 Windows 和 Linux：Alt+W 截图，用箭头、序号、模糊等标注，自带编辑器。可识别截图中的文字（OCR），也能翻译屏幕文字，开源无广告，无需账号。
+
+## Details
+
+- [Full description in plain text](https://clipsd.github.io/llms-full.txt): features, shortcuts, install steps, privacy, FAQ
+- [Version history](https://clipsd.github.io/en/changes.html): what changed in each version
+- [Privacy policy](https://clipsd.github.io/en/privacy.html): what the program sends and why
+- [Signing and file checks](https://clipsd.github.io/en/code-signing.html)
+
+## Optional
+
+- [Third-party components (Russian)](https://clipsd.github.io/ru/third-party.html)

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD：签名与文件校验 · ClipSD</title>
+<meta name="description" content="如何确认 ClipSD 文件是真的：SHA-256 校验值、源代码，以及 Windows 为什么会弹出蓝色窗口。">
+<link rel="canonical" href="https://clipsd.github.io/zh/code-signing.html">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/code-signing.html">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/code-signing.html">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/code-signing.html">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/code-signing.html">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/code-signing.html">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/code-signing.html">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/code-signing.html">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/code-signing.html">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/code-signing.html">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/code-signing.html">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/code-signing.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/code-signing.html">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/en/code-signing.html">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD：签名与文件校验">
+<meta property="og:description" content="如何确认 ClipSD 文件是真的：SHA-256 校验值、源代码，以及 Windows 为什么会弹出蓝色窗口。">
+<meta property="og:url" content="https://clipsd.github.io/zh/code-signing.html">
+<meta property="og:image" content="https://clipsd.github.io/og/zh.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="一张截图，胜过三段文字">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../zh/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="页面导航"><a href="../zh/#how">使用方法</a><a href="../zh/#text">图片取字</a><a href="../zh/#translate">翻译</a><a href="../zh/#features">功能</a><a href="../zh/#download">下载</a><a href="../zh/#faq">常见问题</a><a href="../zh/#contact">联系</a></nav>
+    <details class="menu"><summary>菜单</summary><nav aria-label="页面导航"><a href="../zh/#how">使用方法</a><a href="../zh/#text">图片取字</a><a href="../zh/#translate">翻译</a><a href="../zh/#features">功能</a><a href="../zh/#download">下载</a><a href="../zh/#faq">常见问题</a><a href="../zh/#contact">联系</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">页面语言: </span>中文</summary><ul><li><a href="../ru/code-signing.html" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/code-signing.html" hreflang="en" lang="en">English</a></li><li><a href="../bg/code-signing.html" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/code-signing.html" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/code-signing.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/code-signing.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/code-signing.html" hreflang="es" lang="es">Español</a></li><li><a href="../it/code-signing.html" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/code-signing.html" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/code-signing.html" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/code-signing.html" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/code-signing.html" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main" class="doc"><a class="back" href="../zh/">&larr; 首页</a>
+<h1>ClipSD：签名与文件校验</h1>
+<h2>文件有签名吗？</h2>
+<p>目前没有。Windows 安装程序没有使用数字证书签名：付费证书每年都要花钱，而面向开源项目的免费签名目前还没有办妥。所以第一次运行时，Windows 会显示蓝色的 SmartScreen 窗口。请点击“更多信息”，再点击“仍要运行”。</p>
+<p>程序会自己安装更新，但只安装经过签名的更新。新版本的说明（<code>latest.json</code>）由作者的密钥（Ed25519）签名；公钥内置在程序中。程序会拒绝没有有效签名、已过期或版本比已见过的更旧的说明，并按签名说明中的大小和 SHA-256 校验值检查下载的文件。私钥由作者保管，与 GitHub 分开存放，因此即使有人替换了 GitHub 上的文件，也无法把它们冒充为更新。</p>
+<h2>如何验证文件是否为作者发布的版本</h2>
+<p>网站上每个下载按钮旁边都有一个 SHA-256 校验值：这是一个由 64 个字符组成的文件指纹。文件哪怕改动一个字节，指纹也会不同。校验值列表放在 GitHub 上的发布文件旁边，网站上也有：<code>downloads/SHA256SUMS</code>。</p>
+<p>Windows，PowerShell：</p>
+<pre><code>Get-FileHash .\ClipSD-&lt;version&gt;-Setup.exe -Algorithm SHA256</code></pre>
+<p>Linux，终端：</p>
+<pre><code>sha256sum ClipSD-&lt;version&gt;-linux-x86_64.tar.gz</code></pre>
+<p>把结果与网站上的校验值比较。一致，说明文件就是作者发布的那个。不一致，请不要运行，并写信告知作者。</p>
+<h2>从哪里获取文件</h2>
+<p>只从 ClipSD 网站的下载区或 GitHub 上的发布页面获取：<a href="https://github.com/clipsd/clipsd/releases">https://github.com/clipsd/clipsd/releases</a> 。网站上的按钮也指向那里。软件下载站可能会加入其他内容后重新打包安装程序。</p>
+<h2>源代码</h2>
+<p>ClipSD 按 GNU GPL v3 许可证发布。每个版本的源代码都在 GitHub 上：<a href="https://github.com/clipsd/clipsd">https://github.com/clipsd/clipsd</a> ，v&lt;version&gt; 发布页面上有源代码压缩包。您可以自己编译程序并进行比对。</p>
+<h2>报告可疑文件</h2>
+<p>如果您发现一个名为 ClipSD 的文件，其校验值与网站不符，或行为可疑，请写信到 <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a>。</p>
+</main>
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../zh/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">带编辑器的截图软件，适用于 Windows 和 Linux。免费开源。</p><p class="small">本网站没有访客计数器、广告或 cookie。</p></div>
+    <div><h2>软件</h2><ul><li><a href="../zh/#download">下载</a></li><li><a href="../zh/#source">源代码</a></li><li><a href="../zh/#contact">联系</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>文档</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later 许可证</a></li><li><a href="../zh/changes.html">版本历史</a></li><li><a href="../zh/privacy.html">隐私</a></li><li><a href="../zh/code-signing.html">签名与文件校验</a></li><li><a href="../ru/third-party.html">第三方组件</a></li></ul></div>
+    <div><h2>语言</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Sergey Dayneko。ClipSD 按 GNU GPL v3 或更高版本发布，不提供任何担保。</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr" data-lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: ücretsiz ekran görüntüsü alma, Windows ve Linux</title>
+<meta name="description" content="Windows ve Linux için ücretsiz ekran görüntüsü alma programını indirin: Alt+W, oklar, numaralar, bulanıklık. Resimden metin (OCR) ve ekran çevirisi.">
+<link rel="canonical" href="https://clipsd.github.io/tr/">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: beş saniyede açıklamalı ekran görüntüsü">
+<meta property="og:description" content="Düzenleyicili ekran görüntüsü alma programı: oklar, numaralar, bulanıklaştırma, görüntüden metin alma ve ekran çevirisi. Windows ve Linux, ücretsiz.">
+<meta property="og:url" content="https://clipsd.github.io/tr/">
+<meta property="og:image" content="https://clipsd.github.io/og/tr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bir ekran görüntüsü üç paragraftan fazlasını anlatır">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "@id": "https://clipsd.github.io/#software",
+ "name": "ClipSD",
+ "url": "https://clipsd.github.io/tr/",
+ "description": "Windows ve Linux için düzenleyicili ücretsiz ekran görüntüsü programı: Alt+W ile bir alanı yakalayın, ok, numara, açıklama balonu, bulanıklaştırma ve kırpma ekleyin, görüntüdeki metni kopyalayın, ekrandaki metni çevirin.",
+ "applicationCategory": "UtilitiesApplication",
+ "applicationSubCategory": "Ekran görüntüsü alma programı, düzenleyicili",
+ "operatingSystem": "Windows 10, Windows 11, Linux",
+ "softwareVersion": "1.31.0",
+ "softwareRequirements": "Windows 10/11 x64; Linux x86-64, Python 3.9+",
+ "inLanguage": [
+  "ru",
+  "en",
+  "bg",
+  "uk",
+  "de",
+  "fr",
+  "es",
+  "it",
+  "pt",
+  "pl",
+  "tr",
+  "zh-Hans"
+ ],
+ "isAccessibleForFree": true,
+ "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "EUR"
+ },
+ "downloadUrl": [
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe",
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"
+ ],
+ "installUrl": "https://clipsd.github.io/tr/#download",
+ "screenshot": "https://clipsd.github.io/img/tr/hero-mark.webp",
+ "image": "https://clipsd.github.io/og/tr.png",
+ "featureList": [
+  "Oklar ve çizgiler: Düz, çift başlı, serbest, yumuşak. Tam 45° açılar için Shift'e basılı tutun.",
+  "Numaralar ve açıklama balonları: İşaretçili 1, 2, 3 daireleri ve metinli konuşma balonları.",
+  "Vurgulayıcı ve metin: Bir satırı sarıyla işaretleyin, istediğiniz renkte etiket ekleyin.",
+  "Bulanıklaştırma: Yüzler ve adresler karelere dönüşür. Kart numarası ya da parola dolu bir dikdörtgenin altında daha güvenlidir: Ctrl ile R.",
+  "İki adımda kırpma: Bir çerçeve sürükleyin, kenarları ayarlayın, Enter'a basın. Enter'a kadar ekran görüntüsüne dokunulmaz.",
+  "Yakınlaştırma: Ctrl ve fare tekerleği küçük ayrıntıları yakınlaştırır. “Sığdır” ekran görüntüsünün tamamını yeniden gösterir.",
+  "Monitör seçimi: Tam ekran görüntüsü: tüm monitörler birden ya da yalnızca biri.",
+  "İşaretleri taşıma: Sağ fare düğmesine basılı tutup herhangi bir işareti sürükleyin. Araç değiştirmeye gerek yok.",
+  "Aynı alan yeniden: Sonraki Alt+W önceki çerçeveyi vurgular: yeniden seçmeniz gerekmez.",
+  "Pano ve dosya: Düzenleyicide Enter ekran görüntüsünü kopyalar. Her ekran görüntüsü kendiliğinden PNG ya da JPEG olarak kaydedilir.",
+  "Ekran görüntüsüne resim ekleme: İkinci bir resmi panodan, bir dosyadan ya da yeni bir ekran görüntüsü olarak ekleyin.",
+  "Açık ve koyu: İki tema, ayrıca çerçeve ve paneller için kendi renkleriniz.",
+  "Sizin diliniz: 12 arayüz dili. Dili ilk çalıştırmada seçersiniz; ayarlardan ya da saatin yanındaki simgenin menüsünden değiştirebilirsiniz."
+ ],
+ "author": {
+  "@id": "https://clipsd.github.io/#author"
+ },
+ "releaseNotes": "https://clipsd.github.io/tr/changes.html",
+ "datePublished": "2026-11-19",
+ "dateModified": "2026-11-19",
+ "fileSize": "31 MB / 72 MB",
+ "codeRepository": "https://github.com/clipsd/clipsd",
+ "sameAs": [
+  "https://github.com/clipsd/clipsd"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@type": "Person",
+ "@id": "https://clipsd.github.io/#author",
+ "name": "Sergey Dayneko",
+ "alternateName": "Сергей Дайнеко",
+ "sameAs": [
+  "https://github.com/clipsd"
+ ],
+ "@context": "https://schema.org"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "@id": "https://clipsd.github.io/tr/#webpage",
+ "url": "https://clipsd.github.io/tr/",
+ "name": "ClipSD: ücretsiz ekran görüntüsü alma, Windows ve Linux",
+ "description": "Windows ve Linux için ücretsiz ekran görüntüsü alma programını indirin: Alt+W, oklar, numaralar, bulanıklık. Resimden metin (OCR) ve ekran çevirisi.",
+ "inLanguage": "tr",
+ "isPartOf": {
+  "@id": "https://clipsd.github.io/#website"
+ },
+ "about": {
+  "@id": "https://clipsd.github.io/#software"
+ },
+ "dateModified": "2026-11-19"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "tr",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "ClipSD'yi nereden ücretsiz indirebilirim, gerçekten ücretsiz mi?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. ClipSD'yi bu sayfada, indirme bölümünden indirebilirsiniz: Windows için kurulum dosyası ve Linux için arşiv. Reklam yok, deneme süresi yok, ücretli özellik yok. Kaynak kodu GNU GPL v3 veya üzeri altında açıktır: okuyabilir, denetleyebilir ve geliştirebilirsiniz."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ekranın bir bölümünün ekran görüntüsü nasıl alınır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Herhangi bir programda Alt+W'ye basın ve fareyle bir alan seçin. Enter onu düzenleyicide açar, Ctrl+C kopyalayıp pencereyi kapatır. Saatin yanındaki ClipSD simgesine tıklamak da aynı işi yapar."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Tüm ekranın görüntüsü nasıl alınır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Alt+W'den sonra seçim yapmadan tıklayın ya da “Tam ekran” (Ctrl+A) düğmesine basın. Birden fazla monitör varsa hepsini birden ya da birini seçin."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kart numarası ya da yüz nasıl gizlenir?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Kart numarasını, parolayı ve diğer önemli verileri dolu bir dikdörtgenle kapatın: Dikdörtgen'i (R tuşu) seçin ve Ctrl'ye basılı tutarak çizin. Yüzler ve adresler Bulanıklaştırma (B tuşu) ile gizlenebilir: yer karelere dönüşür ve bir bakışta okunamaz, ama karelerin altındaki büyük metin bazen yine de okunabilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Görüntüdeki metin nasıl kopyalanır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Alt+W'ye basın, metnin olduğu yeri seçin ve “Metni kopyala”ya (Ctrl+T) basın. Sözcükler vurgulanır: ihtiyacınız olanların üzerinden geçin, panoya girmiş olurlar. Düzenleyicide “Metni kopyala” düğmesi ya da I tuşu aynı işi yapar."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ekrandaki metin nasıl çevrilir?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Alt+W'ye basın, metni seçin ve “Seçileni çevir”e (Ctrl+L) basın. “Tüm ekranı çevir” (Ctrl+Shift+L) çerçevenin ya da imlecin bulunduğu monitörü hemen çevirir. Düzenleyicide bölünmüş bir düğme vardır: “Tümünü çevir” (Shift+Y) tüm ekran görüntüsünü, “Seçilen” (Y) seçtiğiniz kısmı çevirir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ücretsiz ne kadar çevirebilirim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Hemen, kayıt olmadan günde 5.000 karakter. E-posta adresiyle günde 50.000 karakter. Kendi Google Cloud anahtarınızla ayda 500.000 karakter; anahtar için Google banka kartı ister. Her iki hizmet de bağlıysa ve biri biterse, ClipSD kendiliğinden diğerine geçer."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "ClipSD internete ne gönderiyor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yalnızca çeviri için gönderdiğiniz metni ve girdiyseniz MyMemory için e-posta adresini. Ekran görüntüleri, pano ve dosya adları bilgisayarınızdan asla çıkmaz. Program kendiliğinden yalnızca günde bir kez GitHub'da yeni sürüm olup olmadığını denetler; bu, ayarlarda “Başlangıç” bölümünden kapatılabilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "İnternet gerekli mi?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yakalama, düzenleyici, kaydetme ve görüntüden metin için gerekmez. Çeviri ve güncellemeler için gerekir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ekran görüntüleri nereye kaydedilir?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Her ekran görüntüsü hemen İndirilenler içindeki bir klasöre kaydedilir; düzenlemelerden sonra dosya güncellenir. Windows'ta bu Downloads\\Screenshots klasörüdür. Linux'ta Downloads/Screenshots, ana klasörünüzde Rusça «Загрузки» klasörü varsa «Загрузки/Скриншоты» olur. Klasör ve biçim ayarlardan değiştirilebilir. Ctrl+S bir dosyaya kaydeder ve düzenleyiciyi kapatır; varsayılan olarak nereye kaydedileceğini sorar, bu soru ayarlardan kapatılabilir. Enter ekran görüntüsünü panoya kopyalar."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "ClipSD, Linux'ta Wayland ile çalışır mı?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet, X11 ve Wayland oturumlarında. GNOME'da ClipSD, Alt+W'nin her iki klavye düzeninde de çalışması için kendi uzantısını kurar. Wayland üzerindeki diğer masaüstü ortamlarında, klavye ayarlarında bir kısayolu clipsd --region komutuna atayın."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Alt+W hiçbir şey yapmazsa ne yapmalıyım?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD simgesinin saatin yanında olduğunu kontrol edin: program çalışıyor olmalı. GNOME'lu Linux'ta kurulumdan sonra oturumu kapatıp yeniden açın; o zamana kadar Alt+W yalnızca Latin klavye düzeninde çalışır. Wayland üzerindeki diğer masaüstü ortamlarında, klavye ayarlarında bir kısayolu clipsd --region komutuna atayın. Alt+W başka bir program tarafından kullanılıyorsa, ClipSD ayarlarında Klavye kısayolları bölümünden kendi kısayolunuzu seçin. Saatin yanındaki simgeye tıklayarak da bir alan yakalayabilirsiniz."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Alt+W'yi başka bir kısayolla değiştirebilir miyim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. Ayarlarda, Klavye kısayolları bölümünde Ctrl, Shift, Alt ya da Win'i açın ve bir tuş seçin. Ya da “Algıla…”ya ve ardından kısayolun kendisine basın."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Yeni sürüm nasıl kurulur?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD yeni sürümleri kendisi kurar: günde bir kez denetler ve “Güncelle” önerir. Hemen denetlemek için: simge menüsü, “Güncellemeleri denetle”. 1.29 ve önceki sürümlerden geçerken yeni sürümü bir kez bu sayfadan indirin ve eskisinin üzerine kurun. Ayarlar ve ekran görüntüleri korunur."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kurulum sırasında Windows neden mavi bir pencere gösteriyor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD'nin henüz ücretli bir dijital imzası yok. “Ek bilgi”ye, ardından “Yine de çalıştır”a tıklayın. Dosyanın gerçek olduğunu, indirme düğmesinin yanındaki SHA-256 sağlama toplamıyla doğrulayabilirsiniz."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "ClipSD, Windows'un Ekran Alıntısı Aracı'ndan nasıl ayrılır?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD Linux'ta da çalışır, Windows'taki gibi. Düzenleyicide işaretçili numaralar ve açıklama balonları vardır, ekrandaki metin çevrilebilir. ClipSD önceki alanı hatırlar; böylece aynı yerin sonraki ekran görüntüsünü almak için yalnızca Enter'a basmanız yeter."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/json" id="i18n">{"cta": {"windows": "Windows için ücretsiz indir", "linux": "Linux için ücretsiz indir"}, "dl": {"windows": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe", "linux": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"}, "note": {"windows": "Windows 10 ve 11 · sürüm 1.31.0 · ücretsiz", "linux": "Ubuntu, Debian, Fedora, Mint · sürüm 1.31.0 · ücretsiz", "other": "ClipSD, Windows ve Linux'ta çalışır. Bu sayfayı bilgisayarınızda açın."}, "os": {"windows": "Windows", "linux": "Linux", "mac": "bir Mac, ClipSD ise şimdilik yalnızca Windows ve Linux için", "mobile": "bir telefon. Sayfayı bilgisayarınızda açın"}, "copied": "Kopyalandı"}</script>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../tr/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Bölümler"><a href="#how">Nasıl çalışır</a><a href="#text">Görüntüden metin</a><a href="#translate">Çeviri</a><a href="#features">Özellikler</a><a href="#download">İndir</a><a href="#faq">SSS</a><a href="#contact">İletişim</a></nav>
+    <details class="menu"><summary>Menü</summary><nav aria-label="Bölümler"><a href="#how">Nasıl çalışır</a><a href="#text">Görüntüden metin</a><a href="#translate">Çeviri</a><a href="#features">Özellikler</a><a href="#download">İndir</a><a href="#faq">SSS</a><a href="#contact">İletişim</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Sayfa dili: </span>Türkçe</summary><ul><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr" aria-current="page">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div><h1 id="h1"><span class="kicker">Ekran görüntüsü alma programı, düzenleyicili</span> <span class="h1-slogan">Bir <mark>ekran görüntüsü</mark> üç paragraftan fazlasını anlatır</span></h1></div>
+      <div>
+        <p class="lead"><kbd>Alt</kbd>+<kbd>W</kbd>'ye basın, ekranın bir bölümünü seçin, bir ok ya da numara ekleyin ve sohbete yapıştırın. Görüntüdeki metne ya da çeviriye mi ihtiyacınız var? İkisi de aynı pencerede. Windows ve Linux için ücretsiz.</p>
+        <div class="cta">
+          <a class="btn btn-main" href="#download" data-dl-main><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-dl-label>Ücretsiz indir</span></a>
+          <a class="btn btn-soft" href="#how">Nasıl çalışır</a>
+        </div>
+        <p class="dl-note" data-dl-note>Windows 10 ve 11 · sürüm 1.31.0 · ücretsiz</p>
+      </div>
+    </div>
+    <ul class="badges"><li>Hesap gerekmez</li><li>Reklam yok</li><li>Windows&#x27;ta kurulum için yönetici hakkı gerekmez</li><li>Açık kaynak, GPL-3.0-or-later</li><li>12 arayüz dili</li></ul>
+    <div class="stage">
+      <div class="stage-side" aria-hidden="true"><span class="note">program böyle görünür</span><svg width="170" height="90" viewBox="0 0 170 90" aria-hidden="true"><path d="M20 8 C 30 50, 90 74, 150 74" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round"/><path d="M136 62 L152 74 L135 84" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div>
+        <div class="modes" role="tablist" aria-label="ClipSD neler yapar"><a class="mode" href="#shot-mark" role="tab" id="tab-mark" aria-controls="shot-mark" aria-selected="true" data-mode="mark"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 17 16 4M9 4h7v7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>İşaretle</a><a class="mode" href="#shot-text" role="tab" id="tab-text" aria-controls="shot-text" aria-selected="false" tabindex="-1" data-mode="text"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 6V2h4M14 2h4v4M18 14v4h-4M6 18H2v-4M6.5 7h7M10 7v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Metni al</a><a class="mode" href="#shot-translate" role="tab" id="tab-translate" aria-controls="shot-translate" aria-selected="false" tabindex="-1" data-mode="translate"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 9 5 2l3 7M3 7h4M12 3h6M15 3v2c0 3-1.5 5-4 6M12.5 7c.8 2 2.6 3.5 5.5 4M10 18l3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Çevir</a></div>
+        <figure class="print"><span class="tape" aria-hidden="true"></span>
+          <div class="shots"><div class="shot on" id="shot-mark" role="tabpanel" aria-labelledby="tab-mark"><img src="../img/tr/hero-mark.webp" width="1600" height="1139" alt="ClipSD düzenleyicisi: bir rapor görüntüsünde 1, 2, 3 numaraları, “Cumartesi: +38%” yazılı açıklama balonu, vurgulayıcı, bulanıklaştırılmış bir kart numarası ve bir düğmeyi gösteren ok" fetchpriority="high" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Ok, numaralar, açıklama balonu, vurgulayıcı ve bulanıklaştırma. Her biri fareyle birkaç saniyede eklenir.</p></div><div class="shot" id="shot-text" role="tabpanel" aria-labelledby="tab-text"><img src="../img/tr/hero-text.webp" width="1600" height="1139" alt="Metin modundaki ClipSD düzenleyicisi: İngilizce bir mektubun sözcükleri vurgulanmış, birkaç ifade sarıyla işaretlenmiş" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Vurgu modu: görüntüdeki sözcükler vurgulanır, sarıyla seçilen kısım zaten panoda.</p></div><div class="shot" id="shot-translate" role="tabpanel" aria-labelledby="tab-translate"><img src="../img/tr/hero-translate.webp" width="1600" height="1139" alt="ClipSD düzenleyicisi: İngilizce bir mektubun tüm görüntüsü Türkçeye çevrilmiş, çeviri metnin üzerinde duruyor, altta Orijinal ve Çeviriyi kopyala düğmeleri var" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Görüntüdeki İngilizce bir mektup, “Tümünü çevir” ile bütünüyle çevrildi.</p></div></div>
+          <p class="sr-only" aria-live="polite" data-stage-live></p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="center"><h2 id="h-how">Üç adım, hepsi anlaşılır</h2><p>Hesap gerekmez, ekran görüntüleri bir yere yüklenmez. Her ekran görüntüsü kendiliğinden İndirilenler içindeki bir klasöre kaydedilir; düzenleyicide Enter onu panoya koyar.</p></div>
+    <ol class="steps">
+      <li><div class="t"><span class="num" aria-hidden="true">1</span><h3>Alt+W&#x27;ye basıp seçin</h3></div><p>Ekran donar. İhtiyacınız olan bölümü seçin: imlecin yanındaki büyüteç kenarı tam yakalamanıza yardım eder. Enter düzenleyiciyi açar.</p><figure class="print"><img src="../img/tr/step-select.webp" width="1100" height="778" alt="ClipSD&#x27;de alan seçimi: bir raporun çevresinde çerçeve, çerçevenin altında alanın boyutu ve düğmeler, aralarında Seçileni çevir ve Tüm ekranı çevir" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">2</span><h3>Önemli yeri işaretleyin</h3></div><p>Bir ok, numara, çerçeve, etiket ya da vurgulayıcı. Bulanıklaştırma yüzleri ve adresleri gizler.</p><figure class="print"><img src="../img/tr/hero-mark.webp" width="1600" height="1139" alt="Ekran görüntüsü üzerinde işaretler bulunan ClipSD düzenleyicisi" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">3</span><h3>Sohbete yapıştırın</h3></div><p>Enter ekran görüntüsünü kopyalar. Her zamanki Ctrl+V ile mesajlaşma uygulamasına, e-postaya ya da belgeye yapıştırın.</p>
+        <figure class="print"><div class="chat" role="img" aria-label="Örnek sohbet: işaretli bir ekran görüntüsü gönderildi, karşı taraf düğmeyi bulduğunu yazdı">
+          <div class="bubble them">Gönder düğmesi nerede?</div>
+          <div class="bubble"><img src="../img/tr/hero-mark.webp" width="1600" height="1139" alt="" loading="lazy" decoding="async" sizes="210px"><span>Düğme burada, 3 numaralı işaret</span></div>
+          <div class="bubble them">Buldum, anladım</div>
+        </div></figure></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec-alt sec-text" id="text" aria-labelledby="h-text">
+  <div class="wrap row">
+    <div class="row-text">
+      <span class="kicker">Görüntüden metin</span>
+      <h2 id="h-text">Fareyle seçemediğiniz metin artık kopyalanabilir</h2>
+      <p>Taranmış bir sözleşme, bir hata penceresi, bir video karesi, bir tabela fotoğrafı. Yeri seçin, “Metni kopyala”ya ya da <kbd>Ctrl</kbd>+<kbd>T</kbd>'ye basın; resimdeki sözcükler sıradan bir belgedeki gibi seçilebilir olur. Bu bir metin tanıma (OCR) işlemidir: bilgisayarınızda çalışır, internet gerekmez.</p>
+      <ul class="ticks"><li>“Ardışık” modu: bir sözcüğe basıp sürükleyin, metin okuma sırasıyla seçilir. “Vurgu” modu: sözcüklerin üzerinden geçin, yalnızca dokunduklarınız alınır.</li><li>Seçilen metin hemen panoya girer. Yanındaki pencerede metni yapıştırmadan önce düzeltebilirsiniz.</li><li>İki sütunlu bir sayfa sütun sütun okunur, satırlar karışmaz.</li><li>İnternetsiz çalışır. Windows&#x27;ta metni Windows&#x27;un kendi yerleşik tanıma özelliği okur: metnin dilinin Windows&#x27;ta kurulu olması gerekir. Linux&#x27;ta ücretsiz tanıma programı Tesseract bir kez kurulur: ClipSD hazır komutu gösterir.</li></ul>
+    </div>
+    <div class="demo">
+      <figure class="print a"><span class="tape" aria-hidden="true"></span><img src="../img/tr/text-select.webp" width="1100" height="500" alt="Ekran görüntüsünde İngilizce bir mektup: sözcükler vurgulanmış, sevkiyat tarihiyle ilgili ifade sarıyla seçilmiş" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 640px"></figure>
+      <figure class="print b"><img src="../img/tr/text-window.webp" width="1100" height="475" alt="Tanınan metnin ve “Kopyalandı” düğmesinin göründüğü ClipSD “Görüntüden metin” penceresi" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 600px"></figure>
+      <div class="hand" aria-hidden="true"><span class="note">resimde seçildi, düz metin olarak alındı</span><svg width="90" height="60" viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 30 6, 60 16, 78 40" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M64 38 L79 42 L82 26" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-tr" id="translate" aria-labelledby="h-tr">
+  <div class="wrap">
+    <div class="row flip">
+      <div class="demo tr">
+        <figure class="print a"><img src="../img/tr/tr-original.webp" width="1040" height="764" alt="Ekranda bir paket teslimatıyla ilgili İngilizce mektup" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 500px"></figure>
+        <figure class="print b"><img src="../img/tr/tr-window.webp" width="1240" height="774" alt="Mektubun Türkçe çevirisini metnin üzerinde gösteren ClipSD penceresi" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 560px"><figcaption>Çeviri birkaç saniye içinde mektubun üzerinde</figcaption></figure>
+        <div class="hand" aria-hidden="true"><span class="note">ekranda olan</span><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M8 54 C 4 34, 14 16, 34 8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M20 6 L35 8 L30 22" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="row-text">
+        <span class="kicker">Ekranda çeviri</span>
+        <h2 id="h-tr">Yabancı dildeki mektubu kendi dilinizde okuyun</h2>
+        <p><kbd>Alt</kbd>+<kbd>W</kbd>'ye basın, yabancı metni seçin ve “Seçileni çevir”e ya da <kbd>Ctrl</kbd>+<kbd>L</kbd>'ye basın. Bir monitörün tamamı için: “Tüm ekranı çevir” ya da <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>; çerçevenin ya da imlecin bulunduğu monitör çevrilir. Çeviri, telefondaki kamera çevirmeni gibi, doğrudan metnin üzerinde bir pencerede görünür.</p>
+        <ul class="ticks"><li>Varsayılan olarak çeviri programın diline yapılır. 20 dilden herhangi biri pencerenin üzerindeki bir düğmeyle seçilebilir.</li><li>“Kopyala” çeviriyi panoya koyar, “Orijinal” kaynak metni gösterir. Pencereyi kenara sürükleyip çalışmaya devam edebilirsiniz.</li><li>Düzenleyicide bölünmüş bir düğme vardır: “Tümünü çevir” tüm ekran görüntüsünü (Shift+Y), “Seçilen” yalnızca seçtiğiniz kısmı (Y) çevirir. Çeviri ekran görüntüsünün üzerinde durur, kaydedilen görüntüye dahil olmaz.</li></ul>
+      </div>
+    </div>
+    <h3 class="sr-only" id="h-limits">Ücretsiz ne kadar çevirebilirsiniz</h3>
+    <ul class="limits" aria-labelledby="h-limits"><li class="limit"><p class="n">5.000</p><p class="u">karakter/gün</p><p>Kurulumdan hemen sonra, kayıt olmadan.</p></li><li class="limit"><p class="n">50.000</p><p class="u">karakter/gün</p><p>Çeviri penceresine e-posta adresinizi yazarsanız. E-posta adresini doğrulamanız gerekmez.</p></li><li class="limit"><p class="n">500.000</p><p class="u">karakter/ay</p><p>Kendi Google Cloud anahtarınızla. Google banka kartı eklemenizi ister. Program sizi adım adım yönlendirir.</p></li></ul>
+    <p class="honest"><b>İnternete neler gönderilir.</b> Yalnızca çeviri için gönderdiğiniz metin: çeviri hizmeti MyMemory&#x27;ye ya da Google&#x27;a gider. E-posta adresi girdiyseniz, istekle birlikte MyMemory&#x27;ye gönderilir. Ekran görüntüsünün kendisi bilgisayarınızda kalır. Görüntüdeki metin bilgisayarınızda tanınır ve hiçbir yere gönderilmez. Çeviri dışında program günde bir kez GitHub&#x27;a yeni sürüm olup olmadığını sorar; bu, ayarlardan kapatılabilir.</p>
+  </div>
+</section>
+
+<section class="sec sec-alt" aria-labelledby="h-uses">
+  <div class="wrap">
+    <div class="center"><h2 id="h-uses">Ne zaman işe yarar</h2></div>
+    <ul class="uses"><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><circle cx="16" cy="22" r="6" fill="#c8102e"/><circle cx="30" cy="30" r="6" fill="#c8102e"/><circle cx="42" cy="38" r="6" fill="#c8102e"/><text x="16" y="25" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">1</text><text x="30" y="33" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">2</text><text x="42" y="41" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">3</text></svg><h3>Bir dakikada kılavuz</h3><p>1, 2, 3 numaraları doğrudan ekran görüntüsünde. Bir iş arkadaşı, bir müşteri ya da altı ay sonraki kendiniz için hazır bir yönerge.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><ellipse cx="28" cy="27" rx="13" ry="8" fill="none" stroke="#c8102e" stroke-width="3"/></svg><h3>Hatayı gösterin</h3><p>İş arkadaşınıza ya da destek ekibine: yeri daire içine alın, neyin yanlış olduğunu yazın. Kimsenin tekrar sorması gerekmez.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><path d="M16 36 L34 20 M26 20h8v8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Yakınlarınıza yardım edin</h3><p>Bir sitede düğmenin nerede olduğu ve sonra neye tıklanacağı. Bir ok, telefonda anlatmaktan daha iyi açıklar.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><g opacity=".9"><rect x="14" y="20" width="7" height="7" fill="#8a94a3"/><rect x="21" y="20" width="7" height="7" fill="#c3cad3"/><rect x="28" y="20" width="7" height="7" fill="#9aa4b1"/><rect x="35" y="20" width="7" height="7" fill="#d5dae1"/><rect x="14" y="27" width="7" height="7" fill="#c3cad3"/><rect x="21" y="27" width="7" height="7" fill="#8a94a3"/><rect x="28" y="27" width="7" height="7" fill="#d5dae1"/><rect x="35" y="27" width="7" height="7" fill="#9aa4b1"/></g></svg><h3>Özel verileri gizleyin</h3><p>Bulanıklaştırma yüzleri ve adresleri gizler. Dolu bir dikdörtgen kart numarasını ya da parolayı kapatır.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#6d28d9" stroke-width="3"/><rect x="13" y="18" width="22" height="6" rx="2" fill="#ffd65a"/><rect x="13" y="28" width="30" height="4" rx="2" fill="#c9bdf0"/><rect x="13" y="35" width="18" height="4" rx="2" fill="#c9bdf0"/></svg><h3>Metni çıkarın</h3><p>Taramadaki bir sipariş numarası, fotoğraftaki bir adres, penceredeki bir hata iletisi. Yeniden yazmadan kopyalanır.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#0b7d74" stroke-width="3"/><text x="18" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">A</text><path d="M25 27h7m0 0-3-3m3 3-3 3" fill="none" stroke="#c8102e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><text x="41" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">Я</text></svg><h3>Başka bir dili anlayın</h3><p>Bir tedarikçinin mektubu, programdaki düğmeler, PDF&#x27;teki bir kılavuz. Çeviri orijinalin üzerinde görünür.</p></li></ul>
+  </div>
+</section>
+
+<section class="sec" id="features" aria-labelledby="h-feat">
+  <div class="wrap">
+    <div class="feat">
+      <div class="side"><h2 id="h-feat">İçinde neler var</h2><p>19 araç, her biri kendi harf tuşunda. Fareyle ya da klavyeyle çalışın.</p><p class="note f1">Araçlara tur: düzenleyicide <kbd>F1</kbd></p></div>
+      <ul><li><h3>Oklar ve çizgiler</h3><p>Düz, çift başlı, serbest, yumuşak. Tam 45° açılar için Shift&#x27;e basılı tutun.</p></li><li><h3>Numaralar ve açıklama balonları</h3><p>İşaretçili 1, 2, 3 daireleri ve metinli konuşma balonları.</p></li><li><h3>Vurgulayıcı ve metin</h3><p>Bir satırı sarıyla işaretleyin, istediğiniz renkte etiket ekleyin.</p></li><li><h3>Bulanıklaştırma</h3><p>Yüzler ve adresler karelere dönüşür. Kart numarası ya da parola dolu bir dikdörtgenin altında daha güvenlidir: Ctrl ile R.</p></li><li><h3>İki adımda kırpma</h3><p>Bir çerçeve sürükleyin, kenarları ayarlayın, Enter&#x27;a basın. Enter&#x27;a kadar ekran görüntüsüne dokunulmaz.</p></li><li><h3>Yakınlaştırma</h3><p>Ctrl ve fare tekerleği küçük ayrıntıları yakınlaştırır. “Sığdır” ekran görüntüsünün tamamını yeniden gösterir.</p></li><li><h3>Monitör seçimi</h3><p>Tam ekran görüntüsü: tüm monitörler birden ya da yalnızca biri.</p></li><li><h3>İşaretleri taşıma</h3><p>Sağ fare düğmesine basılı tutup herhangi bir işareti sürükleyin. Araç değiştirmeye gerek yok.</p></li><li><h3>Aynı alan yeniden</h3><p>Sonraki Alt+W önceki çerçeveyi vurgular: yeniden seçmeniz gerekmez.</p></li><li><h3>Pano ve dosya</h3><p>Düzenleyicide Enter ekran görüntüsünü kopyalar. Her ekran görüntüsü kendiliğinden PNG ya da JPEG olarak kaydedilir.</p></li><li><h3>Ekran görüntüsüne resim ekleme</h3><p>İkinci bir resmi panodan, bir dosyadan ya da yeni bir ekran görüntüsü olarak ekleyin.</p></li><li><h3>Açık ve koyu</h3><p>İki tema, ayrıca çerçeve ve paneller için kendi renkleriniz.</p></li><li><h3>Sizin diliniz</h3><p>12 arayüz dili. Dili ilk çalıştırmada seçersiniz; ayarlardan ya da saatin yanındaki simgenin menüsünden değiştirebilirsiniz.</p></li></ul>
+    </div>
+    <div class="trio"><figure class="print"><img src="../img/tr/trio-crop.webp" width="1000" height="712" alt="ClipSD düzenleyicisinde kırpma: boyutu görünen bir çerçeve ve Kırp ile İptal düğmeleri" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Kırpma: bir çerçeve, sonra Enter</figcaption></figure><figure class="print"><img src="../img/tr/trio-zoom.webp" width="912" height="640" alt="ClipSD düzenleyicisinin alt paneli: ekran görüntüsünün boyutu, yakınlaştırma düğmeleri ve Sığdır" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Yakınlaştırma ve Sığdır pencerenin altında</figcaption></figure><figure class="print"><img src="../img/tr/trio-monitors.webp" width="1000" height="702" alt="Tüm monitörler, Monitör 1 ve Monitör 2 düğmelerinin göründüğü “Tam ekran görüntüsü” penceresi" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Tam ekran: hangi monitör yakalanacak</figcaption></figure></div>
+  </div>
+</section>
+<section class="sec sec-alt" id="look" aria-labelledby="h-look">
+  <div class="wrap">
+    <div class="center"><h2 id="h-look">Açık ya da koyu</h2><p>İlk açılışta seçin, ayarlardan istediğiniz zaman değiştirin.</p></div>
+    <div class="duo">
+      <figure class="print"><img src="../img/tr/hero-mark.webp" width="1600" height="1139" alt="Açık temada ClipSD düzenleyicisi" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Standart, açık</figcaption></figure>
+      <figure class="print"><img src="../img/tr/theme-dark.webp" width="1200" height="853" alt="Koyu temada ClipSD düzenleyicisi" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Profesyonel, koyu</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="download" aria-labelledby="h-dl">
+  <div class="wrap">
+    <div class="dl-box">
+      <h2 id="h-dl">ClipSD 1.31.0 sürümünü Windows ve Linux için ücretsiz indirin</h2>
+      <p class="guess"><b data-os-name>Windows ya da Linux</b> kullandığınız anlaşılıyor. Doğru dosya işaretlendi.</p>
+      <div class="dl">
+        <article class="os" data-os-card="windows" id="dl-windows"><span class="mine">Sisteminiz</span>
+          <h3>Windows</h3><p>Windows 10 ve 11, 64 bit. Standart bir yükleyici, yönetici hakkı gerekmez.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Windows için ücretsiz indir</span></a><p class="dl-note">ClipSD-1.31.0-Setup.exe · 31 MB · sürüm 1.31.0</p><p class="sum"><span>SHA-256 sağlama toplamı:</span> <code>962e75f3ae1029431421410144ea3cf79675b416e221c522383ba4a2e8bfea19</code></p>
+          <ul><li>Simge saatin yanında görünür. ClipSD Windows ile birlikte başlar; yükleyicide bu işareti kaldırabilirsiniz</li><li>Görüntüden metni Windows&#x27;un yerleşik tanıma özelliği okur</li><li>Bir dildeki metin, o dil Windows&#x27;ta kuruluysa tanınır</li></ul></article>
+        <article class="os" data-os-card="linux" id="dl-linux"><span class="mine">Sisteminiz</span>
+          <h3>Linux</h3><p>Ubuntu 22.04 ve üzeri, Debian 12, Fedora, Mint ve benzerleri, 64 bit. X11 ve Wayland.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Linux için ücretsiz indir</span></a><p class="dl-note">ClipSD-1.31.0-linux-x86_64.tar.gz · 72 MB · sürüm 1.31.0</p><p class="sum"><span>SHA-256 sağlama toplamı:</span> <code>6b10322076d97d1ea353675c31bc7acbf8364577713c22aa84c7fd63e23ba1bd</code></p>
+          <p class="cmd-label">Arşivi açın ve terminalde çalıştırın:</p>
+          <div class="cmd"><pre id="cmd-linux">tar -xzf ClipSD-1.31.0-linux-x86_64.tar.gz
+cd clipsd-1.31.0
+bash install.sh</pre><button type="button" data-copy="cmd-linux" hidden>Kopyala</button></div>
+          <ul><li>Kurulum için ne yönetici parolası ne de internet gerekir: Python ve pencere kitaplıkları zaten arşivin içinde</li><li>Program ~/.local/share/clipsd klasörüne kurulur, clipsd komutuyla çalışır ve oturum açtığınızda başlar</li><li>GNOME&#x27;da Alt+W kendiliğinden atanır ve oturumu yeniden açtıktan sonra her iki klavye düzeninde de çalışır. X11 oturumunda ClipSD Alt+W&#x27;yi kendisi yakalar. Diğer durumlarda, klavye ayarlarında bir kısayolu <code class="cmdline">clipsd --region</code> komutuna atayın</li><li>Görüntüden metin için Tesseract bir kez kurulur. Yönetici parolasıyla çalışan tek bir komuttur, ClipSD onu gösterir</li></ul></article>
+      </div>
+      <div class="help">
+        <div><h3>Windows mavi bir pencere mi gösterdi?</h3><p class="muted">Programın henüz ücretli bir dijital imzası yok, bu yüzden Windows soruyor. İki tıklama:</p><ol><li><span class="num" aria-hidden="true">1</span><span>“Ek bilgi”ye tıklayın</span></li><li><span class="num" aria-hidden="true">2</span><span>“Yine de çalıştır”a tıklayın</span></li></ol>
+          <p class="small">Tarayıcınız dosyanın nadiren indirildiği uyarısını verebilir. Bu yalnızca programın yeni olduğu anlamına gelir. SHA-256 sağlama toplamını düğmenin yanındaki değerle karşılaştırın.</p>
+          <p class="small"><a href="../tr/code-signing.html">Dosyanın gerçek olduğunu nasıl doğrularsınız: imza ve sağlama toplamları</a></p></div>
+        <div class="ss" aria-hidden="true"><strong>Windows bilgisayarınızı korudu</strong>Microsoft Defender SmartScreen tanınmayan bir uygulamanın başlamasını engelledi. Bu uygulamayı çalıştırmak bilgisayarınızın güvenliğini tehlikeye sokabilir.<br><span class="more">Ek bilgi<span class="n n1">1</span></span>
+          <div class="rowb"><span class="run">Yine de çalıştır<span class="n n2">2</span></span><span>Çalıştırma</span></div></div>
+      </div>
+      <div class="extra">
+        <div><div class="letter" id="update"><h3>Yeni sürümler</h3><ol class="how"><li><span class="num" aria-hidden="true">1</span><p>ClipSD günde bir kez yeni sürüm olup olmadığını kendisi denetler ve kurmayı önerir: “Güncelle”, “Daha sonra” ya da “Bu sürümü atla”. Hemen denetlemek için: saatin yanındaki simgenin menüsü, “Güncellemeleri denetle”.</p></li><li><span class="num" aria-hidden="true">2</span><p>Güncelleme dosyası dijital imza ve sağlama toplamıyla doğrulanır. Yeni sürüm başlamazsa önceki sürüm kendiliğinden geri gelir. Düzenleyicide kaydedilmemiş işaretler varken güncelleme bekler.</p></li><li><span class="num" aria-hidden="true">3</span><p>ClipSD 1.29 ve önceki sürümlerden yeni sürüme bir kez elle geçilir: dosyayı bu sayfadan indirin ve eskisinin üzerine kurun. Ayarlar, çeviri anahtarı ve ekran görüntüleri korunur. Otomatik denetim ayarlarda, “Başlangıç” bölümünden kapatılabilir.</p></li></ol></div>
+          <div class="news" id="news"><h3>1.31.0 sürümündeki yenilikler</h3><p class="rdate">Yayım tarihi: <time datetime="2026-11-19">19 Kasım 2026</time></p><ul><li>12 dilde arayüz: dil ilk çalıştırmada seçilir, ayarlardan ya da simge menüsünden değiştirilir</li><li>ClipSD kendini günceller: günde bir kez yeni sürümü denetler ve “Güncelle” düğmesine bastığınızda kurar</li><li>Güncelleme dijital imzayla doğrulanır; bir sorun olursa önceki sürüm geri gelir</li><li>Linux: hazır derleme, yönetici parolası ve internet olmadan kurulur</li></ul><p class="allver"><a href="../tr/changes.html">Tüm sürümler</a></p></div>
+          <div class="remove" id="remove"><h3>Nasıl kaldırılır</h3><ul><li>Windows: Ayarlar, Uygulamalar bölümü, ClipSD, Kaldır. Ya da Başlat menüsündeki “ClipSD&#x27;yi kaldır” kısayolu. Kaldırma programı ClipSD ayarlarının ve ekran görüntülerinin de silinip silinmeyeceğini sorar; kutuyu işaretlemezseniz %APPDATA%\ClipSD içindeki ayarlar ve ekran görüntüleri kalır.</li><li>Linux: terminalde bash ~/.local/share/clipsd/current/uninstall.sh komutunu çalıştırın. Programı, menü kısayolunu, otomatik başlatmayı, Alt+W kısayolunu ve “ClipSD: hotkeys” GNOME uzantısını kaldırır. ~/.config/clipsd içindeki ayarlar ve ekran görüntüleri kalır; bunları da silmek için aynı dosyayı --purge seçeneğiyle çalıştırın.</li></ul></div></div>
+        <div>
+          <div class="src" id="source"><h3>Kaynak kodu</h3><p class="muted">ClipSD, GNU GPL v3 veya üzeri lisansı altındadır. Her sürümün kaynak kodu GitHub&#x27;da, sürüm dosyalarının yanında bulunur.</p><p><a href="https://github.com/clipsd/clipsd/releases/tag/v1.31.0">Bu sürümün kaynak kodu GitHub&#x27;da</a></p><p><a href="https://github.com/clipsd/clipsd">GitHub</a></p></div>
+          <div class="req"><h3>Bilgisayarınızın gereksinimleri</h3><ul><li>Windows 10 veya Windows 11, 64 bit</li><li>Linux x86-64: Ubuntu 22.04, Debian 12, Fedora 36 ve daha yenisi (glibc 2.35 veya daha yenisi)</li><li>İnternet yalnızca çeviri ve güncellemeler için gerekir</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="learn" aria-labelledby="h-learn">
+  <div class="wrap">
+    <div class="center"><h2 id="h-learn">Üç dakikada öğrenin</h2><p>Program her şeyin nerede olduğunu kendisi gösterir. Aşağıda sık sorulan sorulara yanıtlar var.</p></div>
+    <div class="learn">
+      <ol class="how tips"><li><span class="num" aria-hidden="true">1</span><p>İlk açılışta ClipSD tema seçmenizi önerir ve düzenleyiciyi gezdirir.</p></li><li><span class="num" aria-hidden="true">2</span><p>Düzenleyicideki “?” düğmesi ya da F1, araç turunu yineler.</p></li><li><span class="num" aria-hidden="true">3</span><p>Bir düğmenin üzerine gelin: ipucu ne yaptığını ve hangi tuşla kullanılacağını gösterir.</p></li></ol>
+      <div class="faq" id="faq"><h3 class="faq-h">Sık sorulan sorular</h3><details><summary>ClipSD&#x27;yi nereden ücretsiz indirebilirim, gerçekten ücretsiz mi?</summary><p>Evet. ClipSD&#x27;yi bu sayfada, indirme bölümünden indirebilirsiniz: Windows için kurulum dosyası ve Linux için arşiv. Reklam yok, deneme süresi yok, ücretli özellik yok. Kaynak kodu GNU GPL v3 veya üzeri altında açıktır: okuyabilir, denetleyebilir ve geliştirebilirsiniz.</p></details><details><summary>Ekranın bir bölümünün ekran görüntüsü nasıl alınır?</summary><p>Herhangi bir programda Alt+W&#x27;ye basın ve fareyle bir alan seçin. Enter onu düzenleyicide açar, Ctrl+C kopyalayıp pencereyi kapatır. Saatin yanındaki ClipSD simgesine tıklamak da aynı işi yapar.</p></details><details><summary>Tüm ekranın görüntüsü nasıl alınır?</summary><p>Alt+W&#x27;den sonra seçim yapmadan tıklayın ya da “Tam ekran” (Ctrl+A) düğmesine basın. Birden fazla monitör varsa hepsini birden ya da birini seçin.</p></details><details><summary>Kart numarası ya da yüz nasıl gizlenir?</summary><p>Kart numarasını, parolayı ve diğer önemli verileri dolu bir dikdörtgenle kapatın: Dikdörtgen&#x27;i (R tuşu) seçin ve Ctrl&#x27;ye basılı tutarak çizin. Yüzler ve adresler Bulanıklaştırma (B tuşu) ile gizlenebilir: yer karelere dönüşür ve bir bakışta okunamaz, ama karelerin altındaki büyük metin bazen yine de okunabilir.</p></details><details><summary>Görüntüdeki metin nasıl kopyalanır?</summary><p>Alt+W&#x27;ye basın, metnin olduğu yeri seçin ve “Metni kopyala”ya (Ctrl+T) basın. Sözcükler vurgulanır: ihtiyacınız olanların üzerinden geçin, panoya girmiş olurlar. Düzenleyicide “Metni kopyala” düğmesi ya da I tuşu aynı işi yapar.</p></details><details><summary>Ekrandaki metin nasıl çevrilir?</summary><p>Alt+W&#x27;ye basın, metni seçin ve “Seçileni çevir”e (Ctrl+L) basın. “Tüm ekranı çevir” (Ctrl+Shift+L) çerçevenin ya da imlecin bulunduğu monitörü hemen çevirir. Düzenleyicide bölünmüş bir düğme vardır: “Tümünü çevir” (Shift+Y) tüm ekran görüntüsünü, “Seçilen” (Y) seçtiğiniz kısmı çevirir.</p></details><details><summary>Ücretsiz ne kadar çevirebilirim?</summary><p>Hemen, kayıt olmadan günde 5.000 karakter. E-posta adresiyle günde 50.000 karakter. Kendi Google Cloud anahtarınızla ayda 500.000 karakter; anahtar için Google banka kartı ister. Her iki hizmet de bağlıysa ve biri biterse, ClipSD kendiliğinden diğerine geçer.</p></details><details><summary>ClipSD internete ne gönderiyor?</summary><p>Yalnızca çeviri için gönderdiğiniz metni ve girdiyseniz MyMemory için e-posta adresini. Ekran görüntüleri, pano ve dosya adları bilgisayarınızdan asla çıkmaz. Program kendiliğinden yalnızca günde bir kez GitHub&#x27;da yeni sürüm olup olmadığını denetler; bu, ayarlarda “Başlangıç” bölümünden kapatılabilir.</p></details><details><summary>İnternet gerekli mi?</summary><p>Yakalama, düzenleyici, kaydetme ve görüntüden metin için gerekmez. Çeviri ve güncellemeler için gerekir.</p></details><details><summary>Ekran görüntüleri nereye kaydedilir?</summary><p>Her ekran görüntüsü hemen İndirilenler içindeki bir klasöre kaydedilir; düzenlemelerden sonra dosya güncellenir. Windows&#x27;ta bu Downloads\Screenshots klasörüdür. Linux&#x27;ta Downloads/Screenshots, ana klasörünüzde Rusça «Загрузки» klasörü varsa «Загрузки/Скриншоты» olur. Klasör ve biçim ayarlardan değiştirilebilir. Ctrl+S bir dosyaya kaydeder ve düzenleyiciyi kapatır; varsayılan olarak nereye kaydedileceğini sorar, bu soru ayarlardan kapatılabilir. Enter ekran görüntüsünü panoya kopyalar.</p></details><details><summary>ClipSD, Linux&#x27;ta Wayland ile çalışır mı?</summary><p>Evet, X11 ve Wayland oturumlarında. GNOME&#x27;da ClipSD, Alt+W&#x27;nin her iki klavye düzeninde de çalışması için kendi uzantısını kurar. Wayland üzerindeki diğer masaüstü ortamlarında, klavye ayarlarında bir kısayolu <code class="cmdline">clipsd --region</code> komutuna atayın.</p></details><details><summary>Alt+W hiçbir şey yapmazsa ne yapmalıyım?</summary><p>ClipSD simgesinin saatin yanında olduğunu kontrol edin: program çalışıyor olmalı. GNOME&#x27;lu Linux&#x27;ta kurulumdan sonra oturumu kapatıp yeniden açın; o zamana kadar Alt+W yalnızca Latin klavye düzeninde çalışır. Wayland üzerindeki diğer masaüstü ortamlarında, klavye ayarlarında bir kısayolu <code class="cmdline">clipsd --region</code> komutuna atayın. Alt+W başka bir program tarafından kullanılıyorsa, ClipSD ayarlarında Klavye kısayolları bölümünden kendi kısayolunuzu seçin. Saatin yanındaki simgeye tıklayarak da bir alan yakalayabilirsiniz.</p></details><details><summary>Alt+W&#x27;yi başka bir kısayolla değiştirebilir miyim?</summary><p>Evet. Ayarlarda, Klavye kısayolları bölümünde Ctrl, Shift, Alt ya da Win&#x27;i açın ve bir tuş seçin. Ya da “Algıla…”ya ve ardından kısayolun kendisine basın.</p></details><details><summary>Yeni sürüm nasıl kurulur?</summary><p>ClipSD yeni sürümleri kendisi kurar: günde bir kez denetler ve “Güncelle” önerir. Hemen denetlemek için: simge menüsü, “Güncellemeleri denetle”. 1.29 ve önceki sürümlerden geçerken yeni sürümü bir kez bu sayfadan indirin ve eskisinin üzerine kurun. Ayarlar ve ekran görüntüleri korunur.</p></details><details><summary>Kurulum sırasında Windows neden mavi bir pencere gösteriyor?</summary><p>ClipSD&#x27;nin henüz ücretli bir dijital imzası yok. “Ek bilgi”ye, ardından “Yine de çalıştır”a tıklayın. Dosyanın gerçek olduğunu, indirme düğmesinin yanındaki SHA-256 sağlama toplamıyla doğrulayabilirsiniz.</p></details><details><summary>ClipSD, Windows&#x27;un Ekran Alıntısı Aracı&#x27;ndan nasıl ayrılır?</summary><p>ClipSD Linux&#x27;ta da çalışır, Windows&#x27;taki gibi. Düzenleyicide işaretçili numaralar ve açıklama balonları vardır, ekrandaki metin çevrilebilir. ClipSD önceki alanı hatırlar; böylece aynı yerin sonraki ekran görüntüsünü almak için yalnızca Enter&#x27;a basmanız yeter.</p></details></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="h-about">
+  <div class="wrap">
+    <div class="author">
+      <div class="logo-big"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg></div>
+      <div><h2 id="h-about">Hakkında</h2><p>ClipSD&#x27;yi Sergey Dayneko geliştiriyor.</p><p>ClipSD ücretsizdir, hesap ve reklam yoktur, kaynak kodu açıktır.</p><p>Bu programı en başta kendim için, kendi ihtiyaçlarımdan yaptım. İçindeki her özelliği her gün kendim kullanıyorum. Başkalarının da kullanabilmesini ve ne kadar kullanışlı olduğunu görmesini istiyorum.</p>
+        <p class="sign">Yazar: Sergey Dayneko<span>Lisans: GNU GPL v3 veya üzeri</span></p></div>
+    </div>
+  </div>
+</section>
+<section class="sec sec-alt" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="center"><h2 id="h-contact">Yazara yazın</h2><p>Bir soru, bir hata ya da bir fikir. Ne yaptığınızı ve ne olduğunu anlatın, bir ekran görüntüsü ekleyin: böylece sorunu daha hızlı çözebilirim.</p>
+      <p class="mail">E-posta: <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a></p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../tr/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Windows ve Linux için düzenleyicili ekran görüntüsü programı. Ücretsiz ve açık kaynak.</p><p class="small">Bu sitede ziyaretçi sayacı, reklam ya da çerez yoktur.</p></div>
+    <div><h2>Program</h2><ul><li><a href="../tr/#download">İndir</a></li><li><a href="../tr/#source">Kaynak kodu</a></li><li><a href="../tr/#contact">İletişim</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Belgeler</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later lisansı</a></li><li><a href="../tr/changes.html">Sürüm geçmişi</a></li><li><a href="../tr/privacy.html">Gizlilik</a></li><li><a href="../tr/code-signing.html">İmza ve dosya doğrulama</a></li><li><a href="../ru/third-party.html">Üçüncü taraf bileşenler</a></li></ul></div>
+    <div><h2>Diller</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Sergey Dayneko. ClipSD, GNU GPL v3 veya üzeri ile, hiçbir garanti olmadan dağıtılır.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

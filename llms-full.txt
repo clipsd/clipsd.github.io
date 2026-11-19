@@ -1,0 +1,117 @@
+# ClipSD 1.31.0: screenshot tool with an editor for Windows and Linux
+
+Free screenshot tool with an editor for Windows and Linux: capture an area with Alt+W, add arrows, numbers, callouts, blur, crop, copy text from images and translate text on screen.
+
+Facts:
+- Free of charge, no ads, no account, no trial. License: GNU GPL v3 or later (SPDX: GPL-3.0-or-later).
+- Author: Sergey Dayneko (Сергей Дайнеко).
+- Interface languages: Русский, English, Български, Українська, Deutsch, Français, Español, Italiano, Português, Polski, Türkçe, 中文.
+- Systems: Windows 10 and 11 (x64); Linux x86-64 with Python 3.9+ (Ubuntu, Debian, Fedora, Mint and similar), X11 and Wayland.
+- Windows: a normal installer, no administrator rights. Linux: unpack the archive and run `bash install.sh`; no administrator password, but it downloads PyQt6 (about 110 MB) from PyPI once.
+- Download: Windows installer: https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe (SHA-256 962e75f3ae1029431421410144ea3cf79675b416e221c522383ba4a2e8bfea19); Linux archive: https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz (SHA-256 6b10322076d97d1ea353675c31bc7acbf8364577713c22aa84c7fd63e23ba1bd); Source code: https://github.com/clipsd/clipsd/releases/tag/v1.31.0.
+- New versions: ClipSD checks once a day and offers "Update" (digital signature checked, the previous version comes back if the new one does not start); if you have 1.29 or older, install the new version once over the old one by hand. Settings and screenshots are kept. The check can be switched off in the settings.
+- Network: only text the user sends for translation (to MyMemory or Google Cloud Translation), the optional e-mail for MyMemory and the once-a-day check for a new version on GitHub. Screenshots, the clipboard and file names never leave the computer. The program itself collects no statistics.
+
+## How it works
+
+1. Press Alt+W and select: The screen freezes. Select the part you need: the magnifier next to the cursor helps you hit the edge exactly. Enter opens the editor.
+2. Mark what matters: An arrow, a number, a frame, a label or a marker. Blur hides faces and addresses.
+3. Paste it into a chat: Enter copies the screenshot. Paste it into a messenger, an e-mail or a document with the usual Ctrl+V.
+
+## Text from images
+
+A scanned contract, an error window, a video frame, a photo of a sign. Select the place, press "Copy text" or Ctrl+T, and the words in the picture can be selected like in a normal document. This is text recognition (OCR): it runs on your computer, no internet needed.
+- "Range" mode: press on a word and drag, the text is selected in reading order. "Marker" mode: sweep over words, only what you touch is taken.
+- The selection is on the clipboard at once. A window next to it lets you correct the text before pasting.
+- A page in two columns is read column by column, lines do not get mixed.
+- Works offline. On Windows the text is read by the recognition built into Windows: the language of the text must be installed in Windows. On Linux you install the free recognition program Tesseract once: ClipSD shows the ready command.
+
+## On-screen translation
+
+Press Alt+W, select the foreign text and press "Translate selection" or Ctrl+L. A whole monitor at once: "Translate whole screen" or Ctrl+Shift+L; the monitor with the frame or the cursor is translated. The translation appears in a window right over the text, like a camera translator on a phone.
+- By default the translation is into the program language. You can choose another of the 20 languages with a button on the window itself.
+- "Copy" puts the translation on the clipboard, "Original" shows the source text. Drag the window aside and keep working.
+- In the editor there is a split button: "Translate all" translates the whole screenshot (Shift+Y), "Selection" only the part you select (Y). The translation lies over the screenshot and is not included in the saved image.
+- Free amount: 5,000 characters a day: Right after installing, without registration.
+- Free amount: 50,000 characters a day: If you enter your e-mail in the translation window. No confirmation needed.
+- Free amount: 500,000 characters a month: With your own Google Cloud key. Google asks you to add a bank card. The program guides you step by step.
+
+## Features
+
+- Arrows and lines: Straight, double-headed, freehand, smooth. Hold Shift for exact 45° angles.
+- Numbers and callouts: Circles 1, 2, 3 with a pointer, and speech bubbles with text.
+- Marker and text: Mark a line in yellow, add a label in any colour.
+- Blur: Faces and addresses turn into squares. A card number or a password is safer under a filled rectangle: R with Ctrl.
+- Two-step crop: Drag a frame, adjust the edges, press Enter. Until Enter the screenshot is untouched.
+- Zoom: Ctrl and the mouse wheel zoom into small details. "Fit" shows the whole screenshot again.
+- Choose a monitor: Full-screen screenshot: all monitors at once or just one.
+- Move marks: Hold the right mouse button and drag any mark. No need to switch tools.
+- Same area again: The next Alt+W highlights the previous frame: no need to select again.
+- Clipboard and file: Enter in the editor copies the screenshot. Every screenshot is saved as PNG or JPEG by itself.
+- Picture on a screenshot: Insert a second picture from the clipboard, from a file or as a new screenshot.
+- Light and dark: Two themes plus your own colours for the frame and panels.
+- Your language: 12 interface languages. You choose the language when you first start the program and can change it in the settings or in the menu of the icon next to the clock.
+
+## Keyboard shortcuts (defaults)
+
+- Alt+W: capture an area (also Alt+Ц on the Russian layout). In the selection: Enter opens the editor, Ctrl+C copies and closes, Ctrl+S saves, Ctrl+A whole screen, Ctrl+T copy text, Ctrl+L translate the selection, Ctrl+Shift+L translate the monitor with the frame or the cursor.
+- In the editor: Enter or Ctrl+C copy, Ctrl+Enter copy and close, Ctrl+S save to a file and close the editor (asks where by default), Ctrl+Z / Ctrl+Y undo / redo, Ctrl+V paste an image, Ctrl+D duplicate, Delete delete, 1-5 thickness, F1 tour, Ctrl+wheel zoom.
+- Tools: V select, K callout, T text, N number, A arrow, D double-headed arrow, F freehand arrow, G smooth line, L line, R rectangle, E ellipse, O freehand shape, M highlighter, P pencil, B blur, X eraser, I copy text, Y translate the selection (Shift+Y the whole screenshot), C crop.
+
+## Privacy
+
+Policy: https://clipsd.github.io/en/privacy.html
+
+## FAQ
+
+Q: Where can I download ClipSD for free, and is it really free?
+A: Yes. You can download ClipSD on this page, in the Download section: an installer for Windows and an archive for Linux. No ads, no trial period, no paid features. The source code is open under the GNU GPL v3 or later: you can read it, check it and improve it.
+
+Q: How do I take a screenshot of part of the screen?
+A: Press Alt+W in any program and select an area with the mouse. Enter opens it in the editor, Ctrl+C copies it and closes the window. Clicking the ClipSD icon next to the clock does the same.
+
+Q: How do I capture the whole screen?
+A: After Alt+W, click without selecting or press "Full screen" (Ctrl+A). With several monitors, choose all at once or one of them.
+
+Q: How do I hide a card number or a face?
+A: Cover a card number, a password and other important data with a filled rectangle: choose Rectangle (key R) and draw with Ctrl held down. Faces and addresses can be hidden with Blur (key B): the place turns into squares and cannot be read at a glance, but large text under the squares can sometimes be made out.
+
+Q: How do I copy text from an image?
+A: Press Alt+W, select the place with text and press "Copy text" (Ctrl+T). The words get highlighted: sweep over the ones you need and they are on the clipboard. In the editor the button "Copy text" or the key I does the same.
+
+Q: How do I translate text on the screen?
+A: Press Alt+W, select the text and press "Translate selection" (Ctrl+L). "Translate whole screen" (Ctrl+Shift+L) translates the monitor with the frame or the cursor at once. In the editor there is a split button: "Translate all" (Shift+Y) translates the whole screenshot, "Selection" (Y) the part you select.
+
+Q: How much can I translate for free?
+A: 5,000 characters a day right away, without registration. With an e-mail, 50,000 characters a day. With your own Google Cloud key, 500,000 characters a month; for the key Google asks for a bank card. If both services are connected and one runs out, ClipSD switches to the other by itself.
+
+Q: What does ClipSD send to the internet?
+A: Only the text you send for translation, and the e-mail for MyMemory if you entered one. Screenshots, the clipboard and file names never leave your computer. On its own the program only checks GitHub once a day for a new version; this can be switched off in the settings, section Startup.
+
+Q: Do I need the internet?
+A: You do not need it to take screenshots, use the editor, save or copy text from images. Translation and updates need it.
+
+Q: Where are screenshots saved?
+A: Each screenshot is saved right away to a folder inside Downloads; after edits the file is updated. On Windows it is Downloads\Screenshots. On Linux it is Downloads/Screenshots, or «Загрузки/Скриншоты» if your home folder has a Russian «Загрузки» folder. The folder and format can be changed in the settings. Ctrl+S saves to a file and closes the editor; by default it asks where to save, and the question can be switched off in the settings. Enter copies the screenshot to the clipboard.
+
+Q: Does ClipSD work on Linux with Wayland?
+A: Yes, in X11 and Wayland sessions. In GNOME, ClipSD installs its own extension so Alt+W works with both keyboard layouts. In other desktops on Wayland, assign a shortcut in the keyboard settings to the command clipsd --region.
+
+Q: What if Alt+W does nothing?
+A: Check that the ClipSD icon is next to the clock: the program must be running. On Linux with GNOME, log out and back in after installing; until then Alt+W works only with the Latin keyboard layout. In other desktops on Wayland, assign a shortcut in the keyboard settings to the command clipsd --region. If another program uses Alt+W, choose your own shortcut in the ClipSD settings, section Keyboard shortcuts. You can also capture an area by clicking the icon next to the clock.
+
+Q: Can I change Alt+W to another shortcut?
+A: Yes. In the settings, section Keyboard shortcuts, switch on Ctrl, Shift, Alt or Win and choose a key. Or press "Record…" and the shortcut itself.
+
+Q: How do I install a new version?
+A: ClipSD installs new versions itself: once a day it checks and offers "Update". To check right away: the icon menu, "Check for updates". If you have version 1.29 or older, download the new version on this page once and install it over the old one. Settings and screenshots are kept.
+
+Q: Why does Windows show a blue window when installing?
+A: ClipSD does not have a paid digital signature yet. Click "More info", then "Run anyway". You can check that the file is genuine with the SHA-256 checksum next to the download button.
+
+Q: How is ClipSD different from the Windows Snipping Tool?
+A: ClipSD works on Linux too, the same way as on Windows. The editor has numbers with a pointer and callouts, and text on the screen can be translated. ClipSD remembers the previous area, so the next screenshot of the same place takes one Enter.
+
+## Contact
+
+E-mail: clipsd.app@gmail.com

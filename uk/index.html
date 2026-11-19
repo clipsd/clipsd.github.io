@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="uk" data-lang="uk" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: безкоштовна програма для скріншотів, Windows і Linux</title>
+<meta name="description" content="Завантажте безкоштовно програму для скріншотів із редактором для Windows і Linux: Alt+W, стрілки, номери, розмиття. Текст із картинки (OCR), переклад з екрана.">
+<link rel="canonical" href="https://clipsd.github.io/uk/">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: скріншот із позначками за п’ять секунд">
+<meta property="og:description" content="Програма для скріншотів із редактором: стрілки, номери, розмиття, текст із зображення й переклад на екрані. Windows і Linux, безкоштовно.">
+<meta property="og:url" content="https://clipsd.github.io/uk/">
+<meta property="og:image" content="https://clipsd.github.io/og/uk.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Один скріншот пояснює більше, ніж три абзаци">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "@id": "https://clipsd.github.io/#software",
+ "name": "ClipSD",
+ "url": "https://clipsd.github.io/uk/",
+ "description": "Безкоштовна програма для скріншотів із редактором для Windows і Linux: знімок області клавішами Alt+W, стрілки, номери, виноски, розмиття, обрізання, текст із зображення й переклад на екрані.",
+ "applicationCategory": "UtilitiesApplication",
+ "applicationSubCategory": "Програма для скріншотів з редактором",
+ "operatingSystem": "Windows 10, Windows 11, Linux",
+ "softwareVersion": "1.31.0",
+ "softwareRequirements": "Windows 10/11 x64; Linux x86-64, Python 3.9+",
+ "inLanguage": [
+  "ru",
+  "en",
+  "bg",
+  "uk",
+  "de",
+  "fr",
+  "es",
+  "it",
+  "pt",
+  "pl",
+  "tr",
+  "zh-Hans"
+ ],
+ "isAccessibleForFree": true,
+ "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "EUR"
+ },
+ "downloadUrl": [
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe",
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"
+ ],
+ "installUrl": "https://clipsd.github.io/uk/#download",
+ "screenshot": "https://clipsd.github.io/img/uk/hero-mark.webp",
+ "image": "https://clipsd.github.io/og/uk.png",
+ "featureList": [
+  "Стрілки й лінії: Прямі, двобічні, від руки, плавні. З Shift рівно під 45°.",
+  "Номери й виноски: Кружечки 1, 2, 3 із вказівником і хмаринки з текстом.",
+  "Маркер і текст: Виділіть рядок жовтим, підпишіть будь-яким кольором.",
+  "Розмиття: Обличчя й адреси перетворюються на квадрати. Номер картки та пароль надійніше закрити зафарбованим прямокутником: R із Ctrl.",
+  "Обрізання у два кроки: Потягніть рамку, відкоригуйте краї, натисніть Enter. До Enter знімок цілий.",
+  "Масштаб: Ctrl і колесо миші наближають дрібні деталі. «Вмістити» повертає знімок цілком.",
+  "Вибір монітора: Знімок усього екрана: усі монітори одразу або один із них.",
+  "Перенесення позначок: Затисніть праву кнопку миші й перетягніть будь-яку позначку. Інструмент міняти не треба.",
+  "Та сама область: Наступний Alt+W підсвічує попередню рамку: виділяти заново не треба.",
+  "Буфер і файл: У редакторі Enter копіює знімок. Кожен знімок сам зберігається у PNG або JPEG.",
+  "Зображення поверх знімка: Вставте друге зображення з буфера, з файлу або новим знімком.",
+  "Світла й темна тема: Два оформлення та власні кольори рамки й панелей.",
+  "Ваша мова: 12 мов інтерфейсу. Мову вибирають під час першого запуску, змінити її можна в налаштуваннях або в меню значка біля годинника."
+ ],
+ "author": {
+  "@id": "https://clipsd.github.io/#author"
+ },
+ "releaseNotes": "https://clipsd.github.io/uk/changes.html",
+ "datePublished": "2026-11-19",
+ "dateModified": "2026-11-19",
+ "fileSize": "31 МБ / 72 МБ",
+ "codeRepository": "https://github.com/clipsd/clipsd",
+ "sameAs": [
+  "https://github.com/clipsd/clipsd"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@type": "Person",
+ "@id": "https://clipsd.github.io/#author",
+ "name": "Sergey Dayneko",
+ "alternateName": "Сергей Дайнеко",
+ "sameAs": [
+  "https://github.com/clipsd"
+ ],
+ "@context": "https://schema.org"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "@id": "https://clipsd.github.io/uk/#webpage",
+ "url": "https://clipsd.github.io/uk/",
+ "name": "ClipSD: безкоштовна програма для скріншотів, Windows і Linux",
+ "description": "Завантажте безкоштовно програму для скріншотів із редактором для Windows і Linux: Alt+W, стрілки, номери, розмиття. Текст із картинки (OCR), переклад з екрана.",
+ "inLanguage": "uk",
+ "isPartOf": {
+  "@id": "https://clipsd.github.io/#website"
+ },
+ "about": {
+  "@id": "https://clipsd.github.io/#software"
+ },
+ "dateModified": "2026-11-19"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "uk",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Де завантажити ClipSD безкоштовно і чи справді вона безкоштовна?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Так. ClipSD можна завантажити на цій сторінці, у розділі завантаження: інсталятор для Windows і архів для Linux. Без реклами, пробного періоду й платних функцій. Вихідний код відкритий за ліцензією GNU GPL v3 або новішою версією: його можна читати, перевіряти й покращувати."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як зробити скріншот частини екрана?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Натисніть Alt+W у будь-якій програмі й виділіть область мишею. Enter відкриє знімок у редакторі, Ctrl+C скопіює його й закриє вікно. Те саме робить клік по значку ClipSD біля годинника."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як зробити знімок усього екрана?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Після Alt+W клацніть, не виділяючи, або натисніть кнопку «Весь екран» (Ctrl+A). Якщо моніторів кілька, виберіть усі одразу або один."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як сховати на скріншоті номер картки чи обличчя?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Номер картки, пароль та інші важливі дані закрийте зафарбованим прямокутником: виберіть «Прямокутник» (клавіша R) і малюйте із затиснутим Ctrl. Обличчя й адреси можна сховати «Розмиттям» (клавіша B): місце перетворюється на квадрати й не читається з першого погляду, але великий текст під квадратами іноді можна розібрати."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як скопіювати текст із зображення?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Натисніть Alt+W, виділіть місце з текстом і натисніть «Копіювати текст» (Ctrl+T). Слова підсвітяться: проведіть по потрібних мишею, і вони вже в буфері обміну. У редакторі те саме робить кнопка «Копіювати текст» або клавіша I."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як перекласти текст на екрані?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Натисніть Alt+W, виділіть текст і натисніть «Перекласти виділене» (Ctrl+L). «Перекласти весь екран» (Ctrl+Shift+L) одразу перекладає монітор, на якому стоїть рамка або курсор. У редакторі є здвоєна кнопка: «Перекласти все» (Shift+Y) перекладає весь знімок, «Виділене» (Y) шматок, який ви виділите."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Скільки можна перекладати безкоштовно?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "5 000 знаків на день одразу, без реєстрації. Якщо вказати пошту, 50 000 знаків на день. Зі своїм ключем Google Cloud 500 000 знаків на місяць, для ключа Google попросить банківську картку. Якщо підключено обидва сервіси, коли ліміт одного вичерпано, ClipSD сам переходить на другий."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Що ClipSD надсилає в інтернет?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Лише текст, який ви надіслали на переклад, і пошту для MyMemory, якщо ви її вказали. Скріншоти, буфер обміну й імена файлів не залишають комп’ютер. Сама програма лише раз на добу перевіряє на GitHub, чи є нова версія; це вимикається в налаштуваннях, розділ «Запуск»."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чи потрібен інтернет?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Для знімка, редактора, збереження й тексту із зображення інтернет не потрібен. Він потрібен перекладу й оновленням."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Куди зберігаються скріншоти?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Кожен знімок одразу зберігається в папку всередині Downloads, після правок файл оновлюється. У Windows це Downloads\\Screenshots. У Linux це «Загрузки/Скриншоты», якщо в домашній папці є «Загрузки», інакше Downloads/Screenshots. Папку й формат змінюють у налаштуваннях. Ctrl+S зберігає у файл і закриває редактор; за замовчуванням питає, куди зберегти, у налаштуваннях це запитання вимикається. Enter копіює знімок у буфер обміну."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чи працює ClipSD у Linux на Wayland?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Так, у сеансах X11 і Wayland. У GNOME ClipSD встановлює власне розширення, щоб Alt+W працював на обох розкладках. В інших оболонках на Wayland комбінацію призначають у налаштуваннях клавіатури на команду clipsd --region."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Що робити, якщо Alt+W не спрацьовує?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Перевірте, що значок ClipSD є біля годинника: програма має бути запущена. У Linux із GNOME після встановлення вийдіть із системи й увійдіть знову, до цього Alt+W працює лише на латинській розкладці. В інших оболонках на Wayland призначте комбінацію в налаштуваннях клавіатури на команду clipsd --region. Якщо Alt+W зайнято іншою програмою, виберіть свою комбінацію в налаштуваннях ClipSD, розділ «Гарячі клавіші». Знімок області можна зробити й кліком по значку біля годинника."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чи можна замінити Alt+W іншою комбінацією?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Так. У налаштуваннях, розділ «Гарячі клавіші», увімкніть потрібні Ctrl, Shift, Alt або Win і виберіть клавішу. Або натисніть «Записати…» і саму комбінацію."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як поставити нову версію?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD ставить нові версії сам: раз на добу перевіряє й пропонує «Оновити». Перевірити одразу: меню значка, «Перевірити оновлення». Якщо у вас версія 1.29 або давніша, один раз завантажте нову версію на цій сторінці й встановіть її поверх наявної. Налаштування й знімки зберігаються."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чому Windows показує синє вікно під час встановлення?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "У ClipSD поки немає платного цифрового підпису. Натисніть «Детальніше», потім «Виконати в будь-якому разі». Справжність файлу можна перевірити за контрольною сумою SHA-256 поруч із кнопкою завантаження."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Чим ClipSD відрізняється від вбудованих «Ножиць» Windows?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD працює й у Linux, так само, як у Windows. У редакторі є номери з вказівником і виноски, а текст на екрані можна перекласти. ClipSD пам’ятає попередню область, і наступний знімок того самого місця робиться одним Enter."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/json" id="i18n">{"cta": {"windows": "Завантажити безкоштовно для Windows", "linux": "Завантажити безкоштовно для Linux"}, "dl": {"windows": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe", "linux": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"}, "note": {"windows": "Windows 10 і 11 · версія 1.31.0 · безкоштовно", "linux": "Ubuntu, Debian, Fedora, Mint · версія 1.31.0 · безкоштовно", "other": "ClipSD працює у Windows і Linux. Відкрийте цю сторінку на комп’ютері."}, "os": {"windows": "Windows", "linux": "Linux", "mac": "Mac, а ClipSD поки що лише для Windows і Linux", "mobile": "телефон. Відкрийте сторінку на комп’ютері"}, "copied": "Скопійовано"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Перейти до вмісту</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../uk/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Розділи"><a href="#how">Як це працює</a><a href="#text">Текст із зображення</a><a href="#translate">Переклад</a><a href="#features">Можливості</a><a href="#download">Завантажити</a><a href="#faq">Запитання</a><a href="#contact">Зв’язок</a></nav>
+    <details class="menu"><summary>Меню</summary><nav aria-label="Розділи"><a href="#how">Як це працює</a><a href="#text">Текст із зображення</a><a href="#translate">Переклад</a><a href="#features">Можливості</a><a href="#download">Завантажити</a><a href="#faq">Запитання</a><a href="#contact">Зв’язок</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Мова сторінки: </span>Українська</summary><ul><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk" aria-current="page">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div><h1 id="h1"><span class="kicker">Програма для скріншотів з редактором</span> <span class="h1-slogan">Один <mark>скріншот</mark> пояснює більше, ніж три абзаци</span></h1></div>
+      <div>
+        <p class="lead">Натисніть <kbd>Alt</kbd>+<kbd>W</kbd>, виділіть шматок екрана, поставте стрілку або номер і вставте в чат. Потрібен текст із зображення чи переклад? Вони в тому самому вікні. Безкоштовно для Windows і Linux.</p>
+        <div class="cta">
+          <a class="btn btn-main" href="#download" data-dl-main><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-dl-label>Завантажити безкоштовно</span></a>
+          <a class="btn btn-soft" href="#how">Як це працює</a>
+        </div>
+        <p class="dl-note" data-dl-note>Windows 10 і 11 · версія 1.31.0 · безкоштовно</p>
+      </div>
+    </div>
+    <ul class="badges"><li>Без реєстрації</li><li>Без реклами</li><li>Встановлення у Windows без прав адміністратора</li><li>Відкритий код, GPL-3.0-or-later</li><li>12 мов інтерфейсу</li></ul>
+    <div class="stage">
+      <div class="stage-side" aria-hidden="true"><span class="note">так виглядає програма</span><svg width="170" height="90" viewBox="0 0 170 90" aria-hidden="true"><path d="M20 8 C 30 50, 90 74, 150 74" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round"/><path d="M136 62 L152 74 L135 84" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div>
+        <div class="modes" role="tablist" aria-label="Що вміє ClipSD"><a class="mode" href="#shot-mark" role="tab" id="tab-mark" aria-controls="shot-mark" aria-selected="true" data-mode="mark"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 17 16 4M9 4h7v7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Позначити</a><a class="mode" href="#shot-text" role="tab" id="tab-text" aria-controls="shot-text" aria-selected="false" tabindex="-1" data-mode="text"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 6V2h4M14 2h4v4M18 14v4h-4M6 18H2v-4M6.5 7h7M10 7v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Копіювати текст</a><a class="mode" href="#shot-translate" role="tab" id="tab-translate" aria-controls="shot-translate" aria-selected="false" tabindex="-1" data-mode="translate"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 9 5 2l3 7M3 7h4M12 3h6M15 3v2c0 3-1.5 5-4 6M12.5 7c.8 2 2.6 3.5 5.5 4M10 18l3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Перекласти</a></div>
+        <figure class="print"><span class="tape" aria-hidden="true"></span>
+          <div class="shots"><div class="shot on" id="shot-mark" role="tabpanel" aria-labelledby="tab-mark"><img src="../img/uk/hero-mark.webp" width="1600" height="1139" alt="Редактор ClipSD: на знімку звіту стоять номери 1, 2, 3, виноска «Субота: +38%», маркер, розмитий номер картки й стрілка до кнопки" fetchpriority="high" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Стрілка, номери, виноска, маркер і розмиття. Усе ставиться мишею за кілька секунд.</p></div><div class="shot" id="shot-text" role="tabpanel" aria-labelledby="tab-text"><img src="../img/uk/hero-text.webp" width="1600" height="1139" alt="Редактор ClipSD у режимі тексту: слова англійського листа підсвічено, кілька фраз виділено жовтим маркером" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Режим «Маркер»: слова на знімку підсвічено, виділене жовтим уже в буфері обміну.</p></div><div class="shot" id="shot-translate" role="tabpanel" aria-labelledby="tab-translate"><img src="../img/uk/hero-translate.webp" width="1600" height="1139" alt="Редактор ClipSD: увесь знімок англійського листа перекладено українською, переклад лежить поверх тексту, знизу кнопки «Оригінал» і «Скопіювати переклад»" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Англійський лист на знімку, перекладений цілком кнопкою «Перекласти все».</p></div></div>
+          <p class="sr-only" aria-live="polite" data-stage-live></p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="center"><h2 id="h-how">Три кроки, і все зрозуміло</h2><p>Без реєстрації та без завантаження на сайт. Кожен знімок сам зберігається в папку Screenshots або «Скриншоты» всередині Downloads, а Enter у редакторі кладе його в буфер обміну.</p></div>
+    <ol class="steps">
+      <li><div class="t"><span class="num" aria-hidden="true">1</span><h3>Натисніть Alt+W і виділіть область</h3></div><p>Екран завмирає. Виділіть мишею потрібний шматок: лупа поруч із курсором допомагає потрапити точно в край. Enter відкриває редактор.</p><figure class="print"><img src="../img/uk/step-select.webp" width="1100" height="778" alt="Виділення області в ClipSD: рамка навколо звіту, розмір області та кнопки під рамкою, серед них «Перекласти виділене» і «Перекласти весь екран»" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">2</span><h3>Позначте головне</h3></div><p>Стрілка, номер, рамка, підпис або маркер. Обличчя й адреси ховає розмиття.</p><figure class="print"><img src="../img/uk/hero-mark.webp" width="1600" height="1139" alt="Редактор ClipSD з позначками на знімку" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">3</span><h3>Вставте в чат</h3></div><p>Enter копіює знімок. Вставте його в месенджер, лист чи документ звичним Ctrl+V.</p>
+        <figure class="print"><div class="chat" role="img" aria-label="Приклад листування: знімок із позначками надіслано в чат, співрозмовник відповів, що знайшов кнопку">
+          <div class="bubble them">Де тут кнопка надсилання?</div>
+          <div class="bubble"><img src="../img/uk/hero-mark.webp" width="1600" height="1139" alt="" loading="lazy" decoding="async" sizes="210px"><span>Кнопка ось тут, під номером 3</span></div>
+          <div class="bubble them">Знайшов, усе зрозуміло</div>
+        </div></figure></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec-alt sec-text" id="text" aria-labelledby="h-text">
+  <div class="wrap row">
+    <div class="row-text">
+      <span class="kicker">Текст із зображення</span>
+      <h2 id="h-text">Текст, який не виділяється мишею, тепер можна скопіювати</h2>
+      <p>Скан договору, вікно з помилкою, кадр із відео, фото вивіски. Виділіть місце, натисніть «Копіювати текст» або <kbd>Ctrl</kbd>+<kbd>T</kbd>, і слова на зображенні виділяються, як у звичайному документі. Це розпізнавання тексту (OCR): воно працює на вашому комп'ютері, без інтернету.</p>
+      <ul class="ticks"><li>Режим «Поспіль»: натисніть на слово й ведіть курсор, текст виділятиметься в порядку читання. Режим «Маркер»: проведіть по словах, буде взято лише те, чого ви торкнулися.</li><li>Виділене одразу в буфері обміну. У вікні поруч текст можна виправити перед вставкою.</li><li>Сторінка у два стовпці читається по стовпцях, рядки не змішуються.</li><li>Працює без інтернету. У Windows текст читає розпізнавання самої системи: мова тексту має бути встановлена у Windows. У Linux один раз встановлюється безкоштовна програма розпізнавання Tesseract: ClipSD покаже готову команду.</li></ul>
+    </div>
+    <div class="demo">
+      <figure class="print a"><span class="tape" aria-hidden="true"></span><img src="../img/uk/text-select.webp" width="1100" height="500" alt="Англійський лист на знімку: слова підсвічено, фразу про дату відвантаження виділено жовтим" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 640px"></figure>
+      <figure class="print b"><img src="../img/uk/text-window.webp" width="1100" height="475" alt="Вікно ClipSD «Текст із зображення» з розпізнаним текстом і кнопкою «Скопійовано»" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 600px"></figure>
+      <div class="hand" aria-hidden="true"><span class="note">виділили на зображенні, отримали звичайний текст</span><svg width="90" height="60" viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 30 6, 60 16, 78 40" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M64 38 L79 42 L82 26" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-tr" id="translate" aria-labelledby="h-tr">
+  <div class="wrap">
+    <div class="row flip">
+      <div class="demo tr">
+        <figure class="print a"><img src="../img/uk/tr-original.webp" width="1040" height="764" alt="Лист про доставку посилки англійською мовою на екрані" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 500px"></figure>
+        <figure class="print b"><img src="../img/uk/tr-window.webp" width="1240" height="774" alt="Віконце ClipSD з українським перекладом листа поверх тексту" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 560px"><figcaption>Переклад поверх листа за пару секунд</figcaption></figure>
+        <div class="hand" aria-hidden="true"><span class="note">було на екрані</span><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M8 54 C 4 34, 14 16, 34 8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M20 6 L35 8 L30 22" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="row-text">
+        <span class="kicker">Переклад на екрані</span>
+        <h2 id="h-tr">Лист іноземною мовою можна прочитати своєю</h2>
+        <p>Натисніть <kbd>Alt</kbd>+<kbd>W</kbd>, виділіть іншомовний текст і натисніть «Перекласти виділене» або <kbd>Ctrl</kbd>+<kbd>L</kbd>. Увесь монітор одразу: «Перекласти весь екран» або <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>; перекладається монітор, на якому стоїть рамка або курсор. Переклад з’являється віконцем на місці тексту, як у перекладачі з камери телефона.</p>
+        <ul class="ticks"><li>За замовчуванням переклад мовою програми. Іншу з 20 мов вибирають кнопкою на самому віконці.</li><li>Кнопка «Копіювати» забирає переклад у буфер, «Оригінал» показує вихідний текст. Віконце можна відсунути вбік і працювати далі.</li><li>У редакторі є здвоєна кнопка: «Перекласти все» перекладає весь знімок (Shift+Y), «Виділене» лише шматок, який ви виділите (Y). Переклад лежить поверх знімка й у збережений знімок не потрапляє.</li></ul>
+      </div>
+    </div>
+    <h3 class="sr-only" id="h-limits">Скільки можна перекладати безкоштовно</h3>
+    <ul class="limits" aria-labelledby="h-limits"><li class="limit"><p class="n">5&nbsp;000</p><p class="u">знаків на день</p><p>Одразу після встановлення, без реєстрації.</p></li><li class="limit"><p class="n">50&nbsp;000</p><p class="u">знаків на день</p><p>Якщо вказати свою пошту у вікні перекладу. Підтверджувати її не треба.</p></li><li class="limit"><p class="n">500&nbsp;000</p><p class="u">знаків на місяць</p><p>Зі своїм ключем Google Cloud. Google попросить прив’язати банківську картку. Програма проведе вас крок за кроком.</p></li></ul>
+    <p class="honest"><b>Що йде в інтернет.</b> Тільки текст, який ви надіслали на переклад: він іде в сервіс перекладу MyMemory або Google. Якщо ви вказали пошту, вона передається в MyMemory разом із запитом. Сам знімок залишається на комп’ютері. Текст із зображення розпізнається на вашому комп’ютері й нікуди не надсилається. Крім перекладу, програма раз на добу питає в GitHub, чи немає нової версії; це вимикається в налаштуваннях.</p>
+  </div>
+</section>
+
+<section class="sec sec-alt" aria-labelledby="h-uses">
+  <div class="wrap">
+    <div class="center"><h2 id="h-uses">Коли це стане в пригоді</h2></div>
+    <ul class="uses"><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><circle cx="16" cy="22" r="6" fill="#c8102e"/><circle cx="30" cy="30" r="6" fill="#c8102e"/><circle cx="42" cy="38" r="6" fill="#c8102e"/><text x="16" y="25" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">1</text><text x="30" y="33" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">2</text><text x="42" y="41" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">3</text></svg><h3>Інструкція за хвилину</h3><p>Номери 1, 2, 3 просто на знімку. Готова пам’ятка для співробітника, клієнта або для себе за пів року.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><ellipse cx="28" cy="27" rx="13" ry="8" fill="none" stroke="#c8102e" stroke-width="3"/></svg><h3>Показати помилку</h3><p>Колезі або в підтримку: обвели місце, підписали, що не так. Перепитувати не доведеться.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><path d="M16 36 L34 20 M26 20h8v8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Допомогти рідним</h3><p>Де на сайті кнопка і куди натиснути далі. Стрілка пояснить краще, ніж розмова телефоном.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><g opacity=".9"><rect x="14" y="20" width="7" height="7" fill="#8a94a3"/><rect x="21" y="20" width="7" height="7" fill="#c3cad3"/><rect x="28" y="20" width="7" height="7" fill="#9aa4b1"/><rect x="35" y="20" width="7" height="7" fill="#d5dae1"/><rect x="14" y="27" width="7" height="7" fill="#c3cad3"/><rect x="21" y="27" width="7" height="7" fill="#8a94a3"/><rect x="28" y="27" width="7" height="7" fill="#d5dae1"/><rect x="35" y="27" width="7" height="7" fill="#9aa4b1"/></g></svg><h3>Сховати особисте</h3><p>Обличчя й адреси ховає розмиття. Номер картки та пароль закриває зафарбований прямокутник.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#6d28d9" stroke-width="3"/><rect x="13" y="18" width="22" height="6" rx="2" fill="#ffd65a"/><rect x="13" y="28" width="30" height="4" rx="2" fill="#c9bdf0"/><rect x="13" y="35" width="18" height="4" rx="2" fill="#c9bdf0"/></svg><h3>Дістати текст</h3><p>Номер замовлення зі скана, адреса з фотографії, текст помилки з вікна. Копіюється без передруковування.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#0b7d74" stroke-width="3"/><text x="18" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">A</text><path d="M25 27h7m0 0-3-3m3 3-3 3" fill="none" stroke="#c8102e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><text x="41" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">Я</text></svg><h3>Зрозуміти чужу мову</h3><p>Лист постачальника, кнопки в програмі, інструкція в PDF. Переклад з’являється поверх оригіналу.</p></li></ul>
+  </div>
+</section>
+
+<section class="sec" id="features" aria-labelledby="h-feat">
+  <div class="wrap">
+    <div class="feat">
+      <div class="side"><h2 id="h-feat">Усе, що всередині</h2><p>19 інструментів, у кожного своя літера. Можна працювати мишею, а можна з клавіатури.</p><p class="note f1">Знайомство з інструментами: <kbd>F1</kbd> у редакторі</p></div>
+      <ul><li><h3>Стрілки й лінії</h3><p>Прямі, двобічні, від руки, плавні. З Shift рівно під 45°.</p></li><li><h3>Номери й виноски</h3><p>Кружечки 1, 2, 3 із вказівником і хмаринки з текстом.</p></li><li><h3>Маркер і текст</h3><p>Виділіть рядок жовтим, підпишіть будь-яким кольором.</p></li><li><h3>Розмиття</h3><p>Обличчя й адреси перетворюються на квадрати. Номер картки та пароль надійніше закрити зафарбованим прямокутником: R із Ctrl.</p></li><li><h3>Обрізання у два кроки</h3><p>Потягніть рамку, відкоригуйте краї, натисніть Enter. До Enter знімок цілий.</p></li><li><h3>Масштаб</h3><p>Ctrl і колесо миші наближають дрібні деталі. «Вмістити» повертає знімок цілком.</p></li><li><h3>Вибір монітора</h3><p>Знімок усього екрана: усі монітори одразу або один із них.</p></li><li><h3>Перенесення позначок</h3><p>Затисніть праву кнопку миші й перетягніть будь-яку позначку. Інструмент міняти не треба.</p></li><li><h3>Та сама область</h3><p>Наступний Alt+W підсвічує попередню рамку: виділяти заново не треба.</p></li><li><h3>Буфер і файл</h3><p>У редакторі Enter копіює знімок. Кожен знімок сам зберігається у PNG або JPEG.</p></li><li><h3>Зображення поверх знімка</h3><p>Вставте друге зображення з буфера, з файлу або новим знімком.</p></li><li><h3>Світла й темна тема</h3><p>Два оформлення та власні кольори рамки й панелей.</p></li><li><h3>Ваша мова</h3><p>12 мов інтерфейсу. Мову вибирають під час першого запуску, змінити її можна в налаштуваннях або в меню значка біля годинника.</p></li></ul>
+    </div>
+    <div class="trio"><figure class="print"><img src="../img/uk/trio-crop.webp" width="1000" height="712" alt="Обрізання в редакторі ClipSD: рамка з розміром і кнопки «Обрізати» та «Скасувати»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Обрізання: рамка, потім Enter</figcaption></figure><figure class="print"><img src="../img/uk/trio-zoom.webp" width="912" height="640" alt="Нижня панель редактора ClipSD: розмір знімка, кнопки масштабу та «Вмістити»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Масштаб і «Вмістити» внизу вікна</figcaption></figure><figure class="print"><img src="../img/uk/trio-monitors.webp" width="1000" height="702" alt="Вікно «Знімок усього екрана» з кнопками «Усі монітори», «Монітор 1», «Монітор 2»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Весь екран: який монітор знімати</figcaption></figure></div>
+  </div>
+</section>
+<section class="sec sec-alt" id="look" aria-labelledby="h-look">
+  <div class="wrap">
+    <div class="center"><h2 id="h-look">Світла чи темна</h2><p>Виберіть під час першого запуску, змініть у налаштуваннях будь-коли.</p></div>
+    <div class="duo">
+      <figure class="print"><img src="../img/uk/hero-mark.webp" width="1600" height="1139" alt="Редактор ClipSD у світлому оформленні" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Стандартне, світле</figcaption></figure>
+      <figure class="print"><img src="../img/uk/theme-dark.webp" width="1200" height="853" alt="Редактор ClipSD у темному оформленні" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Професійне, темне</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="download" aria-labelledby="h-dl">
+  <div class="wrap">
+    <div class="dl-box">
+      <h2 id="h-dl">Завантажити ClipSD 1.31.0 безкоштовно для Windows і Linux</h2>
+      <p class="guess">Схоже, ви користуєтеся <b data-os-name>Windows або Linux</b>. Потрібний файл позначено.</p>
+      <div class="dl">
+        <article class="os" data-os-card="windows" id="dl-windows"><span class="mine">Ваша система</span>
+          <h3>Windows</h3><p>Windows 10 і 11, 64-розрядна версія. Звичайний інсталятор, права адміністратора не потрібні.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Завантажити безкоштовно для Windows</span></a><p class="dl-note">ClipSD-1.31.0-Setup.exe · 31 МБ · версія 1.31.0</p><p class="sum"><span>Контрольна сума SHA-256:</span> <code>962e75f3ae1029431421410144ea3cf79675b416e221c522383ba4a2e8bfea19</code></p>
+          <ul><li>Значок з’явиться біля годинника. ClipSD запускається разом із Windows, позначку можна зняти в інсталяторі</li><li>Текст із зображення читає розпізнавання, вбудоване у Windows</li><li>Текст певною мовою розпізнається, якщо ця мова встановлена у Windows</li></ul></article>
+        <article class="os" data-os-card="linux" id="dl-linux"><span class="mine">Ваша система</span>
+          <h3>Linux</h3><p>Ubuntu 22.04 і новіші, Debian 12, Fedora, Mint та подібні, 64-розрядні. X11 і Wayland.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Завантажити безкоштовно для Linux</span></a><p class="dl-note">ClipSD-1.31.0-linux-x86_64.tar.gz · 72 МБ · версія 1.31.0</p><p class="sum"><span>Контрольна сума SHA-256:</span> <code>6b10322076d97d1ea353675c31bc7acbf8364577713c22aa84c7fd63e23ba1bd</code></p>
+          <p class="cmd-label">Розпакуйте архів і виконайте в терміналі:</p>
+          <div class="cmd"><pre id="cmd-linux">tar -xzf ClipSD-1.31.0-linux-x86_64.tar.gz
+cd clipsd-1.31.0
+bash install.sh</pre><button type="button" data-copy="cmd-linux" hidden>Копіювати</button></div>
+          <ul><li>Для встановлення не потрібні ні пароль адміністратора, ні інтернет: Python і бібліотеки вікон уже всередині архіву</li><li>Програма ставиться в ~/.local/share/clipsd, запускається командою clipsd і стартує під час входу в систему</li><li>У GNOME Alt+W призначається сам і після повторного входу працює на обох розкладках. У сеансі X11 ClipSD ловить Alt+W сам. В інших випадках призначте комбінацію в налаштуваннях клавіатури на команду <code class="cmdline">clipsd --region</code></li><li>Для тексту із зображення один раз встановлюється Tesseract. Це одна команда з паролем адміністратора, ClipSD її покаже</li></ul></article>
+      </div>
+      <div class="help">
+        <div><h3>Windows показала синє вікно?</h3><p class="muted">У програми поки немає платного цифрового підпису, тому Windows питає. Це дві кнопки:</p><ol><li><span class="num" aria-hidden="true">1</span><span>Натисніть «Детальніше»</span></li><li><span class="num" aria-hidden="true">2</span><span>Натисніть «Виконати в будь-якому разі»</span></li></ol>
+          <p class="small">Браузер може попередити, що файл завантажують рідко. Це означає лише, що програма нова. Звірте контрольну суму SHA-256 із цифрами поруч із кнопкою.</p>
+          <p class="small"><a href="../uk/code-signing.html">Як перевірити, що файл справжній: підпис і контрольні суми</a></p></div>
+        <div class="ss" aria-hidden="true"><strong>Windows захистила ваш ПК</strong>Фільтр SmartScreen у Microsoft Defender запобіг запуску нерозпізнаної програми.<br><span class="more">Детальніше<span class="n n1">1</span></span>
+          <div class="rowb"><span class="run">Виконати в будь-якому разі<span class="n n2">2</span></span><span>Не виконувати</span></div></div>
+      </div>
+      <div class="extra">
+        <div><div class="letter" id="update"><h3>Нові версії</h3><ol class="how"><li><span class="num" aria-hidden="true">1</span><p>ClipSD раз на добу сам перевіряє, чи є нова версія, і пропонує її поставити: «Оновити», «Пізніше» або «Пропустити цю версію». Перевірити одразу: меню значка біля годинника, «Перевірити оновлення».</p></li><li><span class="num" aria-hidden="true">2</span><p>Файл оновлення перевіряється цифровим підписом і контрольною сумою. Якщо нова версія не запуститься, сама повернеться попередня. Поки в редакторі є незбережені позначки, оновлення чекає.</p></li><li><span class="num" aria-hidden="true">3</span><p>Якщо у вас ClipSD 1.29 або давніша версія, на нову версію треба перейти один раз вручну: завантажте файл на цій сторінці й встановіть його поверх наявної версії. Налаштування, ключ перекладу та знімки зберігаються. Автоматичну перевірку можна вимкнути в налаштуваннях, розділ «Запуск».</p></li></ol></div>
+          <div class="news" id="news"><h3>Що нового у 1.31.0</h3><p class="rdate">Дата випуску: <time datetime="2026-11-19">19 листопада 2026</time></p><ul><li>Інтерфейс 12 мовами: мову вибирають під час першого запуску й змінюють у налаштуваннях або в меню значка</li><li>ClipSD оновлюється сам: раз на добу перевіряє нову версію й ставить її кнопкою «Оновити»</li><li>Оновлення перевіряється цифровим підписом, у разі збою повертається попередня версія</li><li>Linux: готова збірка, встановлення без пароля адміністратора й без інтернету</li></ul><p class="allver"><a href="../uk/changes.html">Усі версії</a></p></div>
+          <div class="remove" id="remove"><h3>Як видалити</h3><ul><li>Windows: «Параметри», розділ «Програми», ClipSD, «Видалити». Або ярлик «Видалити ClipSD» у меню «Пуск». Програма видалення спитає, чи видаляти й налаштування зі знімками ClipSD; без позначки налаштування в %APPDATA%\ClipSD і знімки залишаються.</li><li>Linux: у терміналі виконайте bash ~/.local/share/clipsd/current/uninstall.sh. Він прибирає програму, ярлик у меню, автозапуск, комбінацію Alt+W і розширення GNOME «ClipSD: hotkeys». Налаштування в ~/.config/clipsd і знімки залишаються; щоб видалити й їх, виконайте той самий файл із ключем --purge.</li></ul></div></div>
+        <div>
+          <div class="src" id="source"><h3>Вихідний код</h3><p class="muted">ClipSD поширюється за ліцензією GNU GPL v3 або новішою версією. Вихідний код кожної версії лежить на GitHub поруч із файлами випуску.</p><p><a href="https://github.com/clipsd/clipsd/releases/tag/v1.31.0">Вихідний код цієї версії на GitHub</a></p><p><a href="https://github.com/clipsd/clipsd">GitHub</a></p></div>
+          <div class="req"><h3>Що потрібно комп’ютеру</h3><ul><li>64-розрядна версія Windows 10 або Windows 11</li><li>Linux x86-64: Ubuntu 22.04, Debian 12, Fedora 36 і новіші (glibc 2.35 і новіша)</li><li>Інтернет потрібен лише для перекладу й оновлень</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="learn" aria-labelledby="h-learn">
+  <div class="wrap">
+    <div class="center"><h2 id="h-learn">Розібратися за три хвилини</h2><p>Програма сама показує, де що. Нижче відповіді на часті запитання.</p></div>
+    <div class="learn">
+      <ol class="how tips"><li><span class="num" aria-hidden="true">1</span><p>Під час першого запуску ClipSD запропонує вибрати оформлення й познайомить вас із редактором.</p></li><li><span class="num" aria-hidden="true">2</span><p>Кнопка «?» або F1 у редакторі повторює знайомство з інструментами.</p></li><li><span class="num" aria-hidden="true">3</span><p>Наведіть мишу на кнопку: підказка покаже, що вона робить і яка в неї клавіша.</p></li></ol>
+      <div class="faq" id="faq"><h3 class="faq-h">Часті запитання</h3><details><summary>Де завантажити ClipSD безкоштовно і чи справді вона безкоштовна?</summary><p>Так. ClipSD можна завантажити на цій сторінці, у розділі завантаження: інсталятор для Windows і архів для Linux. Без реклами, пробного періоду й платних функцій. Вихідний код відкритий за ліцензією GNU GPL v3 або новішою версією: його можна читати, перевіряти й покращувати.</p></details><details><summary>Як зробити скріншот частини екрана?</summary><p>Натисніть Alt+W у будь-якій програмі й виділіть область мишею. Enter відкриє знімок у редакторі, Ctrl+C скопіює його й закриє вікно. Те саме робить клік по значку ClipSD біля годинника.</p></details><details><summary>Як зробити знімок усього екрана?</summary><p>Після Alt+W клацніть, не виділяючи, або натисніть кнопку «Весь екран» (Ctrl+A). Якщо моніторів кілька, виберіть усі одразу або один.</p></details><details><summary>Як сховати на скріншоті номер картки чи обличчя?</summary><p>Номер картки, пароль та інші важливі дані закрийте зафарбованим прямокутником: виберіть «Прямокутник» (клавіша R) і малюйте із затиснутим Ctrl. Обличчя й адреси можна сховати «Розмиттям» (клавіша B): місце перетворюється на квадрати й не читається з першого погляду, але великий текст під квадратами іноді можна розібрати.</p></details><details><summary>Як скопіювати текст із зображення?</summary><p>Натисніть Alt+W, виділіть місце з текстом і натисніть «Копіювати текст» (Ctrl+T). Слова підсвітяться: проведіть по потрібних мишею, і вони вже в буфері обміну. У редакторі те саме робить кнопка «Копіювати текст» або клавіша I.</p></details><details><summary>Як перекласти текст на екрані?</summary><p>Натисніть Alt+W, виділіть текст і натисніть «Перекласти виділене» (Ctrl+L). «Перекласти весь екран» (Ctrl+Shift+L) одразу перекладає монітор, на якому стоїть рамка або курсор. У редакторі є здвоєна кнопка: «Перекласти все» (Shift+Y) перекладає весь знімок, «Виділене» (Y) шматок, який ви виділите.</p></details><details><summary>Скільки можна перекладати безкоштовно?</summary><p>5 000 знаків на день одразу, без реєстрації. Якщо вказати пошту, 50 000 знаків на день. Зі своїм ключем Google Cloud 500 000 знаків на місяць, для ключа Google попросить банківську картку. Якщо підключено обидва сервіси, коли ліміт одного вичерпано, ClipSD сам переходить на другий.</p></details><details><summary>Що ClipSD надсилає в інтернет?</summary><p>Лише текст, який ви надіслали на переклад, і пошту для MyMemory, якщо ви її вказали. Скріншоти, буфер обміну й імена файлів не залишають комп’ютер. Сама програма лише раз на добу перевіряє на GitHub, чи є нова версія; це вимикається в налаштуваннях, розділ «Запуск».</p></details><details><summary>Чи потрібен інтернет?</summary><p>Для знімка, редактора, збереження й тексту із зображення інтернет не потрібен. Він потрібен перекладу й оновленням.</p></details><details><summary>Куди зберігаються скріншоти?</summary><p>Кожен знімок одразу зберігається в папку всередині Downloads, після правок файл оновлюється. У Windows це Downloads\Screenshots. У Linux це «Загрузки/Скриншоты», якщо в домашній папці є «Загрузки», інакше Downloads/Screenshots. Папку й формат змінюють у налаштуваннях. Ctrl+S зберігає у файл і закриває редактор; за замовчуванням питає, куди зберегти, у налаштуваннях це запитання вимикається. Enter копіює знімок у буфер обміну.</p></details><details><summary>Чи працює ClipSD у Linux на Wayland?</summary><p>Так, у сеансах X11 і Wayland. У GNOME ClipSD встановлює власне розширення, щоб Alt+W працював на обох розкладках. В інших оболонках на Wayland комбінацію призначають у налаштуваннях клавіатури на команду <code class="cmdline">clipsd --region</code>.</p></details><details><summary>Що робити, якщо Alt+W не спрацьовує?</summary><p>Перевірте, що значок ClipSD є біля годинника: програма має бути запущена. У Linux із GNOME після встановлення вийдіть із системи й увійдіть знову, до цього Alt+W працює лише на латинській розкладці. В інших оболонках на Wayland призначте комбінацію в налаштуваннях клавіатури на команду <code class="cmdline">clipsd --region</code>. Якщо Alt+W зайнято іншою програмою, виберіть свою комбінацію в налаштуваннях ClipSD, розділ «Гарячі клавіші». Знімок області можна зробити й кліком по значку біля годинника.</p></details><details><summary>Чи можна замінити Alt+W іншою комбінацією?</summary><p>Так. У налаштуваннях, розділ «Гарячі клавіші», увімкніть потрібні Ctrl, Shift, Alt або Win і виберіть клавішу. Або натисніть «Записати…» і саму комбінацію.</p></details><details><summary>Як поставити нову версію?</summary><p>ClipSD ставить нові версії сам: раз на добу перевіряє й пропонує «Оновити». Перевірити одразу: меню значка, «Перевірити оновлення». Якщо у вас версія 1.29 або давніша, один раз завантажте нову версію на цій сторінці й встановіть її поверх наявної. Налаштування й знімки зберігаються.</p></details><details><summary>Чому Windows показує синє вікно під час встановлення?</summary><p>У ClipSD поки немає платного цифрового підпису. Натисніть «Детальніше», потім «Виконати в будь-якому разі». Справжність файлу можна перевірити за контрольною сумою SHA-256 поруч із кнопкою завантаження.</p></details><details><summary>Чим ClipSD відрізняється від вбудованих «Ножиць» Windows?</summary><p>ClipSD працює й у Linux, так само, як у Windows. У редакторі є номери з вказівником і виноски, а текст на екрані можна перекласти. ClipSD пам’ятає попередню область, і наступний знімок того самого місця робиться одним Enter.</p></details></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="h-about">
+  <div class="wrap">
+    <div class="author">
+      <div class="logo-big"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg></div>
+      <div><h2 id="h-about">Про програму</h2><p>ClipSD створює Сергій Дайнеко.</p><p>ClipSD безкоштовна, без реєстрації та реклами, з відкритим вихідним кодом.</p><p>Цю програму я робив насамперед для себе, для власних завдань. Усіма функціями, які в ній є, я користуюся сам щодня. Хочу, щоб і інші люди могли нею користуватися та оцінити, наскільки це зручно.</p>
+        <p class="sign">Автор: Сергій Дайнеко<span>Ліцензія: GNU GPL v3 або новіша</span></p></div>
+    </div>
+  </div>
+</section>
+<section class="sec sec-alt" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="center"><h2 id="h-contact">Напишіть авторові</h2><p>Запитання, помилка чи ідея. Опишіть, що робили й що сталося, і додайте знімок: так розібратися швидше.</p>
+      <p class="mail">Пошта: <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a></p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../uk/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Скріншоти з редактором для Windows і Linux. Безкоштовно, з відкритим кодом.</p><p class="small">На сайті немає лічильників відвідувань, реклами й cookies.</p></div>
+    <div><h2>Програма</h2><ul><li><a href="../uk/#download">Завантажити</a></li><li><a href="../uk/#source">Вихідний код</a></li><li><a href="../uk/#contact">Зв’язок</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Документи</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">Ліцензія GPL-3.0-or-later</a></li><li><a href="../uk/changes.html">Історія версій</a></li><li><a href="../uk/privacy.html">Конфіденційність</a></li><li><a href="../uk/code-signing.html">Підпис і перевірка файлів</a></li><li><a href="../ru/third-party.html">Сторонні компоненти</a></li></ul></div>
+    <div><h2>Мови</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Сергій Дайнеко. ClipSD поширюється за ліцензією GNU GPL v3 або новішою, без жодних гарантій.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

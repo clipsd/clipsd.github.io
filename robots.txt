@@ -1,0 +1,6 @@
+# ClipSD site: everything is public, all crawlers are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://clipsd.github.io/sitemap.xml
+# ClipSD described in plain text: https://clipsd.github.io/llms.txt and https://clipsd.github.io/llms-full.txt

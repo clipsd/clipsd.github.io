@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk" data-lang="uk" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: підпис і перевірка файлів · ClipSD</title>
+<meta name="description" content="Як перевірити, що файл ClipSD справжній: контрольні суми SHA-256, вихідний код і чому Windows показує синє вікно.">
+<link rel="canonical" href="https://clipsd.github.io/uk/code-signing.html">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/code-signing.html">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/code-signing.html">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/code-signing.html">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/code-signing.html">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/code-signing.html">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/code-signing.html">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/code-signing.html">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/code-signing.html">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/code-signing.html">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/code-signing.html">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/code-signing.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/code-signing.html">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/en/code-signing.html">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: підпис і перевірка файлів">
+<meta property="og:description" content="Як перевірити, що файл ClipSD справжній: контрольні суми SHA-256, вихідний код і чому Windows показує синє вікно.">
+<meta property="og:url" content="https://clipsd.github.io/uk/code-signing.html">
+<meta property="og:image" content="https://clipsd.github.io/og/uk.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Один скріншот пояснює більше, ніж три абзаци">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Перейти до вмісту</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../uk/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Розділи"><a href="../uk/#how">Як це працює</a><a href="../uk/#text">Текст із зображення</a><a href="../uk/#translate">Переклад</a><a href="../uk/#features">Можливості</a><a href="../uk/#download">Завантажити</a><a href="../uk/#faq">Запитання</a><a href="../uk/#contact">Зв’язок</a></nav>
+    <details class="menu"><summary>Меню</summary><nav aria-label="Розділи"><a href="../uk/#how">Як це працює</a><a href="../uk/#text">Текст із зображення</a><a href="../uk/#translate">Переклад</a><a href="../uk/#features">Можливості</a><a href="../uk/#download">Завантажити</a><a href="../uk/#faq">Запитання</a><a href="../uk/#contact">Зв’язок</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Мова сторінки: </span>Українська</summary><ul><li><a href="../ru/code-signing.html" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/code-signing.html" hreflang="en" lang="en">English</a></li><li><a href="../bg/code-signing.html" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/code-signing.html" hreflang="uk" lang="uk" aria-current="page">Українська</a></li><li><a href="../de/code-signing.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/code-signing.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/code-signing.html" hreflang="es" lang="es">Español</a></li><li><a href="../it/code-signing.html" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/code-signing.html" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/code-signing.html" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/code-signing.html" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/code-signing.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main" class="doc"><a class="back" href="../uk/">&larr; Головна</a>
+<h1>ClipSD: підпис і перевірка файлів</h1>
+<h2>Чи підписано файли</h2>
+<p>Поки ні. Інсталятор для Windows не підписано цифровим сертифікатом: платний підпис коштує грошей щороку, а безкоштовний для відкритих проєктів ще не оформлено. Тому під час першого запуску Windows показує синє вікно SmartScreen. Натисніть «Детальніше», потім «Виконати в будь-якому разі».</p>
+<p>Оновлення програма ставить сама, але лише підписані. Опис нової версії (<code>latest.json</code>) підписано ключем автора (Ed25519); відкрита частина ключа вшита в програму. Програма відкидає опис без правильного підпису, з простроченим терміном дії або з версією, старішою за ту, яку програма вже бачила, а завантажений файл перевіряє за розміром і сумою SHA-256 з підписаного опису. Закритий ключ зберігається в автора окремо від GitHub, тому навіть той, хто підмінить файли на GitHub, не зможе видати їх за оновлення.</p>
+<h2>Як перевірити, що файл справжній</h2>
+<p>Поруч із кожною кнопкою завантаження на сайті є контрольна сума SHA-256: відбиток файла з 64 символів. Якщо файл змінився хоч на один байт, відбиток буде іншим. Список сум лежить поруч із файлами випуску на GitHub і на сайті: <code>downloads/SHA256SUMS</code>.</p>
+<p>Windows, PowerShell:</p>
+<pre><code>Get-FileHash .\ClipSD-&lt;version&gt;-Setup.exe -Algorithm SHA256</code></pre>
+<p>Linux, термінал:</p>
+<pre><code>sha256sum ClipSD-&lt;version&gt;-linux-x86_64.tar.gz</code></pre>
+<p>Порівняйте результат із сумою на сайті. Якщо збігається, файл той самий, що опублікував автор. Якщо ні, не запускайте його й напишіть авторові.</p>
+<h2>Де брати файли</h2>
+<p>Лише в розділі завантаження на сайті ClipSD або на сторінці випуску на GitHub: <a href="https://github.com/clipsd/clipsd/releases">https://github.com/clipsd/clipsd/releases</a> . Кнопки сайту ведуть туди ж. Сайти-каталоги програм можуть перепакувати інсталятор зі своїми доповненнями.</p>
+<h2>Вихідний код</h2>
+<p>ClipSD поширюється за ліцензією GNU GPL v3. Вихідний код кожної версії лежить на GitHub: <a href="https://github.com/clipsd/clipsd">https://github.com/clipsd/clipsd</a> , на сторінці випуску v&lt;version&gt; є архіви вихідного коду. Ви можете самі зібрати програму й порівняти.</p>
+<h2>Повідомте про підозрілий файл</h2>
+<p>Якщо ви знайшли файл із назвою ClipSD, контрольна сума якого не збігається з сайтом або який поводиться підозріло, напишіть на <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a>.</p>
+</main>
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../uk/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Скріншоти з редактором для Windows і Linux. Безкоштовно, з відкритим кодом.</p><p class="small">На сайті немає лічильників відвідувань, реклами й cookies.</p></div>
+    <div><h2>Програма</h2><ul><li><a href="../uk/#download">Завантажити</a></li><li><a href="../uk/#source">Вихідний код</a></li><li><a href="../uk/#contact">Зв’язок</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Документи</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">Ліцензія GPL-3.0-or-later</a></li><li><a href="../uk/changes.html">Історія версій</a></li><li><a href="../uk/privacy.html">Конфіденційність</a></li><li><a href="../uk/code-signing.html">Підпис і перевірка файлів</a></li><li><a href="../ru/third-party.html">Сторонні компоненти</a></li></ul></div>
+    <div><h2>Мови</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Сергій Дайнеко. ClipSD поширюється за ліцензією GNU GPL v3 або новішою, без жодних гарантій.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

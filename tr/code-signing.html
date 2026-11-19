@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr" data-lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: imza ve dosya doğrulama · ClipSD</title>
+<meta name="description" content="Bir ClipSD dosyasının gerçek olduğu nasıl doğrulanır: SHA-256 sağlama toplamları, kaynak kodu ve Windows&#x27;un neden mavi bir pencere gösterdiği.">
+<link rel="canonical" href="https://clipsd.github.io/tr/code-signing.html">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/code-signing.html">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/code-signing.html">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/code-signing.html">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/code-signing.html">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/code-signing.html">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/code-signing.html">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/code-signing.html">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/code-signing.html">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/code-signing.html">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/code-signing.html">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/code-signing.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/code-signing.html">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/en/code-signing.html">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: imza ve dosya doğrulama">
+<meta property="og:description" content="Bir ClipSD dosyasının gerçek olduğu nasıl doğrulanır: SHA-256 sağlama toplamları, kaynak kodu ve Windows&#x27;un neden mavi bir pencere gösterdiği.">
+<meta property="og:url" content="https://clipsd.github.io/tr/code-signing.html">
+<meta property="og:image" content="https://clipsd.github.io/og/tr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bir ekran görüntüsü üç paragraftan fazlasını anlatır">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">İçeriğe geç</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../tr/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Bölümler"><a href="../tr/#how">Nasıl çalışır</a><a href="../tr/#text">Görüntüden metin</a><a href="../tr/#translate">Çeviri</a><a href="../tr/#features">Özellikler</a><a href="../tr/#download">İndir</a><a href="../tr/#faq">SSS</a><a href="../tr/#contact">İletişim</a></nav>
+    <details class="menu"><summary>Menü</summary><nav aria-label="Bölümler"><a href="../tr/#how">Nasıl çalışır</a><a href="../tr/#text">Görüntüden metin</a><a href="../tr/#translate">Çeviri</a><a href="../tr/#features">Özellikler</a><a href="../tr/#download">İndir</a><a href="../tr/#faq">SSS</a><a href="../tr/#contact">İletişim</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Sayfa dili: </span>Türkçe</summary><ul><li><a href="../ru/code-signing.html" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/code-signing.html" hreflang="en" lang="en">English</a></li><li><a href="../bg/code-signing.html" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/code-signing.html" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/code-signing.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/code-signing.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/code-signing.html" hreflang="es" lang="es">Español</a></li><li><a href="../it/code-signing.html" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/code-signing.html" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/code-signing.html" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/code-signing.html" hreflang="tr" lang="tr" aria-current="page">Türkçe</a></li><li><a href="../zh/code-signing.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main" class="doc"><a class="back" href="../tr/">&larr; Ana sayfa</a>
+<h1>ClipSD: imza ve dosya doğrulama</h1>
+<h2>Dosyalar imzalı mı?</h2>
+<p>Henüz değil. Windows yükleyicisi dijital bir sertifikayla imzalı değil: ücretli bir sertifika için her yıl ödeme yapmak gerekir, açık kaynaklı projeler için ücretsiz kod imzalama ise henüz ayarlanmadı. Windows&#x27;un ilk çalıştırmada mavi SmartScreen penceresini göstermesinin nedeni budur. “Ek bilgi”ye, ardından “Yine de çalıştır”a tıklayın.</p>
+<p>Program güncellemeleri kendisi kurar, ama yalnızca imzalı olanları. Yeni sürümün açıklaması (<code>latest.json</code>) yazarın anahtarıyla (Ed25519) imzalanır; anahtarın açık kısmı programın içine gömülüdür. Program geçerli imzası olmayan, süresi dolmuş ya da daha önce gördüğünden eski bir sürüm bildiren açıklamayı reddeder ve indirilen dosyayı imzalı açıklamadaki boyuta ve SHA-256 sağlama toplamına göre denetler. Özel anahtar yazarda, GitHub&#x27;dan ayrı saklanır; bu yüzden GitHub&#x27;daki dosyaları değiştiren biri bile onları güncelleme olarak sunamaz.</p>
+<h2>Bir dosyanın gerçek olup olmadığı nasıl doğrulanır</h2>
+<p>Web sitesindeki her indirme düğmesinin yanında bir SHA-256 sağlama toplamı vardır: dosyanın 64 karakterlik parmak izi. Dosya bir bayt bile değişirse, parmak izi farklı olur. Sağlama toplamlarının listesi GitHub&#x27;daki sürüm dosyalarının yanında ve web sitesindedir: <code>downloads/SHA256SUMS</code>.</p>
+<p>Windows, PowerShell:</p>
+<pre><code>Get-FileHash .\ClipSD-&lt;version&gt;-Setup.exe -Algorithm SHA256</code></pre>
+<p>Linux, terminal:</p>
+<pre><code>sha256sum ClipSD-&lt;version&gt;-linux-x86_64.tar.gz</code></pre>
+<p>Sonucu web sitesindeki toplamla karşılaştırın. Aynıysa, dosya yazarın yayımladığı dosyadır. Değilse, çalıştırmayın ve yazara yazın.</p>
+<h2>Dosyaları nereden almalı</h2>
+<p>Yalnızca ClipSD web sitesinin indirme bölümünden ya da GitHub&#x27;daki sürüm sayfasından: <a href="https://github.com/clipsd/clipsd/releases">https://github.com/clipsd/clipsd/releases</a> . Web sitesindeki düğmeler de oraya götürür. İndirme portalları yükleyiciyi kendi eklemeleriyle yeniden paketleyebilir.</p>
+<h2>Kaynak kodu</h2>
+<p>ClipSD, GNU GPL v3 lisansı altındadır. Her sürümün kaynak kodu GitHub&#x27;dadır: <a href="https://github.com/clipsd/clipsd">https://github.com/clipsd/clipsd</a> , v&lt;version&gt; sürüm sayfasında kaynak arşivleri bulunur. Programı kendiniz derleyip karşılaştırabilirsiniz.</p>
+<h2>Şüpheli bir dosyayı bildirin</h2>
+<p>Adı ClipSD olan ama sağlama toplamı web sitesindekiyle uyuşmayan ya da şüpheli davranan bir dosya bulursanız, <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a> adresine yazın.</p>
+</main>
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../tr/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Windows ve Linux için düzenleyicili ekran görüntüsü programı. Ücretsiz ve açık kaynak.</p><p class="small">Bu sitede ziyaretçi sayacı, reklam ya da çerez yoktur.</p></div>
+    <div><h2>Program</h2><ul><li><a href="../tr/#download">İndir</a></li><li><a href="../tr/#source">Kaynak kodu</a></li><li><a href="../tr/#contact">İletişim</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Belgeler</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0-or-later lisansı</a></li><li><a href="../tr/changes.html">Sürüm geçmişi</a></li><li><a href="../tr/privacy.html">Gizlilik</a></li><li><a href="../tr/code-signing.html">İmza ve dosya doğrulama</a></li><li><a href="../ru/third-party.html">Üçüncü taraf bileşenler</a></li></ul></div>
+    <div><h2>Diller</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Sergey Dayneko. ClipSD, GNU GPL v3 veya üzeri ile, hiçbir garanti olmadan dağıtılır.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

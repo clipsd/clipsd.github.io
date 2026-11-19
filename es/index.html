@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: programa de capturas de pantalla, Windows y Linux</title>
+<meta name="description" content="Descargar gratis un programa de capturas de pantalla para Windows y Linux: Alt+W, flechas, números, desenfoque. Texto de imagen (OCR) y traducción de pantalla.">
+<link rel="canonical" href="https://clipsd.github.io/es/">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: una captura anotada en cinco segundos">
+<meta property="og:description" content="Programa de capturas con editor: flechas, números, desenfoque, texto de imágenes y traducción en pantalla. Windows y Linux, gratis.">
+<meta property="og:url" content="https://clipsd.github.io/es/">
+<meta property="og:image" content="https://clipsd.github.io/og/es.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Una captura de pantalla dice más que tres párrafos">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "@id": "https://clipsd.github.io/#software",
+ "name": "ClipSD",
+ "url": "https://clipsd.github.io/es/",
+ "description": "Programa gratuito de capturas de pantalla con editor para Windows y Linux: capture una zona con Alt+W, añada flechas, números, llamadas, desenfoque, recorte, copie el texto de imágenes y traduzca el texto de la pantalla.",
+ "applicationCategory": "UtilitiesApplication",
+ "applicationSubCategory": "Programa de capturas con editor",
+ "operatingSystem": "Windows 10, Windows 11, Linux",
+ "softwareVersion": "1.31.0",
+ "softwareRequirements": "Windows 10/11 x64; Linux x86-64, Python 3.9+",
+ "inLanguage": [
+  "ru",
+  "en",
+  "bg",
+  "uk",
+  "de",
+  "fr",
+  "es",
+  "it",
+  "pt",
+  "pl",
+  "tr",
+  "zh-Hans"
+ ],
+ "isAccessibleForFree": true,
+ "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "EUR"
+ },
+ "downloadUrl": [
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe",
+  "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"
+ ],
+ "installUrl": "https://clipsd.github.io/es/#download",
+ "screenshot": "https://clipsd.github.io/img/es/hero-mark.webp",
+ "image": "https://clipsd.github.io/og/es.png",
+ "featureList": [
+  "Flechas y líneas: Rectas, con punta en los dos extremos, a mano alzada, suaves. Con Shift pulsado, ángulos exactos de 45°.",
+  "Números y llamadas: Círculos 1, 2, 3 con un puntero y bocadillos con texto.",
+  "Resaltador y texto: Marque una línea en amarillo y añada un rótulo del color que quiera.",
+  "Desenfoque: Las caras y las direcciones se convierten en cuadrados. El número de una tarjeta o una contraseña están más seguros bajo un rectángulo relleno: R con Ctrl.",
+  "Recorte en dos pasos: Arrastre un marco, ajuste los bordes y pulse Enter. Hasta que pulse Enter, la captura no se toca.",
+  "Zoom: Ctrl y la rueda del ratón acercan los detalles pequeños. «Ajustar» vuelve a mostrar la captura entera.",
+  "Elegir monitor: Captura de pantalla completa: todos los monitores a la vez o solo uno.",
+  "Mover marcas: Mantenga pulsado el botón derecho del ratón y arrastre cualquier marca. No hace falta cambiar de herramienta.",
+  "La misma zona otra vez: El siguiente Alt+W resalta el marco anterior: no hace falta volver a seleccionar la zona.",
+  "Portapapeles y archivo: Enter en el editor copia la captura. Cada captura se guarda sola como PNG o JPEG.",
+  "Imagen sobre una captura: Inserte una segunda imagen desde el portapapeles, desde un archivo o como una captura nueva.",
+  "Claro y oscuro: Dos temas, más sus propios colores para el marco y los paneles.",
+  "En su idioma: 12 idiomas de interfaz. El idioma se elige en el primer inicio y se puede cambiar en la configuración o en el menú del icono junto al reloj."
+ ],
+ "author": {
+  "@id": "https://clipsd.github.io/#author"
+ },
+ "releaseNotes": "https://clipsd.github.io/es/changes.html",
+ "datePublished": "2026-11-19",
+ "dateModified": "2026-11-19",
+ "fileSize": "31 MB / 72 MB",
+ "codeRepository": "https://github.com/clipsd/clipsd",
+ "sameAs": [
+  "https://github.com/clipsd/clipsd"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@type": "Person",
+ "@id": "https://clipsd.github.io/#author",
+ "name": "Sergey Dayneko",
+ "alternateName": "Сергей Дайнеко",
+ "sameAs": [
+  "https://github.com/clipsd"
+ ],
+ "@context": "https://schema.org"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "@id": "https://clipsd.github.io/es/#webpage",
+ "url": "https://clipsd.github.io/es/",
+ "name": "ClipSD: programa de capturas de pantalla, Windows y Linux",
+ "description": "Descargar gratis un programa de capturas de pantalla para Windows y Linux: Alt+W, flechas, números, desenfoque. Texto de imagen (OCR) y traducción de pantalla.",
+ "inLanguage": "es",
+ "isPartOf": {
+  "@id": "https://clipsd.github.io/#website"
+ },
+ "about": {
+  "@id": "https://clipsd.github.io/#software"
+ },
+ "dateModified": "2026-11-19"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "inLanguage": "es",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Dónde descargar ClipSD gratis y es realmente gratis?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Puede descargar ClipSD en esta página, en la sección de descarga: un instalador para Windows y un archivo para Linux. Sin anuncios, sin periodo de prueba, sin funciones de pago. El código fuente es abierto bajo la GNU GPL v3 o posterior: puede leerlo, comprobarlo y mejorarlo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo hacer una captura de una parte de la pantalla?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pulse Alt+W en cualquier programa y elija una zona con el ratón. Enter la abre en el editor y Ctrl+C la copia y cierra la ventana. Un clic en el icono de ClipSD junto al reloj hace lo mismo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo capturar toda la pantalla?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Después de Alt+W, haga clic sin seleccionar o pulse «Pantalla completa» (Ctrl+A). Con varios monitores, elija todos a la vez o uno de ellos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo ocultar el número de una tarjeta o una cara?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tape el número de una tarjeta, una contraseña y otros datos importantes con un rectángulo relleno: elija Rectángulo (tecla R) y dibuje con Ctrl pulsado. Las caras y las direcciones se pueden ocultar con Desenfoque (tecla B): el lugar se convierte en cuadrados y no se lee a simple vista, pero un texto grande bajo los cuadrados a veces se puede distinguir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo copiar el texto de una imagen?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pulse Alt+W, elija la zona con texto y pulse «Copiar texto» (Ctrl+T). Las palabras se iluminan: pase sobre las que necesite y quedan en el portapapeles. En el editor el botón «Copiar texto» o la tecla I hacen lo mismo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo traducir el texto de la pantalla?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pulse Alt+W, elija el texto y pulse «Traducir lo seleccionado» (Ctrl+L). «Traducir toda la pantalla» (Ctrl+Shift+L) traduce de una vez el monitor donde está el marco o el cursor. En el editor hay un botón doble: «Traducir todo» (Shift+Y) traduce toda la captura y «Selección» (Y) la parte que elija."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto puedo traducir gratis?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "5000 caracteres al día desde el primer momento, sin registro. Con un correo, 50 000 caracteres al día. Con su propia clave de Google Cloud, 500 000 caracteres al mes; para la clave Google pide una tarjeta bancaria. Si están conectados los dos servicios y uno se agota, ClipSD cambia al otro por sí mismo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué envía ClipSD a internet?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Solo el texto que usted envía para traducir y el correo para MyMemory si lo escribió. Las capturas, el portapapeles y los nombres de archivos nunca salen de su ordenador. Por su cuenta el programa solo consulta a GitHub una vez al día si hay una versión nueva; esto se desactiva en la configuración, sección «Inicio»."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Hace falta internet?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No para capturar, usar el editor, guardar ni para el texto de imágenes. Lo necesitan la traducción y las actualizaciones."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Dónde se guardan las capturas de pantalla?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Cada captura se guarda enseguida en una carpeta dentro de Descargas; tras las ediciones el archivo se actualiza. En Windows es Downloads\\Screenshots. En Linux es Downloads/Screenshots, o «Загрузки/Скриншоты» si en su carpeta personal hay una carpeta «Загрузки» en ruso. La carpeta y el formato se pueden cambiar en la configuración. Ctrl+S guarda en un archivo y cierra el editor; por defecto pregunta dónde guardar, y esa pregunta se puede desactivar en la configuración. Enter copia la captura al portapapeles."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Funciona ClipSD en Linux con Wayland?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, en sesiones X11 y Wayland. En GNOME, ClipSD instala su propia extensión para que Alt+W funcione con las dos distribuciones de teclado. En otros escritorios con Wayland, asigne en la configuración del teclado un atajo al comando clipsd --region."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué hago si Alt+W no hace nada?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Compruebe que el icono de ClipSD está junto al reloj: el programa tiene que estar en marcha. En Linux con GNOME, cierre sesión y vuelva a entrar después de instalar; hasta entonces Alt+W funciona solo con la distribución de teclado latina. En otros escritorios con Wayland, asigne en la configuración del teclado un atajo al comando clipsd --region. Si otro programa usa Alt+W, elija su propio atajo en la configuración de ClipSD, sección Atajos de teclado. También puede capturar una zona con un clic en el icono junto al reloj."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo cambiar Alt+W por otro atajo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. En la configuración, sección Atajos de teclado, active Ctrl, Shift, Alt o Win y elija una tecla. O pulse «Grabar…» y después el propio atajo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo instalo una versión nueva?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD instala solo las versiones nuevas: una vez al día comprueba y ofrece «Actualizar». Para comprobarlo en el momento: menú del icono, «Buscar actualizaciones». Si usa la versión 1.29 o una anterior, descargue una vez la versión nueva en esta página e instálela encima. La configuración y las capturas se conservan."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué Windows muestra una ventana azul al instalar?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD aún no tiene una firma digital de pago. Pulse «Más información» y después «Ejecutar de todas formas». Puede comprobar que el archivo es auténtico con la suma de comprobación SHA-256 que hay junto al botón de descarga."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿En qué se diferencia ClipSD de la Herramienta Recortes de Windows?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "ClipSD funciona también en Linux, igual que en Windows. El editor tiene números con puntero y llamadas, y el texto de la pantalla se puede traducir. ClipSD recuerda la zona anterior, y la siguiente captura del mismo lugar se hace con un solo Enter."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/json" id="i18n">{"cta": {"windows": "Descargar gratis para Windows", "linux": "Descargar gratis para Linux"}, "dl": {"windows": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe", "linux": "https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"}, "note": {"windows": "Windows 10 y 11 · versión 1.31.0 · gratis", "linux": "Ubuntu, Debian, Fedora, Mint · versión 1.31.0 · gratis", "other": "ClipSD funciona en Windows y Linux. Abra esta página en su ordenador."}, "os": {"windows": "Windows", "linux": "Linux", "mac": "un Mac, y ClipSD por ahora solo es para Windows y Linux", "mobile": "un móvil. Abra la página en su ordenador"}, "copied": "Copiado"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../es/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Secciones"><a href="#how">Cómo funciona</a><a href="#text">Texto de imágenes</a><a href="#translate">Traducción</a><a href="#features">Funciones</a><a href="#download">Descargar</a><a href="#faq">Preguntas</a><a href="#contact">Contacto</a></nav>
+    <details class="menu"><summary>Menú</summary><nav aria-label="Secciones"><a href="#how">Cómo funciona</a><a href="#text">Texto de imágenes</a><a href="#translate">Traducción</a><a href="#features">Funciones</a><a href="#download">Descargar</a><a href="#faq">Preguntas</a><a href="#contact">Contacto</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Idioma de la página: </span>Español</summary><ul><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es" aria-current="page">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div><h1 id="h1"><span class="kicker">Programa de capturas con editor</span> <span class="h1-slogan">Una <mark>captura de pantalla</mark> dice más que tres párrafos</span></h1></div>
+      <div>
+        <p class="lead">Pulse <kbd>Alt</kbd>+<kbd>W</kbd>, elija una parte de la pantalla, ponga una flecha o un número y péguela en un chat. ¿Necesita el texto de la imagen o una traducción? Ambas cosas están en la misma ventana. Gratis para Windows y Linux.</p>
+        <div class="cta">
+          <a class="btn btn-main" href="#download" data-dl-main><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-dl-label>Descargar gratis</span></a>
+          <a class="btn btn-soft" href="#how">Cómo funciona</a>
+        </div>
+        <p class="dl-note" data-dl-note>Windows 10 y 11 · versión 1.31.0 · gratis</p>
+      </div>
+    </div>
+    <ul class="badges"><li>Sin cuenta</li><li>Sin anuncios</li><li>Instalación en Windows sin permisos de administrador</li><li>Código abierto, GPL-3.0-or-later</li><li>12 idiomas de interfaz</li></ul>
+    <div class="stage">
+      <div class="stage-side" aria-hidden="true"><span class="note">así es el programa</span><svg width="170" height="90" viewBox="0 0 170 90" aria-hidden="true"><path d="M20 8 C 30 50, 90 74, 150 74" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round"/><path d="M136 62 L152 74 L135 84" fill="none" stroke="#c8102e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div>
+        <div class="modes" role="tablist" aria-label="Qué hace ClipSD"><a class="mode" href="#shot-mark" role="tab" id="tab-mark" aria-controls="shot-mark" aria-selected="true" data-mode="mark"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 17 16 4M9 4h7v7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Marcar</a><a class="mode" href="#shot-text" role="tab" id="tab-text" aria-controls="shot-text" aria-selected="false" tabindex="-1" data-mode="text"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 6V2h4M14 2h4v4M18 14v4h-4M6 18H2v-4M6.5 7h7M10 7v7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sacar texto</a><a class="mode" href="#shot-translate" role="tab" id="tab-translate" aria-controls="shot-translate" aria-selected="false" tabindex="-1" data-mode="translate"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M2 9 5 2l3 7M3 7h4M12 3h6M15 3v2c0 3-1.5 5-4 6M12.5 7c.8 2 2.6 3.5 5.5 4M10 18l3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Traducir</a></div>
+        <figure class="print"><span class="tape" aria-hidden="true"></span>
+          <div class="shots"><div class="shot on" id="shot-mark" role="tabpanel" aria-labelledby="tab-mark"><img src="../img/es/hero-mark.webp" width="1600" height="1139" alt="Editor de ClipSD: una captura de un informe con los números 1, 2, 3, la llamada «Sábado: +38%», un resaltador, el número de una tarjeta desenfocado y una flecha hacia un botón" fetchpriority="high" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Flecha, números, una llamada, resaltador y desenfoque. Todo se pone con el ratón en unos segundos.</p></div><div class="shot" id="shot-text" role="tabpanel" aria-labelledby="tab-text"><img src="../img/es/hero-text.webp" width="1600" height="1139" alt="Editor de ClipSD en modo texto: las palabras de una carta en inglés están iluminadas y varias frases están marcadas en amarillo" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Modo «Resaltador»: las palabras de la captura se iluminan y lo seleccionado en amarillo ya está en el portapapeles.</p></div><div class="shot" id="shot-translate" role="tabpanel" aria-labelledby="tab-translate"><img src="../img/es/hero-translate.webp" width="1600" height="1139" alt="Editor de ClipSD: toda la captura de una carta en inglés traducida al español, la traducción está sobre el texto y abajo están los botones «Original» y «Copiar traducción»" loading="lazy" decoding="async" sizes="(max-width: 1080px) 100vw, 900px"><p class="stage-cap">Una carta en inglés en la captura, traducida entera con «Traducir todo».</p></div></div>
+          <p class="sr-only" aria-live="polite" data-stage-live></p>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="center"><h2 id="h-how">Tres pasos y queda claro</h2><p>Sin cuenta y sin subir las capturas a ninguna parte. Cada captura se guarda sola en una carpeta dentro de Descargas; Enter en el editor la copia al portapapeles.</p></div>
+    <ol class="steps">
+      <li><div class="t"><span class="num" aria-hidden="true">1</span><h3>Pulse Alt+W y seleccione</h3></div><p>La pantalla se congela. Elija la parte que necesita: la lupa junto al cursor ayuda a acertar justo con el borde. Enter abre el editor.</p><figure class="print"><img src="../img/es/step-select.webp" width="1100" height="778" alt="Selección de una zona en ClipSD: un marco alrededor de un informe, el tamaño de la zona y debajo del marco los botones, entre ellos «Traducir lo seleccionado» y «Traducir toda la pantalla»" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">2</span><h3>Marque lo importante</h3></div><p>Una flecha, un número, un marco, un rótulo o un resaltador. El desenfoque oculta caras y direcciones.</p><figure class="print"><img src="../img/es/hero-mark.webp" width="1600" height="1139" alt="Editor de ClipSD con marcas sobre la captura" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 380px"></figure></li>
+      <li><div class="t"><span class="num" aria-hidden="true">3</span><h3>Péguela en el chat</h3></div><p>Enter copia la captura. Péguela en una aplicación de mensajería, un correo o un documento con el habitual Ctrl+V.</p>
+        <figure class="print"><div class="chat" role="img" aria-label="Ejemplo de chat: se envió una captura con marcas y la otra persona respondió que encontró el botón">
+          <div class="bubble them">¿Dónde está el botón de enviar?</div>
+          <div class="bubble"><img src="../img/es/hero-mark.webp" width="1600" height="1139" alt="" loading="lazy" decoding="async" sizes="210px"><span>El botón está aquí, el número 3</span></div>
+          <div class="bubble them">Lo encontré, todo claro</div>
+        </div></figure></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec-alt sec-text" id="text" aria-labelledby="h-text">
+  <div class="wrap row">
+    <div class="row-text">
+      <span class="kicker">Texto de imágenes</span>
+      <h2 id="h-text">El texto que no se puede seleccionar con el ratón ahora se puede copiar</h2>
+      <p>Un contrato escaneado, una ventana de error, un fotograma de un vídeo, la foto de un cartel. Elija la zona, pulse «Copiar texto» o <kbd>Ctrl</kbd>+<kbd>T</kbd> y las palabras de la imagen se podrán seleccionar como en un documento normal. Es reconocimiento de texto (OCR): se hace en su ordenador, sin internet.</p>
+      <ul class="ticks"><li>Modo «Continuo»: pulse sobre una palabra y arrastre, el texto se selecciona en el orden de lectura. Modo «Resaltador»: pase sobre las palabras, solo se toma lo que toque.</li><li>Lo seleccionado queda enseguida en el portapapeles. En una ventana junto a la imagen puede corregir el texto antes de pegarlo.</li><li>Una página en dos columnas se lee columna por columna, las líneas no se mezclan.</li><li>Funciona sin internet. En Windows el texto lo lee el reconocimiento integrado en Windows: el idioma del texto debe estar instalado en Windows. En Linux se instala una sola vez el programa gratuito de reconocimiento Tesseract: ClipSD muestra el comando ya preparado.</li></ul>
+    </div>
+    <div class="demo">
+      <figure class="print a"><span class="tape" aria-hidden="true"></span><img src="../img/es/text-select.webp" width="1100" height="500" alt="Una carta en inglés en una captura: las palabras están iluminadas y la frase sobre la fecha de envío está seleccionada en amarillo" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 640px"></figure>
+      <figure class="print b"><img src="../img/es/text-window.webp" width="1100" height="475" alt="Ventana «Texto de la imagen» de ClipSD con el texto reconocido y el botón «Copiado»" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 600px"></figure>
+      <div class="hand" aria-hidden="true"><span class="note">seleccionado en la imagen, texto normal obtenido</span><svg width="90" height="60" viewBox="0 0 90 60" aria-hidden="true"><path d="M6 14 C 30 6, 60 16, 78 40" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M64 38 L79 42 L82 26" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-tr" id="translate" aria-labelledby="h-tr">
+  <div class="wrap">
+    <div class="row flip">
+      <div class="demo tr">
+        <figure class="print a"><img src="../img/es/tr-original.webp" width="1040" height="764" alt="Una carta sobre la entrega de un paquete, en inglés, en la pantalla" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 500px"></figure>
+        <figure class="print b"><img src="../img/es/tr-window.webp" width="1240" height="774" alt="Ventana de ClipSD con la traducción al español de la carta sobre el texto" loading="lazy" decoding="async" sizes="(max-width: 980px) 100vw, 560px"><figcaption>La traducción sobre la carta en un par de segundos</figcaption></figure>
+        <div class="hand" aria-hidden="true"><span class="note">lo que había en la pantalla</span><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M8 54 C 4 34, 14 16, 34 8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round"/><path d="M20 6 L35 8 L30 22" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="row-text">
+        <span class="kicker">Traducción en pantalla</span>
+        <h2 id="h-tr">Una carta en otro idioma, leída en el suyo</h2>
+        <p>Pulse <kbd>Alt</kbd>+<kbd>W</kbd>, elija el texto en otro idioma y pulse «Traducir lo seleccionado» o <kbd>Ctrl</kbd>+<kbd>L</kbd>. Un monitor entero de una vez: «Traducir toda la pantalla» o <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>; se traduce el monitor donde está el marco o el cursor. La traducción aparece en una ventana justo sobre el texto, como un traductor con cámara en el móvil.</p>
+        <ul class="ticks"><li>Por defecto se traduce al idioma del programa. Cualquier otro de los 20 idiomas se elige con un botón en la propia ventana.</li><li>«Copiar» pone la traducción en el portapapeles y «Original» muestra el texto de partida. La ventana se puede arrastrar a un lado para seguir trabajando.</li><li>En el editor hay un botón doble: «Traducir todo» traduce toda la captura (Shift+Y) y «Selección» solo la parte que elija (Y). La traducción queda sobre la captura y no entra en la imagen guardada.</li></ul>
+      </div>
+    </div>
+    <h3 class="sr-only" id="h-limits">Cuánto se puede traducir gratis</h3>
+    <ul class="limits" aria-labelledby="h-limits"><li class="limit"><p class="n">5000</p><p class="u">caracteres al día</p><p>Nada más instalar, sin registro.</p></li><li class="limit"><p class="n">50&nbsp;000</p><p class="u">caracteres al día</p><p>Si escribe su correo en la ventana de traducción. No hace falta confirmarlo.</p></li><li class="limit"><p class="n">500&nbsp;000</p><p class="u">caracteres al mes</p><p>Con su propia clave de Google Cloud. Google pide añadir una tarjeta bancaria. El programa le guía paso a paso.</p></li></ul>
+    <p class="honest"><b>Qué sale a internet.</b> Solo el texto que envía para traducir: va al servicio de traducción MyMemory o Google. Si escribió un correo, se envía a MyMemory junto con la petición. La captura en sí se queda en su ordenador. El texto de las imágenes se reconoce en su ordenador y no se envía a ninguna parte. Aparte de la traducción, una vez al día el programa pregunta a GitHub si hay una versión nueva; esto se desactiva en la configuración.</p>
+  </div>
+</section>
+
+<section class="sec sec-alt" aria-labelledby="h-uses">
+  <div class="wrap">
+    <div class="center"><h2 id="h-uses">Cuándo es útil</h2></div>
+    <ul class="uses"><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><circle cx="16" cy="22" r="6" fill="#c8102e"/><circle cx="30" cy="30" r="6" fill="#c8102e"/><circle cx="42" cy="38" r="6" fill="#c8102e"/><text x="16" y="25" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">1</text><text x="30" y="33" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">2</text><text x="42" y="41" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="sans-serif">3</text></svg><h3>Una guía en un minuto</h3><p>Los números 1, 2, 3 sobre la propia captura. Una instrucción lista para un compañero, un cliente o para usted dentro de seis meses.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><ellipse cx="28" cy="27" rx="13" ry="8" fill="none" stroke="#c8102e" stroke-width="3"/></svg><h3>Mostrar un fallo</h3><p>A un compañero o al soporte: rodee el lugar y escriba qué falla. Nadie tiene que volver a preguntar.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><path d="M16 36 L34 20 M26 20h8v8" fill="none" stroke="#c8102e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Ayudar a la familia</h3><p>Dónde está el botón en una web y qué pulsar después. Una flecha lo explica mejor que una llamada.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#1554c0" stroke-width="3"/><g opacity=".9"><rect x="14" y="20" width="7" height="7" fill="#8a94a3"/><rect x="21" y="20" width="7" height="7" fill="#c3cad3"/><rect x="28" y="20" width="7" height="7" fill="#9aa4b1"/><rect x="35" y="20" width="7" height="7" fill="#d5dae1"/><rect x="14" y="27" width="7" height="7" fill="#c3cad3"/><rect x="21" y="27" width="7" height="7" fill="#8a94a3"/><rect x="28" y="27" width="7" height="7" fill="#d5dae1"/><rect x="35" y="27" width="7" height="7" fill="#9aa4b1"/></g></svg><h3>Ocultar datos privados</h3><p>El desenfoque oculta caras y direcciones. Un rectángulo relleno tapa el número de una tarjeta o una contraseña.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#6d28d9" stroke-width="3"/><rect x="13" y="18" width="22" height="6" rx="2" fill="#ffd65a"/><rect x="13" y="28" width="30" height="4" rx="2" fill="#c9bdf0"/><rect x="13" y="35" width="18" height="4" rx="2" fill="#c9bdf0"/></svg><h3>Sacar el texto</h3><p>El número de un pedido de un escaneo, una dirección de una foto, un mensaje de error de una ventana. Se copia sin volver a teclearlo.</p></li><li class="use"><svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="10" width="44" height="34" rx="5" fill="none" stroke="#0b7d74" stroke-width="3"/><text x="18" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">A</text><path d="M25 27h7m0 0-3-3m3 3-3 3" fill="none" stroke="#c8102e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><text x="41" y="33" text-anchor="middle" fill="#0b7d74" font-size="17" font-weight="700" font-family="sans-serif">Я</text></svg><h3>Entender otro idioma</h3><p>La carta de un proveedor, los botones de un programa, un manual en PDF. La traducción aparece sobre el original.</p></li></ul>
+  </div>
+</section>
+
+<section class="sec" id="features" aria-labelledby="h-feat">
+  <div class="wrap">
+    <div class="feat">
+      <div class="side"><h2 id="h-feat">Todo lo que incluye</h2><p>19 herramientas, cada una con su letra. Trabaje con el ratón o con el teclado.</p><p class="note f1">Recorrido por las herramientas: <kbd>F1</kbd> en el editor</p></div>
+      <ul><li><h3>Flechas y líneas</h3><p>Rectas, con punta en los dos extremos, a mano alzada, suaves. Con Shift pulsado, ángulos exactos de 45°.</p></li><li><h3>Números y llamadas</h3><p>Círculos 1, 2, 3 con un puntero y bocadillos con texto.</p></li><li><h3>Resaltador y texto</h3><p>Marque una línea en amarillo y añada un rótulo del color que quiera.</p></li><li><h3>Desenfoque</h3><p>Las caras y las direcciones se convierten en cuadrados. El número de una tarjeta o una contraseña están más seguros bajo un rectángulo relleno: R con Ctrl.</p></li><li><h3>Recorte en dos pasos</h3><p>Arrastre un marco, ajuste los bordes y pulse Enter. Hasta que pulse Enter, la captura no se toca.</p></li><li><h3>Zoom</h3><p>Ctrl y la rueda del ratón acercan los detalles pequeños. «Ajustar» vuelve a mostrar la captura entera.</p></li><li><h3>Elegir monitor</h3><p>Captura de pantalla completa: todos los monitores a la vez o solo uno.</p></li><li><h3>Mover marcas</h3><p>Mantenga pulsado el botón derecho del ratón y arrastre cualquier marca. No hace falta cambiar de herramienta.</p></li><li><h3>La misma zona otra vez</h3><p>El siguiente Alt+W resalta el marco anterior: no hace falta volver a seleccionar la zona.</p></li><li><h3>Portapapeles y archivo</h3><p>Enter en el editor copia la captura. Cada captura se guarda sola como PNG o JPEG.</p></li><li><h3>Imagen sobre una captura</h3><p>Inserte una segunda imagen desde el portapapeles, desde un archivo o como una captura nueva.</p></li><li><h3>Claro y oscuro</h3><p>Dos temas, más sus propios colores para el marco y los paneles.</p></li><li><h3>En su idioma</h3><p>12 idiomas de interfaz. El idioma se elige en el primer inicio y se puede cambiar en la configuración o en el menú del icono junto al reloj.</p></li></ul>
+    </div>
+    <div class="trio"><figure class="print"><img src="../img/es/trio-crop.webp" width="1000" height="712" alt="Recorte en el editor de ClipSD: un marco con su tamaño y los botones «Recortar» y «Cancelar»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Recorte: un marco y después Enter</figcaption></figure><figure class="print"><img src="../img/es/trio-zoom.webp" width="912" height="641" alt="Panel inferior del editor de ClipSD: tamaño de la captura, botones de zoom y «Ajustar»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Zoom y «Ajustar» en la parte inferior de la ventana</figcaption></figure><figure class="print"><img src="../img/es/trio-monitors.webp" width="1000" height="702" alt="La ventana «Captura de pantalla completa» con los botones «Todos los monitores», «Monitor 1» y «Monitor 2»" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 360px"><figcaption>Pantalla completa: qué monitor capturar</figcaption></figure></div>
+  </div>
+</section>
+<section class="sec sec-alt" id="look" aria-labelledby="h-look">
+  <div class="wrap">
+    <div class="center"><h2 id="h-look">Claro u oscuro</h2><p>Elija en el primer inicio y cámbielo cuando quiera en la configuración.</p></div>
+    <div class="duo">
+      <figure class="print"><img src="../img/es/hero-mark.webp" width="1600" height="1139" alt="Editor de ClipSD con el tema claro" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Estándar, claro</figcaption></figure>
+      <figure class="print"><img src="../img/es/theme-dark.webp" width="1200" height="853" alt="Editor de ClipSD con el tema oscuro" loading="lazy" decoding="async" sizes="(max-width: 640px) 100vw, 560px"><figcaption>Profesional, oscuro</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="download" aria-labelledby="h-dl">
+  <div class="wrap">
+    <div class="dl-box">
+      <h2 id="h-dl">Descargue ClipSD 1.31.0 gratis para Windows y Linux</h2>
+      <p class="guess">Parece que usa <b data-os-name>Windows o Linux</b>. El archivo adecuado está marcado.</p>
+      <div class="dl">
+        <article class="os" data-os-card="windows" id="dl-windows"><span class="mine">Su sistema</span>
+          <h3>Windows</h3><p>Windows 10 y 11, de 64 bits. Un instalador normal, sin permisos de administrador.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-Setup.exe"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Descargar gratis para Windows</span></a><p class="dl-note">ClipSD-1.31.0-Setup.exe · 31 MB · versión 1.31.0</p><p class="sum"><span>Suma de comprobación SHA-256:</span> <code>962e75f3ae1029431421410144ea3cf79675b416e221c522383ba4a2e8bfea19</code></p>
+          <ul><li>El icono aparece junto al reloj. ClipSD se inicia con Windows; puede quitar esta casilla en el instalador</li><li>El texto de las imágenes se reconoce mediante la función integrada en Windows</li><li>El texto en un idioma se reconoce si ese idioma está instalado en Windows</li></ul></article>
+        <article class="os" data-os-card="linux" id="dl-linux"><span class="mine">Su sistema</span>
+          <h3>Linux</h3><p>Ubuntu 22.04 y posteriores, Debian 12, Fedora, Mint y similares, de 64 bits. X11 y Wayland.</p>
+          <a class="btn btn-main" href="https://github.com/clipsd/clipsd/releases/download/v1.31.0/ClipSD-1.31.0-linux-x86_64.tar.gz"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Descargar gratis para Linux</span></a><p class="dl-note">ClipSD-1.31.0-linux-x86_64.tar.gz · 72 MB · versión 1.31.0</p><p class="sum"><span>Suma de comprobación SHA-256:</span> <code>6b10322076d97d1ea353675c31bc7acbf8364577713c22aa84c7fd63e23ba1bd</code></p>
+          <p class="cmd-label">Descomprima el archivo y ejecute en una terminal:</p>
+          <div class="cmd"><pre id="cmd-linux">tar -xzf ClipSD-1.31.0-linux-x86_64.tar.gz
+cd clipsd-1.31.0
+bash install.sh</pre><button type="button" data-copy="cmd-linux" hidden>Copiar</button></div>
+          <ul><li>La instalación no necesita contraseña de administrador ni internet: Python y las bibliotecas gráficas ya están dentro del archivo</li><li>El programa se instala en ~/.local/share/clipsd, se abre con el comando clipsd y se inicia al entrar en la sesión</li><li>En GNOME, Alt+W se asigna automáticamente y funciona con las dos distribuciones de teclado después de volver a iniciar sesión. En una sesión X11 ClipSD captura Alt+W por sí mismo. En otros casos, asigne en la configuración del teclado un atajo al comando <code class="cmdline">clipsd --region</code></li><li>Para el texto de las imágenes se instala Tesseract una sola vez. Es un comando con la contraseña de administrador, ClipSD lo muestra</li></ul></article>
+      </div>
+      <div class="help">
+        <div><h3>¿Windows mostró una ventana azul?</h3><p class="muted">El programa aún no tiene una firma digital de pago, por eso Windows pregunta. Dos clics:</p><ol><li><span class="num" aria-hidden="true">1</span><span>Pulse «Más información»</span></li><li><span class="num" aria-hidden="true">2</span><span>Pulse «Ejecutar de todas formas»</span></li></ol>
+          <p class="small">Su navegador puede avisar de que el archivo se descarga poco. Solo significa que el programa es nuevo. Compare la suma de comprobación SHA-256 con los dígitos que hay junto al botón.</p>
+          <p class="small"><a href="../es/code-signing.html">Cómo comprobar que el archivo es auténtico: firma y sumas de comprobación</a></p></div>
+        <div class="ss" aria-hidden="true"><strong>Windows protegió su PC</strong>Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida.<br><span class="more">Más información<span class="n n1">1</span></span>
+          <div class="rowb"><span class="run">Ejecutar de todas formas<span class="n n2">2</span></span><span>No ejecutar</span></div></div>
+      </div>
+      <div class="extra">
+        <div><div class="letter" id="update"><h3>Versiones nuevas</h3><ol class="how"><li><span class="num" aria-hidden="true">1</span><p>Una vez al día ClipSD comprueba si hay una versión nueva y ofrece instalarla: «Actualizar», «Más tarde» u «Omitir esta versión». Para comprobarlo en el momento: menú del icono junto al reloj, «Buscar actualizaciones».</p></li><li><span class="num" aria-hidden="true">2</span><p>El archivo de actualización se comprueba con una firma digital y una suma de comprobación. Si la versión nueva no arranca, vuelve sola la anterior. Mientras el editor tenga anotaciones sin guardar, la actualización espera.</p></li><li><span class="num" aria-hidden="true">3</span><p>Si usa ClipSD 1.29 o una versión anterior, pase a la versión nueva una sola vez a mano: descargue el archivo en esta página e instálelo encima. La configuración, la clave de traducción y las capturas se conservan. La comprobación automática se puede desactivar en la configuración, sección «Inicio».</p></li></ol></div>
+          <div class="news" id="news"><h3>Novedades de la versión 1.31.0</h3><p class="rdate">Fecha de publicación: <time datetime="2026-11-19">19 de noviembre de 2026</time></p><ul><li>La interfaz en 12 idiomas: el idioma se elige en el primer inicio y se cambia en la configuración o en el menú del icono</li><li>ClipSD se actualiza solo: una vez al día comprueba si hay una versión nueva y la instala con el botón «Actualizar»</li><li>La actualización se comprueba con una firma digital; si algo falla, vuelve la versión anterior</li><li>Linux: una versión ya compilada, se instala sin contraseña de administrador y sin internet</li></ul><p class="allver"><a href="../es/changes.html">Todas las versiones</a></p></div>
+          <div class="remove" id="remove"><h3>Cómo desinstalar</h3><ul><li>Windows: Configuración, sección Aplicaciones, ClipSD, Desinstalar. O el acceso directo «Desinstalar ClipSD» del menú Inicio. El desinstalador pregunta si también hay que eliminar la configuración y las capturas de ClipSD; sin marcar la casilla, la configuración en %APPDATA%\ClipSD y las capturas se quedan.</li><li>Linux: en un terminal ejecute bash ~/.local/share/clipsd/current/uninstall.sh. Elimina el programa, el acceso directo del menú, el inicio automático, el atajo Alt+W y la extensión de GNOME «ClipSD: hotkeys». La configuración en ~/.config/clipsd y las capturas se quedan; para eliminarlas también, ejecute el mismo archivo con --purge.</li></ul></div></div>
+        <div>
+          <div class="src" id="source"><h3>Código fuente</h3><p class="muted">ClipSD se distribuye bajo la GNU GPL v3 o posterior. El código fuente de cada versión está en GitHub, junto a los archivos de la versión.</p><p><a href="https://github.com/clipsd/clipsd/releases/tag/v1.31.0">Código fuente de esta versión en GitHub</a></p><p><a href="https://github.com/clipsd/clipsd">GitHub</a></p></div>
+          <div class="req"><h3>Qué necesita su ordenador</h3><ul><li>Windows 10 o Windows 11, de 64 bits</li><li>Linux x86-64: Ubuntu 22.04, Debian 12, Fedora 36 y posteriores (glibc 2.35 o posterior)</li><li>Internet solo hace falta para la traducción y las actualizaciones</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="learn" aria-labelledby="h-learn">
+  <div class="wrap">
+    <div class="center"><h2 id="h-learn">Aprenda en tres minutos</h2><p>El programa le muestra dónde está cada cosa. Abajo hay respuestas a las preguntas más frecuentes.</p></div>
+    <div class="learn">
+      <ol class="how tips"><li><span class="num" aria-hidden="true">1</span><p>En el primer inicio ClipSD le ofrece elegir un tema y le enseña el editor.</p></li><li><span class="num" aria-hidden="true">2</span><p>El botón «?» o F1 en el editor repite el recorrido por las herramientas.</p></li><li><span class="num" aria-hidden="true">3</span><p>Sitúe el cursor sobre un botón: la ayuda dice qué hace y qué tecla tiene.</p></li></ol>
+      <div class="faq" id="faq"><h3 class="faq-h">Preguntas frecuentes</h3><details><summary>¿Dónde descargar ClipSD gratis y es realmente gratis?</summary><p>Sí. Puede descargar ClipSD en esta página, en la sección de descarga: un instalador para Windows y un archivo para Linux. Sin anuncios, sin periodo de prueba, sin funciones de pago. El código fuente es abierto bajo la GNU GPL v3 o posterior: puede leerlo, comprobarlo y mejorarlo.</p></details><details><summary>¿Cómo hacer una captura de una parte de la pantalla?</summary><p>Pulse Alt+W en cualquier programa y elija una zona con el ratón. Enter la abre en el editor y Ctrl+C la copia y cierra la ventana. Un clic en el icono de ClipSD junto al reloj hace lo mismo.</p></details><details><summary>¿Cómo capturar toda la pantalla?</summary><p>Después de Alt+W, haga clic sin seleccionar o pulse «Pantalla completa» (Ctrl+A). Con varios monitores, elija todos a la vez o uno de ellos.</p></details><details><summary>¿Cómo ocultar el número de una tarjeta o una cara?</summary><p>Tape el número de una tarjeta, una contraseña y otros datos importantes con un rectángulo relleno: elija Rectángulo (tecla R) y dibuje con Ctrl pulsado. Las caras y las direcciones se pueden ocultar con Desenfoque (tecla B): el lugar se convierte en cuadrados y no se lee a simple vista, pero un texto grande bajo los cuadrados a veces se puede distinguir.</p></details><details><summary>¿Cómo copiar el texto de una imagen?</summary><p>Pulse Alt+W, elija la zona con texto y pulse «Copiar texto» (Ctrl+T). Las palabras se iluminan: pase sobre las que necesite y quedan en el portapapeles. En el editor el botón «Copiar texto» o la tecla I hacen lo mismo.</p></details><details><summary>¿Cómo traducir el texto de la pantalla?</summary><p>Pulse Alt+W, elija el texto y pulse «Traducir lo seleccionado» (Ctrl+L). «Traducir toda la pantalla» (Ctrl+Shift+L) traduce de una vez el monitor donde está el marco o el cursor. En el editor hay un botón doble: «Traducir todo» (Shift+Y) traduce toda la captura y «Selección» (Y) la parte que elija.</p></details><details><summary>¿Cuánto puedo traducir gratis?</summary><p>5000 caracteres al día desde el primer momento, sin registro. Con un correo, 50 000 caracteres al día. Con su propia clave de Google Cloud, 500 000 caracteres al mes; para la clave Google pide una tarjeta bancaria. Si están conectados los dos servicios y uno se agota, ClipSD cambia al otro por sí mismo.</p></details><details><summary>¿Qué envía ClipSD a internet?</summary><p>Solo el texto que usted envía para traducir y el correo para MyMemory si lo escribió. Las capturas, el portapapeles y los nombres de archivos nunca salen de su ordenador. Por su cuenta el programa solo consulta a GitHub una vez al día si hay una versión nueva; esto se desactiva en la configuración, sección «Inicio».</p></details><details><summary>¿Hace falta internet?</summary><p>No para capturar, usar el editor, guardar ni para el texto de imágenes. Lo necesitan la traducción y las actualizaciones.</p></details><details><summary>¿Dónde se guardan las capturas de pantalla?</summary><p>Cada captura se guarda enseguida en una carpeta dentro de Descargas; tras las ediciones el archivo se actualiza. En Windows es Downloads\Screenshots. En Linux es Downloads/Screenshots, o «Загрузки/Скриншоты» si en su carpeta personal hay una carpeta «Загрузки» en ruso. La carpeta y el formato se pueden cambiar en la configuración. Ctrl+S guarda en un archivo y cierra el editor; por defecto pregunta dónde guardar, y esa pregunta se puede desactivar en la configuración. Enter copia la captura al portapapeles.</p></details><details><summary>¿Funciona ClipSD en Linux con Wayland?</summary><p>Sí, en sesiones X11 y Wayland. En GNOME, ClipSD instala su propia extensión para que Alt+W funcione con las dos distribuciones de teclado. En otros escritorios con Wayland, asigne en la configuración del teclado un atajo al comando <code class="cmdline">clipsd --region</code>.</p></details><details><summary>¿Qué hago si Alt+W no hace nada?</summary><p>Compruebe que el icono de ClipSD está junto al reloj: el programa tiene que estar en marcha. En Linux con GNOME, cierre sesión y vuelva a entrar después de instalar; hasta entonces Alt+W funciona solo con la distribución de teclado latina. En otros escritorios con Wayland, asigne en la configuración del teclado un atajo al comando <code class="cmdline">clipsd --region</code>. Si otro programa usa Alt+W, elija su propio atajo en la configuración de ClipSD, sección Atajos de teclado. También puede capturar una zona con un clic en el icono junto al reloj.</p></details><details><summary>¿Puedo cambiar Alt+W por otro atajo?</summary><p>Sí. En la configuración, sección Atajos de teclado, active Ctrl, Shift, Alt o Win y elija una tecla. O pulse «Grabar…» y después el propio atajo.</p></details><details><summary>¿Cómo instalo una versión nueva?</summary><p>ClipSD instala solo las versiones nuevas: una vez al día comprueba y ofrece «Actualizar». Para comprobarlo en el momento: menú del icono, «Buscar actualizaciones». Si usa la versión 1.29 o una anterior, descargue una vez la versión nueva en esta página e instálela encima. La configuración y las capturas se conservan.</p></details><details><summary>¿Por qué Windows muestra una ventana azul al instalar?</summary><p>ClipSD aún no tiene una firma digital de pago. Pulse «Más información» y después «Ejecutar de todas formas». Puede comprobar que el archivo es auténtico con la suma de comprobación SHA-256 que hay junto al botón de descarga.</p></details><details><summary>¿En qué se diferencia ClipSD de la Herramienta Recortes de Windows?</summary><p>ClipSD funciona también en Linux, igual que en Windows. El editor tiene números con puntero y llamadas, y el texto de la pantalla se puede traducir. ClipSD recuerda la zona anterior, y la siguiente captura del mismo lugar se hace con un solo Enter.</p></details></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="h-about">
+  <div class="wrap">
+    <div class="author">
+      <div class="logo-big"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg></div>
+      <div><h2 id="h-about">Acerca de</h2><p>ClipSD lo hace Sergey Dayneko.</p><p>ClipSD es gratuito, sin cuenta ni anuncios, y su código fuente es abierto.</p><p>Hice este programa ante todo para mí, a partir de mis propias tareas. Todas las funciones que tiene las uso yo mismo cada día. Quiero que otras personas también puedan usarlo y comprobar lo cómodo que es.</p>
+        <p class="sign">Autor: Sergey Dayneko<span>Licencia: GNU GPL v3 o posterior</span></p></div>
+    </div>
+  </div>
+</section>
+<section class="sec sec-alt" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="center"><h2 id="h-contact">Escriba al autor</h2><p>Una pregunta, un fallo o una idea. Describa qué hizo y qué pasó, y adjunte una captura: así es más rápido resolverlo.</p>
+      <p class="mail">Correo electrónico: <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a></p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../es/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Capturas de pantalla con editor para Windows y Linux. Gratis y de código abierto.</p><p class="small">Este sitio no tiene contadores de visitas, anuncios ni cookies.</p></div>
+    <div><h2>Programa</h2><ul><li><a href="../es/#download">Descargar</a></li><li><a href="../es/#source">Código fuente</a></li><li><a href="../es/#contact">Contacto</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Documentos</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">Licencia GPL-3.0-or-later</a></li><li><a href="../es/changes.html">Historial de versiones</a></li><li><a href="../es/privacy.html">Privacidad</a></li><li><a href="../es/code-signing.html">Firma y comprobación de archivos</a></li><li><a href="../ru/third-party.html">Componentes de terceros</a></li></ul></div>
+    <div><h2>Idiomas</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Sergey Dayneko. ClipSD se distribuye bajo la GNU GPL v3 o posterior, sin ninguna garantía.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

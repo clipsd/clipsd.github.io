@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; script-src 'self'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ClipSD: assinatura e verificação dos arquivos · ClipSD</title>
+<meta name="description" content="Como verificar se um arquivo do ClipSD é autêntico: somas de verificação SHA-256, código-fonte e por que o Windows mostra uma janela azul.">
+<link rel="canonical" href="https://clipsd.github.io/pt/code-signing.html">
+<link rel="alternate" hreflang="ru" href="https://clipsd.github.io/ru/code-signing.html">
+<link rel="alternate" hreflang="en" href="https://clipsd.github.io/en/code-signing.html">
+<link rel="alternate" hreflang="bg" href="https://clipsd.github.io/bg/code-signing.html">
+<link rel="alternate" hreflang="uk" href="https://clipsd.github.io/uk/code-signing.html">
+<link rel="alternate" hreflang="de" href="https://clipsd.github.io/de/code-signing.html">
+<link rel="alternate" hreflang="fr" href="https://clipsd.github.io/fr/code-signing.html">
+<link rel="alternate" hreflang="es" href="https://clipsd.github.io/es/code-signing.html">
+<link rel="alternate" hreflang="it" href="https://clipsd.github.io/it/code-signing.html">
+<link rel="alternate" hreflang="pt" href="https://clipsd.github.io/pt/code-signing.html">
+<link rel="alternate" hreflang="pl" href="https://clipsd.github.io/pl/code-signing.html">
+<link rel="alternate" hreflang="tr" href="https://clipsd.github.io/tr/code-signing.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://clipsd.github.io/zh/code-signing.html">
+<link rel="alternate" hreflang="x-default" href="https://clipsd.github.io/en/code-signing.html">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f6f0e6">
+<meta name="author" content="Sergey Dayneko">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipSD">
+<meta property="og:title" content="ClipSD: assinatura e verificação dos arquivos">
+<meta property="og:description" content="Como verificar se um arquivo do ClipSD é autêntico: somas de verificação SHA-256, código-fonte e por que o Windows mostra uma janela azul.">
+<meta property="og:url" content="https://clipsd.github.io/pt/code-signing.html">
+<meta property="og:image" content="https://clipsd.github.io/og/pt.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Uma captura de tela explica mais do que três parágrafos">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/csd-serif-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Ir para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../pt/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a>
+    <nav class="nav" aria-label="Seções"><a href="../pt/#how">Como funciona</a><a href="../pt/#text">Texto de imagens</a><a href="../pt/#translate">Tradução</a><a href="../pt/#features">Recursos</a><a href="../pt/#download">Baixar</a><a href="../pt/#faq">Perguntas</a><a href="../pt/#contact">Contato</a></nav>
+    <details class="menu"><summary>Menu</summary><nav aria-label="Seções"><a href="../pt/#how">Como funciona</a><a href="../pt/#text">Texto de imagens</a><a href="../pt/#translate">Tradução</a><a href="../pt/#features">Recursos</a><a href="../pt/#download">Baixar</a><a href="../pt/#faq">Perguntas</a><a href="../pt/#contact">Contato</a></nav></details>
+    <details class="lang"><summary><span class="sr-only">Idioma da página: </span>Português</summary><ul><li><a href="../ru/code-signing.html" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/code-signing.html" hreflang="en" lang="en">English</a></li><li><a href="../bg/code-signing.html" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/code-signing.html" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/code-signing.html" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/code-signing.html" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/code-signing.html" hreflang="es" lang="es">Español</a></li><li><a href="../it/code-signing.html" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/code-signing.html" hreflang="pt" lang="pt-BR" aria-current="page">Português</a></li><li><a href="../pl/code-signing.html" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/code-signing.html" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/code-signing.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></details>
+  </div>
+</header>
+<main id="main" class="doc"><a class="back" href="../pt/">&larr; Início</a>
+<h1>ClipSD: assinatura e verificação dos arquivos</h1>
+<h2>Os arquivos são assinados?</h2>
+<p>Ainda não. O instalador para Windows não é assinado com um certificado digital: um certificado pago custa dinheiro todo ano, e a assinatura gratuita para projetos de código aberto ainda não foi providenciada. Por isso o Windows mostra a janela azul do SmartScreen na primeira execução. Clique em “Mais informações” e depois em “Executar assim mesmo”.</p>
+<p>O programa instala as atualizações sozinho, mas só as assinadas. A descrição da nova versão (<code>latest.json</code>) é assinada com a chave do autor (Ed25519); a parte pública da chave vem embutida no programa. O programa rejeita uma descrição sem assinatura válida, com prazo vencido ou com uma versão mais antiga do que uma já vista, e confere o arquivo baixado pelo tamanho e pela soma SHA-256 da descrição assinada. A chave privada fica com o autor, separada do GitHub; por isso, mesmo quem trocar os arquivos no GitHub não consegue fazê-los passar por uma atualização.</p>
+<h2>Como verificar se um arquivo é autêntico</h2>
+<p>Ao lado de cada botão de download no site há uma soma de verificação SHA-256: uma impressão digital de 64 caracteres do arquivo. Se o arquivo mudar em um único byte que seja, a impressão digital é diferente. A lista das somas está junto dos arquivos da versão no GitHub e no site: <code>downloads/SHA256SUMS</code>.</p>
+<p>Windows, PowerShell:</p>
+<pre><code>Get-FileHash .\ClipSD-&lt;version&gt;-Setup.exe -Algorithm SHA256</code></pre>
+<p>Linux, terminal:</p>
+<pre><code>sha256sum ClipSD-&lt;version&gt;-linux-x86_64.tar.gz</code></pre>
+<p>Compare o resultado com a soma do site. Se coincidir, o arquivo é o que o autor publicou. Se não, não o execute e escreva ao autor.</p>
+<h2>Onde obter os arquivos</h2>
+<p>Só na seção de downloads do site do ClipSD ou na página da versão no GitHub: <a href="https://github.com/clipsd/clipsd/releases">https://github.com/clipsd/clipsd/releases</a> . Os botões do site levam para o mesmo lugar. Portais de download podem reempacotar o instalador com adições próprias.</p>
+<h2>Código-fonte</h2>
+<p>O ClipSD é distribuído sob a GNU GPL v3. O código-fonte de cada versão fica no GitHub: <a href="https://github.com/clipsd/clipsd">https://github.com/clipsd/clipsd</a> , e a página da versão v&lt;version&gt; tem os arquivos de código-fonte. Você mesmo pode compilar o programa e comparar o resultado.</p>
+<h2>Avisar sobre um arquivo suspeito</h2>
+<p>Se você encontrar um arquivo chamado ClipSD cuja soma de verificação não coincide com a do site, ou que se comporta de forma suspeita, escreva para <a href="mailto:clipsd.app@gmail.com">clipsd.app@gmail.com</a>.</p>
+</main>
+<footer>
+  <div class="wrap multi">
+    <div><a class="brand" href="../pt/"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset="1" stop-color="#0a4fc4"/></linearGradient></defs><rect x="4" y="4" width="92" height="92" rx="22" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="square"><polyline points="36,20 20,20 20,36"/><polyline points="64,20 80,20 80,36"/><polyline points="36,80 20,80 20,64"/><polyline points="64,80 80,80 80,64"/></g><text x="50" y="44" text-anchor="middle" fill="#fff" font-weight="700" font-size="17" font-family="Arial,sans-serif">Clip</text><text x="50" y="74" text-anchor="middle" fill="#fff" font-weight="700" font-size="33" font-family="Arial,sans-serif">SD</text></svg><span>ClipSD</span></a><p class="tag">Capturas de tela com editor para Windows e Linux. Grátis e de código aberto.</p><p class="small">Este site não tem contadores de visitas, anúncios nem cookies.</p></div>
+    <div><h2>Programa</h2><ul><li><a href="../pt/#download">Baixar</a></li><li><a href="../pt/#source">Código-fonte</a></li><li><a href="../pt/#contact">Contato</a></li><li><a href="https://github.com/clipsd/clipsd">GitHub</a></li></ul></div>
+    <div><h2>Documentos</h2><ul><li><a href="https://www.gnu.org/licenses/gpl-3.0.html">Licença GPL-3.0-or-later</a></li><li><a href="../pt/changes.html">Histórico de versões</a></li><li><a href="../pt/privacy.html">Privacidade</a></li><li><a href="../pt/code-signing.html">Assinatura e verificação de arquivos</a></li><li><a href="../ru/third-party.html">Componentes de terceiros</a></li></ul></div>
+    <div><h2>Idiomas</h2><ul class="langs"><li><a href="../ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="../en/" hreflang="en" lang="en">English</a></li><li><a href="../bg/" hreflang="bg" lang="bg">Български</a></li><li><a href="../uk/" hreflang="uk" lang="uk">Українська</a></li><li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="../es/" hreflang="es" lang="es">Español</a></li><li><a href="../it/" hreflang="it" lang="it">Italiano</a></li><li><a href="../pt/" hreflang="pt" lang="pt-BR">Português</a></li><li><a href="../pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="../zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a></li></ul></div>
+    <p class="legal">© 2026 Sergey Dayneko. O ClipSD é distribuído sob a GNU GPL v3 ou posterior, sem nenhuma garantia.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
