@@ -150,3 +150,4 @@ Updates: the program checks once a day and offers to update itself. Screenshots 
 ## Contact
 
 E-mail: clipsd.app@gmail.com
+Telegram channel (news, updates, comments and questions under the posts): https://t.me/clipsdapp

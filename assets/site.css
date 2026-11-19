@@ -250,6 +250,11 @@ code.cmdline{white-space:nowrap;color:var(--ink)}
 .author .sign span{display:block;font-weight:400;color:var(--muted);font-size:16px}
 .mail{margin-top:22px;font-size:20px}
 .mail a{font-weight:650}
+.tg{margin-top:14px;text-align:center}
+.tglink .tgi{vertical-align:-3px;margin-right:8px}
+.tg .tglink{font-weight:650;font-size:18px}
+.tgsub{display:block;margin-top:4px;color:var(--muted);font-size:16px}
+.tgnote{margin:0 0 20px}
 
 footer{background:var(--dark);color:var(--dark-ink);padding:60px 0 40px;font-size:16px}
 footer .wrap{display:grid;grid-template-columns:minmax(0,5fr) repeat(2,minmax(0,3fr));gap:32px}
