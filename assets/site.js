@@ -117,7 +117,27 @@
       lab.textContent = fmt.replace("{w}", Math.round(r.width * k)).replace("{h}", Math.round(r.height * k));
     };
     put(1);
-    window.addEventListener("resize", function () { put(1); });
+    var head = document.querySelector("header.top");
+    // The frame and its label must stay below the sticky header: room is measured in page coordinates, with the real height
+    // of the headline (fonts, language, window width); the label goes under the frame when there is no room above it.
+    var room = { above: 0, frame: 0 };
+    var place = function () {
+      var hh = head ? head.offsetHeight : 68;
+      box.style.marginTop = "";
+      var topDoc = box.getBoundingClientRect().top + window.pageYOffset;
+      var labelH = lab.offsetHeight + 5;
+      var need = hh + 8;
+      var add = Math.max(0, need - topDoc);
+      if (add > 0) { box.style.marginTop = (parseFloat(window.getComputedStyle(box).marginTop) + add) + "px"; topDoc += add; }
+      var above = topDoc - hh - 8 - labelH >= 0;
+      box.setAttribute("data-label", above ? "above" : "under");
+      room.above = above ? topDoc - hh - 8 - labelH : 0;   // how far the top edge may still go up with the label above it
+      room.frame = topDoc - hh - 8;                        // how far the top edge may go up at all
+      put(1);
+    };
+    place();
+    window.addEventListener("resize", place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (box.classList.contains("snap-b") && !calm) {
       var t0 = null;
@@ -128,14 +148,14 @@
         if (el < 2700) window.requestAnimationFrame(step); else put(1);
       };
       window.requestAnimationFrame(step);
-      if (grow && box.animate && "IntersectionObserver" in window) startRepeats(box, grow, put);
+      if (grow && box.animate && "IntersectionObserver" in window) startRepeats(box, grow, put, room, place);
     }
   });
 
   // After the first scenario the cursor takes the next corner every ~8 s (lower right, lower left, upper left, upper right),
   // the frame is pulled a little and returns, the size label follows. Only while the first screen is visible and the tab is
   // active; a hover or focus on the headline pauses it; nothing is repeated with "reduce motion".
-  function startRepeats(box, grow, put) {
+  function startRepeats(box, grow, put, room, place) {
     var cursor = grow.querySelector(".snap-cursor");
     if (!cursor) return;
     var corners = ["br", "bl", "tl", "tr"], next = 0;
@@ -157,6 +177,10 @@
       // how far the corner goes out (negative: inward); on a phone the left corners and the top go inward or down,
       // so the frame never leaves the screen
       var ox = phone() ? (left ? -3 : 4) : 22, oy = phone() ? (top ? -3 : 18) : 16;
+      place();
+      // the top edge goes up only while it stays below the header (and, with the label above, below the label room)
+      var upRoom = box.getAttribute("data-label") === "above" ? room.above : room.frame;
+      if (top && oy > 0 && upRoom < oy + 2) oy = -Math.min(6, Math.abs(oy));   // no room above: pull inward instead
       var from = {}, to = {};
       from[left ? "left" : "right"] = "0px"; to[left ? "left" : "right"] = -ox + "px";
       from[top ? "top" : "bottom"] = "0px"; to[top ? "top" : "bottom"] = -oy + "px";
@@ -176,6 +200,7 @@
       window.requestAnimationFrame(loop);
       a2.finished.then(function () { pulling = false; running = []; put(1); }, function () { pulling = false; });
     }
+    window.addEventListener("clipsd-snap-pull", function (e) { if (!pulling) pull(e.detail); });   // used by the layout tests
     function cycle() {
       if (paused() || pulling) { window.setTimeout(cycle, 800); return; }
       pull(corners[next]);
@@ -198,6 +223,56 @@
       }, function () {});
     });
   });
+
+  // --- scroll-spy: the menu item of the section that crosses a line at 35% of the screen; nothing on the first screen ---
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".nav a[href^='#'], .menu nav a[href^='#']"));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var targets = [];
+    links.forEach(function (a) {
+      var t = document.getElementById(a.getAttribute("href").slice(1));
+      if (t && targets.indexOf(t) < 0) targets.push(t);
+    });
+    targets.sort(function (a, b) { return a.compareDocumentPosition(b) & 4 ? -1 : 1; });   // document order
+    var inband = {}, current = null;
+    var show = function (id) {
+      if (id === current) return;
+      current = id;
+      links.forEach(function (a) {
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
+    };
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { inband[e.target.id] = e.isIntersecting; });
+      var hit = null;
+      targets.forEach(function (t) { if (inband[t.id]) hit = t.id; });
+      if (hit) show(hit);
+      else if (targets[0].getBoundingClientRect().top > window.innerHeight * 0.35) show(null);   // above the first section: nothing
+    }, { rootMargin: "-35% 0px -64% 0px" });
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+
+  // --- the header never gets wider than the screen: when the full menu does not fit (long words, a narrow window), the
+  // menu button takes over; measured with the sticky download button shown, so nothing jumps while scrolling -------
+  (function () {
+    var top = document.querySelector("header.top"), wrap = top && top.querySelector(".wrap");
+    if (!top || !wrap) return;
+    var fit = function () {
+      var hadDl = top.classList.contains("dl-on");
+      top.classList.remove("nav-off");
+      top.classList.add("dl-on");
+      var cs = window.getComputedStyle(wrap), limit = wrap.getBoundingClientRect().right - parseFloat(cs.paddingRight);
+      var kids = Array.prototype.filter.call(wrap.children, function (e) { return e.offsetWidth > 0; });
+      var last = kids.length ? kids[kids.length - 1].getBoundingClientRect().right : 0;
+      var nav = top.querySelector(".nav");
+      var wide = nav && nav.offsetWidth > 0 && (last > limit + 0.5 || document.documentElement.scrollWidth > document.documentElement.clientWidth);
+      if (wide) top.classList.add("nav-off");
+      if (!hadDl) top.classList.remove("dl-on");
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
 
   // --- close the mobile menu after a jump ------------------------------------------------------------
   document.querySelectorAll("details.menu nav a").forEach(function (a) {
