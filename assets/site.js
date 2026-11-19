@@ -106,6 +106,30 @@
     document.querySelectorAll("[data-os-name]").forEach(function (e) { e.textContent = T.os[os]; });
   }
 
+  // --- selection frame on the first screen: the size label shows the real size of the frame, also while it is drawn and
+  // while the cursor stretches it by the corner (variant b) ------------------------------------------------------
+  document.querySelectorAll("[data-snap]").forEach(function (box) {
+    var lab = box.querySelector("[data-snap-size]"), fmt = box.getAttribute("data-snap-fmt") || "";
+    var grow = box.querySelector("[data-snap-grow]");
+    if (!lab || !fmt) return;
+    var put = function (k) {
+      var r = (grow || box).getBoundingClientRect();
+      lab.textContent = fmt.replace("{w}", Math.round(r.width * k)).replace("{h}", Math.round(r.height * k));
+    };
+    put(1);
+    window.addEventListener("resize", function () { put(1); });
+    if (box.classList.contains("snap-b") && !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+      var t0 = null;
+      var step = function (t) {
+        if (t0 === null) t0 = t;
+        var el = t - t0, k = Math.min(1, el / 800);
+        put(1 - Math.pow(1 - k, 3));
+        if (el < 2700) window.requestAnimationFrame(step); else put(1);
+      };
+      window.requestAnimationFrame(step);
+    }
+  });
+
   // --- copy button for the Linux command ------------------------------------------------------------
   document.querySelectorAll("[data-copy]").forEach(function (b) {
     if (!navigator.clipboard) return;
