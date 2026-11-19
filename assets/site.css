@@ -439,3 +439,18 @@ h1 .h1-slogan{display:block}
 .os h3 .tux,.os h3 .mon{margin:0;vertical-align:baseline;height:29px}
 .os h3 .tux{width:24px}
 .os h3 .mon{width:33px}
+
+/* quiet download lines between the sections; compact download button in the header after the first screen */
+.more{padding:6px 0}
+.more .wrap{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px;text-align:center}
+.more p{margin:0;font-size:18px;color:var(--ink);font-family:var(--serif)}
+.more .btn{padding:10px 20px;font-size:15px}
+.top-dl{display:none;background:var(--blue);color:#fff;border-radius:999px;padding:8px 16px;font:700 15px/1 var(--sans);text-decoration:none;white-space:nowrap}
+.top-dl:hover{background:var(--blue-d)}
+.top.dl-on .top-dl{display:inline-flex}
+.top .wrap{position:relative}
+@media (max-width:640px){
+  .top.dl-on .brand span{display:none}
+  .top-dl{padding:8px 13px;font-size:14px}
+  .more p{font-size:16px}
+}
