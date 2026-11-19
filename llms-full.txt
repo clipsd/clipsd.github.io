@@ -1,4 +1,4 @@
-# ClipSD 1.31.2: screenshot tool with an editor for Windows and Linux
+# ClipSD 1.32.0: screenshot tool with an editor for Windows and Linux
 
 Free screenshot tool with an editor for Windows and Linux: capture an area with Alt+W, add arrows, numbers, callouts, blur, crop, copy text from images and translate text on screen.
 
@@ -8,7 +8,7 @@ Facts:
 - Interface languages: Русский, English, Български, Українська, Deutsch, Français, Español, Italiano, Português, Polski, Türkçe, 中文.
 - Systems: Windows 10 and 11 (x64); Linux x86-64 with Python 3.9+ (Ubuntu, Debian, Fedora, Mint and similar), X11 and Wayland.
 - Windows: a normal installer, no administrator rights. Linux: unpack the archive and run `bash install.sh`; no administrator password, but it downloads PyQt6 (about 110 MB) from PyPI once.
-- Download: Windows installer: https://github.com/clipsd/clipsd/releases/download/v1.31.2/ClipSD-1.31.2-Setup.exe (SHA-256 2b70f05abab79801702c1047c7d2c232d2e3ca3c62f9baa240ae2ab50f3a1b3f); Linux archive: https://github.com/clipsd/clipsd/releases/download/v1.31.2/ClipSD-1.31.2-linux-x86_64.tar.gz (SHA-256 3fdc27b83af796c72765f526095a35ab9451070030236f5b756ebcb844c2260d); Source code: https://github.com/clipsd/clipsd/releases/tag/v1.31.2.
+- Download: Windows installer: https://github.com/clipsd/clipsd/releases/download/v1.32.0/ClipSD-1.32.0-Setup.exe (SHA-256 81cc3c3713ffef499b9ee0006294f04526326846bb97ba48c59078453a724cb4); Linux archive: https://github.com/clipsd/clipsd/releases/download/v1.32.0/ClipSD-1.32.0-linux-x86_64.tar.gz (SHA-256 1266434b0a9fef2d51415313184b12c4a84fff5c1814e56e8e7ded4b6f14ed51); Source code: https://github.com/clipsd/clipsd/releases/tag/v1.32.0.
 - New versions: ClipSD checks once a day and offers "Update" (digital signature checked, the previous version comes back if the new one does not start); if you have 1.29 or older, install the new version once over the old one by hand. Settings and screenshots are kept. The check can be switched off in the settings.
 - Network: only text the user sends for translation (to MyMemory or Google Cloud Translation), the optional e-mail for MyMemory and the once-a-day check for a new version on GitHub. Screenshots, the clipboard and file names never leave the computer. The program itself collects no statistics.
 - Website counters (not the program): Google Analytics 4, loaded only after the visitor accepts the cookie banner; no Webvisor, no ad features.
@@ -66,7 +66,7 @@ Policy: https://clipsd.github.io/en/privacy.html
 ## FAQ
 
 Q: Where can I download ClipSD for free, and is it really free?
-A: Yes. You can download ClipSD on this page, in the Download section: an installer for Windows and an archive for Linux. No ads, no trial period, no paid features. The source code is open under the GNU GPL v3 or later: you can read it, check it and improve it.
+A: Yes. You can download ClipSD on this page, in the Download section: an installer for Windows and an archive for Linux. No ads, no trial period, no paid features. The source code is open under the GNU GPL v3 or later: you can read it and check it.
 
 Q: How do I take a screenshot of part of the screen?
 A: Press Alt+W in any program and select an area with the mouse. Enter opens it in the editor, Ctrl+C copies it and closes the window. Clicking the ClipSD icon next to the clock does the same.
@@ -111,14 +111,14 @@ Q: Why does Windows show a blue window when installing?
 A: ClipSD does not have a paid digital signature yet. Click "More info", then "Run anyway". You can check that the file is genuine with the SHA-256 checksum next to the download button.
 
 Q: How is ClipSD different from the Windows Snipping Tool?
-A: ClipSD works on Linux too, the same way as on Windows. The editor has numbers with a pointer and callouts, and text on the screen can be translated. ClipSD remembers the previous area, so the next screenshot of the same place takes one Enter.
+A: ClipSD works on both Windows and Linux; the Snipping Tool exists only on Windows. The editor has numbers with a pointer and callouts, and text on the screen can be translated. ClipSD remembers the previous area, so the next screenshot of the same place takes one Enter.
 
 Q: Which Linux does ClipSD run on?
 A: Any 64-bit (x86-64) Linux with glibc 2.35 or newer: Ubuntu 22.04+, Linux Mint 21+, Debian 12+, Fedora 36+, openSUSE Tumbleweed, Arch and its derivatives, Zorin OS 17+, Pop!_OS 22.04+, elementary OS 7+ and similar. Not supported: ARM (Raspberry Pi and others), Ubuntu 20.04 and older, Debian 11, CentOS 7. One build for all of these systems: everything needed is inside the archive, so there are no separate packages per version. Alt+W: GNOME and X11 sessions set it by themselves; in KDE and other Wayland desktops assign it in the keyboard settings.
 
 ## Install
 
-ClipSD 1.31.2: a free screenshot tool with an editor for Windows 10/11 (x64) and Linux (x86-64). License GPL-3.0-or-later.
+ClipSD 1.32.0: a free screenshot tool with an editor for Windows 10/11 (x64) and Linux (x86-64). License GPL-3.0-or-later.
 Alt+W selects an area; arrows, numbers, blur and text marks; copy text from an image (OCR); translate text on screen.
 Site: https://clipsd.github.io/   Source: https://github.com/clipsd/clipsd   Checksums of the release files: https://clipsd.github.io/downloads/SHA256SUMS
 
@@ -129,19 +129,19 @@ One command:
   curl -fsSL https://clipsd.github.io/install.sh | bash
 (It reads the version from https://clipsd.github.io/channel/stable/latest.json, downloads the archive from GitHub Releases, checks SHA-256 against https://clipsd.github.io/downloads/SHA256SUMS and stops on a mismatch, then runs the install.sh of the archive. Extra arguments: ... | bash -s -- --force-replace-dev)
 By hand, with the check:
-  curl -fLO https://github.com/clipsd/clipsd/releases/download/v1.31.2/ClipSD-1.31.2-linux-x86_64.tar.gz
+  curl -fLO https://github.com/clipsd/clipsd/releases/download/v1.32.0/ClipSD-1.32.0-linux-x86_64.tar.gz
   curl -fLO https://clipsd.github.io/downloads/SHA256SUMS
   sha256sum -c --ignore-missing SHA256SUMS
-  tar -xzf ClipSD-1.31.2-linux-x86_64.tar.gz
-  cd clipsd-1.31.2 && bash install.sh
+  tar -xzf ClipSD-1.32.0-linux-x86_64.tar.gz
+  cd clipsd-1.32.0 && bash install.sh
 Installed into ~/.local/share/clipsd, the command is ~/.local/bin/clipsd (also in the application menu).
 Alt+W: GNOME and X11 sessions set it themselves; in KDE and other Wayland desktops assign the command `clipsd --region` in the keyboard settings.
 Uninstall: bash ~/.local/share/clipsd/current/uninstall.sh   (add --purge to delete settings and screenshots too)
 
 WINDOWS 10/11 x64 (current user, no administrator rights)
-Installer: https://github.com/clipsd/clipsd/releases/download/v1.31.2/ClipSD-1.31.2-Setup.exe   SHA-256 2b70f05abab79801702c1047c7d2c232d2e3ca3c62f9baa240ae2ab50f3a1b3f
-Check (PowerShell): (Get-FileHash .\ClipSD-1.31.2-Setup.exe).Hash
-Silent install: .\ClipSD-1.31.2-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
+Installer: https://github.com/clipsd/clipsd/releases/download/v1.32.0/ClipSD-1.32.0-Setup.exe   SHA-256 81cc3c3713ffef499b9ee0006294f04526326846bb97ba48c59078453a724cb4
+Check (PowerShell): (Get-FileHash .\ClipSD-1.32.0-Setup.exe).Hash
+Silent install: .\ClipSD-1.32.0-Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 A silent install goes into %LOCALAPPDATA%\Programs\ClipSD and does not start the program: start it from the Start menu (ClipSD) or run %LOCALAPPDATA%\Programs\ClipSD\ClipSD.exe. The installer has no signing certificate yet, so SmartScreen may show a blue window: More info, Run anyway.
 Uninstall: Settings > Apps > ClipSD, or "%LOCALAPPDATA%\Programs\ClipSD\unins000.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART (settings and screenshots stay unless you delete them).
 

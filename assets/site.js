@@ -1,5 +1,5 @@
 /* ClipSD site: three frames on the first screen, system detection for the download button, the copy button
-   and the language hint on the root page. No trackers, no cookies; the only thing stored is the chosen language (localStorage clipsd-lang); nothing loaded from other sites (the visitor counters live in consent.js and load only after consent).
+   and the language hint on the root page. No trackers, no cookies; the only thing stored is the chosen language (localStorage clipsd-lang); nothing loaded from other sites except one GET of the ratings summary from the receiver (RATINGS_URL in build.py; the visitor counters live in consent.js and load only after consent).
    Everything important works without this file: the first frame is shown, the others open through anchors. */
 (function () {
   "use strict";
@@ -357,4 +357,92 @@
       if (hit) { hit.classList.add("suggest"); hit.setAttribute("aria-describedby", "suggest-note"); break; }
     }
   }
+  // --- ratings: refresh the numbers and the reviews from the receiver (short answer, textContent only) ----------
+  // The page already holds the values from the build; any failure keeps them as they are.
+  var R = T.rating, box = document.querySelector("[data-rating]");
+  function intIn(x, lo, hi) { return typeof x === "number" && isFinite(x) && Math.floor(x) === x && x >= lo && x <= hi; }
+  function okSummary(d) {
+    if (!d || typeof d !== "object" || !intIn(d.count, 0, 1e9) || !d.by_stars) return false;
+    for (var i = 1; i <= 5; i++) if (!intIn(d.by_stars[String(i)], 0, 1e9)) return false;
+    if (d.count > 0 && !(typeof d.average === "number" && d.average >= 1 && d.average <= 5)) return false;
+    return true;
+  }
+  function okReview(r) {
+    return r && typeof r === "object" && intIn(r.stars, 1, 5) && typeof r.text === "string" && r.text.length > 0 &&
+      r.text.length <= 2000 && typeof r.lang === "string" && /^[a-z]{2,3}$/.test(r.lang) && typeof r.version === "string" &&
+      /^[0-9A-Za-z.+_-]{0,24}$/.test(r.version) && typeof r.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(r.date);
+  }
+  function rq(name) { return box.querySelector('[data-r="' + name + '"]'); }
+  function rfill(d) {
+    var h = Math.round(d.average * 100), t = Math.floor((h + 5) / 10);
+    rq("avg").textContent = Math.floor(t / 10) + R.sep + (t % 10);
+    var st = rq("stars");
+    st.className = "stars s" + Math.floor((h + 25) / 50);
+    st.setAttribute("aria-label", R.stars.replace("{v}", rq("avg").textContent));
+    rq("count").textContent = String(d.count);
+    for (var i = 1; i <= 5; i++) {
+      rq("n" + i).textContent = String(d.by_stars[String(i)]);
+      var p = rq("n" + i).parentNode.querySelector("progress");
+      p.max = Math.max(d.count, 1); p.value = d.by_stars[String(i)];
+    }
+  }
+  function readReviews() {
+    var out = [];
+    box.querySelectorAll(".rev").forEach(function (li) {
+      out.push({ stars: +li.getAttribute("data-stars"), lang: li.getAttribute("data-lang"), date: li.getAttribute("data-date"),
+        version: li.getAttribute("data-ver"), text: li.querySelector(".rev-text").textContent });
+    });
+    return out;
+  }
+  function rmk(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+  function drawReviews(list, known) {
+    // the same rule as in the build: reviews in the language of the page, else the others with the language marked
+    var mine = list.filter(function (r) { return r.lang === R.lang; }), other = !mine.length;
+    var show = (other ? list : mine).slice(0, R.max || 6), ul = rq("revs");
+    while (ul.firstChild) ul.removeChild(ul.firstChild);
+    show.forEach(function (r) {
+      var li = rmk("li", "rev"), s = rmk("span", "stars s" + r.stars * 2);
+      li.setAttribute("data-lang", r.lang); li.setAttribute("data-stars", String(r.stars));
+      li.setAttribute("data-date", r.date); li.setAttribute("data-ver", r.version);
+      s.setAttribute("role", "img"); s.setAttribute("aria-label", R.stars.replace("{v}", String(r.stars)));
+      li.appendChild(s); li.appendChild(rmk("p", "rev-text", r.text));
+      var m = rmk("p", "rev-meta");
+      if (other) m.appendChild(rmk("span", "rev-lang", (R.names && R.names[r.lang]) || r.lang.toUpperCase()));
+      m.appendChild(rmk("span", "rev-when", r.date + (r.version ? " · " + R.ver + " " + r.version : "")));
+      li.appendChild(m); ul.appendChild(li);
+    });
+    rq("revs-h").hidden = !show.length;
+    rq("other").hidden = !(show.length && other);
+  }
+  function refreshRatings() {
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 8000);
+    // reviews=2: the answer stays far below 16 KB (some providers cut longer answers from Cloudflare); newer reviews are
+    // merged into the ones already on the page
+    fetch(R.url + "/summary?reviews=2", { mode: "cors", credentials: "omit", signal: ctl ? ctl.signal : undefined })
+      .then(function (resp) { if (!resp.ok) throw new Error("status"); return resp.json(); })
+      .then(function (d) {
+        clearTimeout(timer);
+        if (!okSummary(d) || d.count === 0) return;
+        rfill(d);
+        box.hidden = false;
+        var have = readReviews(), seen = {};
+        have.forEach(function (r) { seen[r.date + "|" + r.stars + "|" + r.text] = 1; });
+        var add = (Array.isArray(d.approved_reviews) ? d.approved_reviews : []).filter(okReview).filter(function (r) {
+          return !seen[r.date + "|" + r.stars + "|" + r.text];
+        });
+        if (add.length) drawReviews(add.concat(have), true);
+      })
+      .catch(function () { clearTimeout(timer); });
+  }
+  if (R && R.url && box && window.fetch) {
+    if (document.readyState === "complete") setTimeout(refreshRatings, 0);
+    else window.addEventListener("load", function () { setTimeout(refreshRatings, 0); });
+  }
+})();
+
+/* download block: the folded "manual install" part is open on wide screens only */
+(function () {
+  if (window.matchMedia && window.matchMedia("(max-width:640px)").matches)
+    document.querySelectorAll(".dlv details.fold[open]").forEach(function (d) { d.open = false; });
 })();

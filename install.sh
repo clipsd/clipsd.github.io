@@ -4,7 +4,7 @@
 # Extra arguments go to the install.sh of the archive:  curl -fsSL https://clipsd.github.io/install.sh | bash -s -- --force-replace-dev
 #
 # What it does: reads the version from https://clipsd.github.io/channel/stable/latest.json (python3, no jq; without python3 it uses the
-# version written here at build time: 1.31.2), downloads the archive from GitHub Releases and SHA256SUMS from this
+# version written here at build time: 1.32.0), downloads the archive from GitHub Releases and SHA256SUMS from this
 # site, checks the SHA-256 (a mismatch stops everything), unpacks into a temporary folder under ~/.cache, runs the
 # install.sh from the archive (installs for the current user into ~/.local/share/clipsd) and removes the temporary folder.
 # Copyright (C) 2026 Sergey Dayneko. SPDX-License-Identifier: GPL-3.0-or-later
@@ -19,7 +19,7 @@ set -euo pipefail
 main() {
   local BASE="${CLIPSD_BASE:-https://clipsd.github.io}"
   local REL="${CLIPSD_RELEASE_BASE:-https://github.com/clipsd/clipsd/releases/download}"
-  local FALLBACK_VERSION="1.31.2"
+  local FALLBACK_VERSION="1.32.0"
   local MIN_GLIBC="2.35"
 
   # --- messages: Russian when the terminal language is Russian, else English ---------------------------------
