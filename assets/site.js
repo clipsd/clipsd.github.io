@@ -477,7 +477,7 @@
         e.preventDefault();
         var id = item.getAttribute("data-vsel");
         stopPlayer(stage);
-        stage.querySelectorAll("a.vid").forEach(function (v) { v.hidden = v.getAttribute("data-video") !== id; });
+        stage.querySelectorAll(".vid").forEach(function (v) { v.hidden = v.getAttribute("data-video") !== id; });
         box.querySelectorAll("a[data-vsel]").forEach(function (o) {
           var on = o === item;
           o.classList.toggle("on", on);
