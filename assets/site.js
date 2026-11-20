@@ -447,11 +447,16 @@
     document.querySelectorAll(".dlv details.fold[open]").forEach(function (d) { d.open = false; });
 })();
 
-/* video guides: until a click, nothing is requested from YouTube; the click puts the player (youtube-nocookie.com) in place of the cover */
+/* video guides: until a click, nothing is requested from YouTube; the click puts the player (youtube-nocookie.com) in place of the cover.
+   A click on a list item only swaps the cover and the caption (the images are on the same site); it never loads a player. */
 (function () {
+  function stopPlayer(box) {
+    box.querySelectorAll("iframe.vid-frame").forEach(function (f) { f.remove(); });
+  }
+  function plain(e) { return !(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button); }
   document.querySelectorAll("a.vid[data-video]").forEach(function (a) {
     a.addEventListener("click", function (e) {
-      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return;
+      if (!plain(e)) return;
       e.preventDefault();
       var f = document.createElement("iframe");
       f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(a.getAttribute("data-video")) + "?autoplay=1&rel=0";
@@ -460,12 +465,31 @@
       f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
       f.allowFullscreen = true;
       f.referrerPolicy = "strict-origin-when-cross-origin";
-      var t = document.createElement("p");
-      t.className = "vid-t";
-      t.textContent = a.getAttribute("data-title") || "";
-      var li = a.parentNode;
-      li.replaceChild(f, a);
-      li.appendChild(t);
+      a.hidden = true;
+      a.parentNode.insertBefore(f, a.nextSibling);
+    });
+  });
+  document.querySelectorAll("[data-vbox]").forEach(function (box) {
+    var stage = box.querySelector(".vstage"), cap = box.querySelector("[data-vcap]");
+    box.querySelectorAll("a[data-vsel]").forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        if (!plain(e)) return;
+        e.preventDefault();
+        var id = item.getAttribute("data-vsel");
+        stopPlayer(stage);
+        stage.querySelectorAll("a.vid").forEach(function (v) { v.hidden = v.getAttribute("data-video") !== id; });
+        box.querySelectorAll("a[data-vsel]").forEach(function (o) {
+          var on = o === item;
+          o.classList.toggle("on", on);
+          if (on) o.setAttribute("aria-current", "true"); else o.removeAttribute("aria-current");
+        });
+        if (cap) {
+          cap.querySelector("b").textContent = item.getAttribute("data-title") || "";
+          cap.querySelector("span").textContent = item.getAttribute("data-about") || "";
+        }
+        var r = stage.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) stage.scrollIntoView({ block: "nearest" });
+      });
     });
   });
 })();
