@@ -2,7 +2,7 @@
 
 > Free screenshot tool with an editor for Windows and Linux: capture an area with Alt+W, add arrows, numbers, callouts, blur, crop, copy text from images and translate text on screen.
 
-ClipSD 1.32.2 is a free, open-source (GNU GPL v3 or later, SPDX GPL-3.0-or-later) screenshot program with a built-in annotation editor for Windows 10, Windows 11 and Linux. Author: Sergey Dayneko. No account, no ads. Press Alt+W, select an area, mark it up with arrows, numbered steps, callouts, text, highlighter or blur, then copy it or save it as PNG/JPEG. It also copies text from images (local recognition) and translates text on screen through MyMemory or Google Cloud Translation.
+ClipSD 1.32.3 is a free, open-source (GNU GPL v3 or later, SPDX GPL-3.0-or-later) screenshot program with a built-in annotation editor for Windows 10, Windows 11 and Linux. Author: Sergey Dayneko. No account, no ads. Press Alt+W, select an area, mark it up with arrows, numbered steps, callouts, text, highlighter or blur, then copy it or save it as PNG/JPEG. It also copies text from images (local recognition) and translates text on screen through MyMemory or Google Cloud Translation.
 
 ## Pages
 
