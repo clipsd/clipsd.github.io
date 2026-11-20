@@ -446,3 +446,26 @@
   if (window.matchMedia && window.matchMedia("(max-width:640px)").matches)
     document.querySelectorAll(".dlv details.fold[open]").forEach(function (d) { d.open = false; });
 })();
+
+/* video guides: until a click, nothing is requested from YouTube; the click puts the player (youtube-nocookie.com) in place of the cover */
+(function () {
+  document.querySelectorAll("a.vid[data-video]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return;
+      e.preventDefault();
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(a.getAttribute("data-video")) + "?autoplay=1&rel=0";
+      f.title = a.getAttribute("data-title") || "";
+      f.className = "vid-frame";
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      f.referrerPolicy = "strict-origin-when-cross-origin";
+      var t = document.createElement("p");
+      t.className = "vid-t";
+      t.textContent = a.getAttribute("data-title") || "";
+      var li = a.parentNode;
+      li.replaceChild(f, a);
+      li.appendChild(t);
+    });
+  });
+})();
