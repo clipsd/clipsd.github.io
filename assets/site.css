@@ -172,6 +172,12 @@ code.cmdline{white-space:nowrap;color:var(--ink)}
 .trio .print:nth-child(3){transform:rotate(-.6deg)}
 .trio img{aspect-ratio:900/632;object-fit:cover;object-position:center}
 .trio figcaption{font-size:15px;padding:8px 2px 0}
+.phone-feat{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:40px;align-items:center;margin-top:64px}
+.phone-feat .print{padding:8px}
+.phone-feat img{width:100%;height:auto;display:block}
+.phone-feat h3{font-size:22px;margin:0 0 10px}
+.phone-feat p{font-size:17px;margin:0}
+@media (max-width:780px){.phone-feat{grid-template-columns:minmax(0,1fr);gap:22px;margin-top:44px}}
 
 .duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px}
 .duo .print:first-child{transform:rotate(-1.5deg)}
@@ -530,6 +536,9 @@ h1 .h1-slogan{display:block}
 .fi-insert{background-image:url(../img/tools/insert.webp)}
 .fi-theme{background-image:url(../img/tools/theme.webp)}
 .fi-globe{background-image:url(../img/tools/globe.webp)}
+.fi-shape{background-image:url(../img/tools/shape.webp)}
+.fi-window{background-image:url(../img/tools/window.webp)}
+.fi-phone{background-image:url(../img/tools/phone.webp)}
 .fi-ocr{background-image:url(../img/tools/ocr.webp)}
 .fi-text{background-image:url(../img/tools/text.webp)}
 .fi-translate{background-image:url(../img/tools/translate.webp)}
@@ -719,10 +728,13 @@ footer .ext{opacity:.6}
 
 
 /* Microsoft Store badge in the Windows card and the video guides (the player is added by site.js only after a click) */
-.store{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-badge{display:block;line-height:0}
-.store-badge img{height:44px;width:auto;display:block}
-.store p{font-size:15px;color:var(--muted);margin:0;flex:1 1 180px}
+.store-badge img{height:48px;width:auto;display:block}
+.dl-pair{margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dl-pair .btn{min-height:48px;padding:0 16px;font-size:16px;gap:8px}
+.dl-diff{margin:16px 0 0;padding-left:20px;font-size:15px;color:var(--muted)}
+.dl-diff li{margin:0 0 8px}
+.dl-pair+.dl-diff+.dl-note{margin-top:14px}
 .vid{display:block;position:relative;text-decoration:none;color:var(--ink)}
 .vid img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
 .vid-play{position:absolute;left:50%;top:calc(50% - 26px);width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--blue)}
@@ -810,3 +822,25 @@ footer .ext{opacity:.6}
   .hero-vid-e{flex-direction:column;align-items:stretch;gap:12px;margin-top:26px}
   .hero-vid-e .hv-win{flex:none}
 }
+
+/* Windows card: Store badge in our frame (arrow + untouched official badge) next to the installer button, both 56 px high, a caption under each */
+.dl-pair-store{align-items:flex-start}
+.dl-cell{display:flex;flex-direction:column;gap:6px}
+.dl-cell small{font-size:13px;color:var(--muted);line-height:1.3}
+.store-frame{display:inline-flex;align-items:center;gap:14px;height:56px;padding:0 16px;border:2px solid var(--ink);border-radius:40px;color:var(--ink);box-sizing:border-box}
+.store-frame .store-badge img{height:36px}
+.dl-pair-store .btn{min-height:56px}
+@media (max-width:520px){.dl-pair-store{flex-direction:column;align-items:flex-start;gap:16px}}
+/* video block set apart: its own darker section tone and a white card with a soft shadow around the list and the player */
+.sec-video{background-color:#e3d3b8}
+.sec-video .vcard{background:var(--card);border:1px solid #cdbb9d;border-radius:20px;padding:28px;box-shadow:0 24px 48px -28px rgba(60,40,20,.55)}
+@media (max-width:980px){.sec-video .vcard{padding:16px}}
+
+/* first-screen video window: a dark "screen" frame around the cover, a bigger play button, a caption above */
+.hvv .hv-win{background:#1d1712;border-radius:14px;padding:10px}
+.hvv .hv-lab{margin:2px 2px 8px;font:650 14px/1.3 var(--sans);color:#e7dccd}
+.hvv .hv-win .vid img{border-color:#4a3a2d;box-shadow:none;border-radius:8px}
+.hvv .hv-win .vid-play{width:68px;height:68px;margin:-34px 0 0 -34px}
+.hvv .hv-win .vid-play::after{left:27px;top:20px;border-left:20px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.hvv .hv-txt{padding-top:0}
+@media (max-width:640px){.hvv .hv-win{padding:8px}}
